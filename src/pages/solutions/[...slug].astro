@@ -19,7 +19,7 @@ const slug = Array.isArray(slugParam) ? slugParam.join("/") : slugParam || "";
 const solution = solutions.find((item) => item.slug === slug);
 
 if (!solution) {
-  throw new Error(`Solution not found: ${slug}`);
+  return Astro.redirect("/404");
 }
 ---
 
