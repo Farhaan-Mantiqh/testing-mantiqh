@@ -1,0 +1,25 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Hero from "../components/sections/hero/hero.astro";
+import Bento from "../components/sections/bento/bento.astro";
+import Showcase from "../components/sections/showcase/Showcase.astro";
+import Leadai from "../components/sections/lead-ai/Leadai.astro";
+// import Insight from "../components/sections/insight/insight.astro";
+import Testimonial from "../components/sections/testimonials/Testimonial.astro";
+// import StrategicCarousel from "../components/sections/carousel/StrategicCarousel.astro";
+---
+
+<MainLayout 
+    title="Mantiqh | AI/ML, Product Design & Cloud Solutions"
+    description="Mantiqh Technologies designs, builds, and scales secure, high-performing AI/ML, product development, and data analytics software for modern businesses."
+    keywords="Mantiqh, AI, ML, product development, data analytics, cloud solutions"
+    canonicalURL="https://mantiqh.com/"
+>
+    <Hero />
+    <Bento />
+    <Showcase />
+    <Leadai />
+    {/* <Insight /> */}
+    <Testimonial />
+    {/* <StrategicCarousel /> */}
+</MainLayout>

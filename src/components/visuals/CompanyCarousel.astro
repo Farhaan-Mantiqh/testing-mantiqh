@@ -1,0 +1,47 @@
+---
+import { Sparkles, Sun, Maximize, Crosshair } from "lucide-react";
+
+const carouselItems = [
+  { icon: Sparkles, text: "AI-Powered System" },
+  { icon: Sun, text: "Enterprise Innovation" },
+  { icon: Maximize, text: "Scalable Infrastructure" },
+  { icon: Crosshair, text: "Data Security" },
+];
+
+// Duplicate items to create seamless infinite scrolling
+const items = [...carouselItems, ...carouselItems, ...carouselItems];
+---
+
+<!-- Position exactly at y=60px to match the horizontal line in DashedGrid -->
+<div
+  class="absolute left-0 w-full top-[60px] -translate-y-1/2 overflow-hidden z-20 pointer-events-none"
+  style="mask-image: linear-gradient(to right, transparent 5%, black 20%, black 80%, transparent 95%); -webkit-mask-image: linear-gradient(to right, transparent 5%, black 20%, black 80%, transparent 95%);"
+>
+  <div class="flex items-center gap-12 w-max animate-marquee">
+    {
+      items.map((item) => (
+        <div class="flex items-center gap-2 px-4 py-2 rounded border border-slate-700/60 bg-[#151b2b] shadow-xl backdrop-blur-sm whitespace-nowrap">
+          <item.icon className="w-4 h-4 text-white" />
+          <span class="text-sm font-medium text-white tracking-wide">
+            {item.text}
+          </span>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-33.333333% - 16px));
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+</style>

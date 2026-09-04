@@ -1,0 +1,403 @@
+---
+return Astro.redirect('/');
+import MainLayout from "../../layouts/MainLayout.astro";
+import { blogsData } from "../../data/blogs";
+import Navbar from "../../components/layout/Navbar.astro";
+import { Share, ArrowLeft, ArrowRight } from "lucide-react";
+import { FaXTwitter, FaLinkedinIn } from "react-icons/fa6";
+
+const { slug } = Astro.params;
+
+const currentSlug = Array.isArray(slug) ? slug.join("/") : (slug ?? "");
+
+const blog = blogsData.find((item) => item.slug === currentSlug);
+
+if (!blog) {
+  return Astro.redirect("/404");
+}
+---
+
+<MainLayout title={blog.title}>
+  <section class="bg-white">
+    <div
+      class="bg-white flex flex-col grow max-w-[1440px] mx-auto w-full border-x border-slate-200/20 relative"
+    >
+      <div
+        class="hidden lg:block absolute top-[88px] left-[50px] xl:left-[220px] h-[2614px] xl:h-[2700px] border-l border-dashed border-[#D9DDE3] pointer-events-none"
+      >
+      </div>
+
+      <div
+        class="hidden lg:block absolute top-[88px] right-[50px] xl:right-[220px] h-[2614px] xl:h-[2700px] border-l border-dashed border-[#D9DDE3] pointer-events-none"
+      >
+      </div>
+      <Navbar theme="light" />
+      <div class="max-w-[980px] mx-auto px-6 lg:px-12 py-12">
+        <div class="flex items-center justify-between mb-8">
+          <div class="flex items-center gap-2 text-[12px]">
+            <a href="/" class="text-[#387EC1]">Blog</a>
+            <span class="text-[#387EC1]">/</span>
+            <span class="text-[#387EC1]">Enterprise, AI</span>
+          </div>
+
+          <div class="relative group">
+            <button
+              class="flex items-center gap-1 text-[#5F6670] cursor-pointer"
+            >
+              <Share className="w-5 h-5" />
+            </button>
+
+            <div
+              class="absolute right-0 top-full mt-2 w-[180px] bg-white border border-[#D9DDE3] rounded-md shadow-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+            >
+              <a
+                href={`https://x.com/intent/tweet?url=${Astro.url.href}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center text-black text-body-s font-normal gap-2 px-4 py-3 hover:bg-[#F8FAFC]"
+              >
+                <FaXTwitter className="w-4 h-4" />
+                <span>Share on X</span>
+              </a>
+
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${Astro.url.href}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center text-black text-body-s font-normal gap-2 px-4 py-3 hover:bg-[#F8FAFC]"
+              >
+                <FaLinkedinIn className="w-4 h-4" />
+                <span>Share on LinkedIn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="text-h1 leading-[110%] font-medium text-[#171925] mb-4">
+          {blog.title}
+        </h1>
+
+        <p class="text-body-m font-normal text-[#7B8794] mb-8">
+          {blog.date}
+        </p>
+
+        <p class="text-[#454751] text-body-m font-normal leading-7 mb-10">
+          {blog.shortDescription}
+        </p>
+
+        {
+          blog.heroImage ? (
+            <img
+              src={blog.heroImage}
+              alt={blog.title}
+              class="w-full mb-12 border border-[#D9DDE3]"
+              
+              
+            />
+          ) : (
+            <div class="w-full h-[420px] border border-dashed border-[#D9DDE3] mb-12 flex items-center justify-center">
+              Hero Image
+            </div>
+          )
+        }
+
+        {
+          blog.sections.map((section) => (
+            <div class="mb-12">
+              <h2 class="text-[28px] font-medium text-[#171925] mb-5">
+                {section.title}
+              </h2>
+
+              {section.image && (
+                <img
+                  src={section.image}
+                  alt={section.title}
+                  class="w-full mt-8 mb-8 border border-[#D9DDE3]"
+                  
+                  
+                />
+              )}
+
+              <p class="text-[#4A5565] leading-7 whitespace-pre-line">
+                {section.content}
+              </p>
+
+              {section.bullets && (
+                <ul class="list-disc pl-6 mt-6 space-y-2 text-[#4A5565]">
+                  {section.bullets.map((bullet) => (
+                    <li>{bullet}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="border-t border-[#D9DDE3]">
+        <div class="mx-auto px-6 lg:px-10 py-10">
+          <div class="flex items-center justify-between mb-8">
+            <h2 class="text-[32px] text-black font-medium font-sans">
+              Recent Blogs
+            </h2>
+
+            <div class="flex items-center gap-4">
+              <button
+                id="recent-prev"
+                class="border border-[#D9DDE3] bg-white p-2 rounded-[2px] h-fit cursor-not-allowed transition-all text-[#A0A5AA]"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </button>
+
+              <button
+                id="recent-next"
+                class="border border-[#2F80ED] bg-[#2F80ED]/10 p-2 rounded-[2px] h-fit cursor-pointer transition-all text-[#2F80ED]"
+              >
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="carousel-viewport overflow-hidden relative left-[-24px] w-[calc(100%+48px)] lg:left-[-40px] lg:w-[calc(100%+80px)] border-y-[0.4px] border-[#AAB1BA]"
+          >
+            <div
+              id="recent-blogs-track"
+              class="flex transition-transform duration-500 ease-out"
+            >
+              {/* Box 1 */}
+              <div
+                class="carousel-item w-full md:w-1/2 lg:w-1/3 shrink-0 border-r-[0.4px] last:border-r-0 border-[#AAB1BA] px-6 md:px-8 lg:px-10 py-8"
+              >
+                <div class="flex justify-between items-start pb-16 gap-4">
+                  <h4 class="text-h5 font-medium text-black">
+                    Designing Digital Products for Operational Simplicity
+                  </h4>
+
+                  <img
+                    src="/blogs/box-1.png"
+                    alt="Product Design"
+                    class="w-[52px] h-[52px] object-cover shrink-0"
+                    
+                    
+                  />
+                </div>
+
+                <p class="text-[#454751] text-body-m font-normal pb-10">
+                  Why simplifying complex workflows is becoming the foundation
+                  of successful SaaS and enterprise product experiences...
+                </p>
+
+                <div class="flex justify-between items-center gap-4">
+                  <span
+                    class="border-[#475569] border-[0.4px] rounded-[2px] py-0.5 px-3 text-black text-caption font-medium"
+                  >
+                    PRODUCT DESIGN
+                  </span>
+
+                  <span class="text-[#454751] text-caption font-normal">
+                    May 20, 2026
+                  </span>
+                </div>
+              </div>
+
+              {/* Box 2 */}
+              <div
+                class="carousel-item w-full md:w-1/2 lg:w-1/3 shrink-0 border-r-[0.4px] last:border-r-0 border-[#AAB1BA] px-6 md:px-8 lg:px-10 py-8"
+              >
+                <div class="flex justify-between items-start pb-16 gap-4">
+                  <h4 class="text-h5 font-medium text-black">
+                    Building Scalable Platforms for the AI Era
+                  </h4>
+
+                  <img
+                    src="/blogs/box-2.png"
+                    alt="AI Platform"
+                    class="w-[52px] h-[52px] object-cover shrink-0"
+                    
+                    
+                  />
+                </div>
+
+                <p class="text-[#454751] text-body-m font-normal pb-10">
+                  A deep dive into modern architecture strategies, scalable
+                  systems, and future-ready engineering practices for digital
+                  products...
+                </p>
+
+                <div class="flex justify-between items-center gap-4">
+                  <span
+                    class="border-[#475569] border-[0.4px] rounded-[2px] py-0.5 px-3 text-black text-caption font-medium"
+                  >
+                    AI
+                  </span>
+
+                  <span class="text-[#454751] text-caption font-normal">
+                    May 20, 2026
+                  </span>
+                </div>
+              </div>
+
+              {/* Box 3 */}
+              <div
+                class="carousel-item w-full md:w-1/2 lg:w-1/3 shrink-0 border-r-[0.4px] last:border-r-0 border-[#AAB1BA] px-6 md:px-8 lg:px-10 py-8"
+              >
+                <div class="flex justify-between items-start pb-16 gap-4">
+                  <h4 class="text-h5 font-medium text-black">
+                    The Future of Sustainable Digital Ecosystems
+                  </h4>
+
+                  <img
+                    src="/blogs/box-3.png"
+                    alt="Sustainable Ecosystem"
+                    class="w-[52px] h-[52px] object-cover shrink-0"
+                    
+                    
+                  />
+                </div>
+
+                <p class="text-[#454751] text-body-m font-normal pb-10">
+                  Exploring how technology-driven platforms are reshaping
+                  sustainability, recycling, and environmentally conscious user
+                  engagement...
+                </p>
+
+                <div class="flex justify-between items-center gap-4">
+                  <span
+                    class="border-[#475569] border-[0.4px] rounded-[2px] py-0.5 px-3 text-black text-caption font-medium"
+                  >
+                    ENTERPRISE
+                  </span>
+
+                  <span class="text-[#454751] text-caption font-normal">
+                    May 20, 2026
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const setupCarousel = () => {
+          const track = document.getElementById("recent-blogs-track");
+          const prevBtn = document.getElementById("recent-prev");
+          const nextBtn = document.getElementById("recent-next");
+
+          if (track && prevBtn && nextBtn) {
+            let currentIndex = 0;
+
+            const getItemsPerPage = () => {
+              if (window.innerWidth >= 1024) return 3;
+              if (window.innerWidth >= 768) return 2;
+              return 1;
+            };
+
+            const updateCarousel = () => {
+              const items = track.children;
+              if (items.length === 0) return;
+
+              const itemsPerPage = getItemsPerPage();
+              const maxIndex = Math.max(0, items.length - itemsPerPage);
+
+              if (currentIndex > maxIndex) currentIndex = maxIndex;
+              if (currentIndex < 0) currentIndex = 0;
+
+              const offsetPercent = currentIndex * (100 / itemsPerPage);
+              track.style.transform = `translateX(-${offsetPercent}%)`;
+
+              // Update button states
+              if (currentIndex === 0) {
+                prevBtn.classList.remove(
+                  "text-[#2F80ED]",
+                  "border-[#2F80ED]",
+                  "bg-[#2F80ED]/10",
+                  "cursor-pointer",
+                );
+                prevBtn.classList.add(
+                  "text-[#A0A5AA]",
+                  "border-[#D9DDE3]",
+                  "bg-white",
+                  "cursor-not-allowed",
+                );
+                prevBtn.style.pointerEvents = "none";
+              } else {
+                prevBtn.classList.remove(
+                  "text-[#A0A5AA]",
+                  "border-[#D9DDE3]",
+                  "bg-white",
+                  "cursor-not-allowed",
+                );
+                prevBtn.classList.add(
+                  "text-[#2F80ED]",
+                  "border-[#2F80ED]",
+                  "bg-[#2F80ED]/10",
+                  "cursor-pointer",
+                );
+                prevBtn.style.pointerEvents = "auto";
+              }
+
+              if (currentIndex >= maxIndex) {
+                nextBtn.classList.remove(
+                  "text-[#2F80ED]",
+                  "border-[#2F80ED]",
+                  "bg-[#2F80ED]/10",
+                  "cursor-pointer",
+                );
+                nextBtn.classList.add(
+                  "text-[#A0A5AA]",
+                  "border-[#D9DDE3]",
+                  "bg-white",
+                  "cursor-not-allowed",
+                );
+                nextBtn.style.pointerEvents = "none";
+              } else {
+                nextBtn.classList.remove(
+                  "text-[#A0A5AA]",
+                  "border-[#D9DDE3]",
+                  "bg-white",
+                  "cursor-not-allowed",
+                );
+                nextBtn.classList.add(
+                  "text-[#2F80ED]",
+                  "border-[#2F80ED]",
+                  "bg-[#2F80ED]/10",
+                  "cursor-pointer",
+                );
+                nextBtn.style.pointerEvents = "auto";
+              }
+            };
+
+            prevBtn.addEventListener("click", () => {
+              if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+              }
+            });
+
+            nextBtn.addEventListener("click", () => {
+              const items = track.children;
+              const itemsPerPage = getItemsPerPage();
+              const maxIndex = Math.max(0, items.length - itemsPerPage);
+              if (currentIndex < maxIndex) {
+                currentIndex++;
+                updateCarousel();
+              }
+            });
+
+            window.addEventListener("resize", updateCarousel);
+            updateCarousel();
+
+            // Run once more after layout loads to ensure correct dimensions
+            setTimeout(updateCarousel, 200);
+          }
+        };
+
+        // Run on load and after Astro transitions/swaps
+        setupCarousel();
+        document.addEventListener("astro:after-swap", setupCarousel);
+      </script>
+    </div>
+  </section>
+</MainLayout>

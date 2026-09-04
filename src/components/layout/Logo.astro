@@ -1,0 +1,57 @@
+---
+interface Path {
+	d: string;
+	fill?: string;
+	stroke?: string;
+}
+
+interface Props {
+	className?: string;
+	width?: string | number;
+	height?: string | number;
+	viewBox?: string;
+	paths?: Path[];
+}
+
+const { 
+	className = "", 
+	width = 50, 
+	height = 36, 
+	viewBox = "0 0 50 36",
+	paths = [
+		{
+			d: "M0 12.0839L24.6713 25.1748V32.2238L6.29371 22.4056V36L0 32.4755V12.0839Z",
+			fill: "#387EC1",
+		},
+		{
+			d: "M49.0908 12.0839L24.4195 25.1748V32.2238L42.7971 22.4056V36L49.0908 32.4755V12.0839Z",
+			fill: "#4EAEF9",
+		},
+		{
+			d: "M3.52441 9.56643L21.6503 0V7.8042L16.3636 10.3217L21.6503 13.3427V20.3916L3.52441 9.56643Z",
+			fill: "#387EC1",
+		},
+		{
+			d: "M45.5664 9.56643L27.4405 0V7.8042L32.7272 10.3217L27.4405 13.3427V20.3916L45.5664 9.56643Z",
+			fill: "#4EAEF9",
+		},
+	]
+} = Astro.props;
+---
+
+<svg
+	width={width}
+	height={height}
+	viewBox={viewBox}
+	fill="none"
+	xmlns="http://www.w3.org/2000/svg"
+	class={className}
+>
+	{paths.map((path) => (
+		<path 
+			d={path.d} 
+			fill={path.fill} 
+			stroke={path.stroke} 
+		/>
+	))}
+</svg>

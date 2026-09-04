@@ -1,0 +1,519 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+/* ================================================================
+   MANTIQH — CONSOLIDATED DESIGN SYSTEM
+   Combines Color System, Fluid Typography, and Global Styles.
+   ================================================================ */
+
+@theme {
+    /* ── Typography ─────────────────────────────────────────── */
+    --font-sans: "SF Pro Text", -apple-system, BlinkMacSystemFont,
+        "Helvetica Neue", Arial, sans-serif;
+
+    --text-display: var(--fs-display);
+    --text-h1: var(--fs-h1);
+    --text-h2: var(--fs-h2);
+    --text-h3: var(--fs-h3);
+    --text-h4: var(--fs-h4);
+    --text-h5: var(--fs-h5);
+    --text-h6: var(--fs-h6);
+    --text-body-l: var(--fs-body-l);
+    --text-body-m: var(--fs-body-m);
+    --text-body-s: var(--fs-body-s);
+    --text-body-xs: var(--fs-body-xs);
+    --text-cta-primary: var(--fs-cta-primary);
+    --text-cta-secondary: var(--fs-cta-secondary);
+    --text-label: var(--fs-label);
+    --text-input: var(--fs-input);
+    --text-helper: var(--fs-helper);
+    --text-caption: var(--fs-caption);
+
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    /* ── Colors ─────────────────────────────────────────────── */
+    --color-error-50: var(--error-50);
+    --color-error-100: var(--error-100);
+    --color-error-200: var(--error-200);
+    --color-error-300: var(--error-300);
+    --color-error-400: var(--error-400);
+    --color-error-500: var(--error-500);
+    --color-error-600: var(--error-600);
+    --color-error-700: var(--error-700);
+    --color-error-800: var(--error-800);
+    --color-error-900: var(--error-900);
+
+    --color-warning-50: var(--warning-50);
+    --color-warning-100: var(--warning-100);
+    --color-warning-200: var(--warning-200);
+    --color-warning-300: var(--warning-300);
+    --color-warning-400: var(--warning-400);
+    --color-warning-500: var(--warning-500);
+    --color-warning-600: var(--warning-600);
+    --color-warning-700: var(--warning-700);
+    --color-warning-800: var(--warning-800);
+    --color-warning-900: var(--warning-900);
+
+    --color-success-50: var(--success-50);
+    --color-success-100: var(--success-100);
+    --color-success-200: var(--success-200);
+    --color-success-300: var(--success-300);
+    --color-success-400: var(--success-400);
+    --color-success-500: var(--success-500);
+    --color-success-600: var(--success-600);
+    --color-success-700: var(--success-700);
+    --color-success-800: var(--success-800);
+    --color-success-900: var(--success-900);
+
+    --color-info-50: var(--info-50);
+    --color-info-100: var(--info-100);
+    --color-info-200: var(--info-200);
+    --color-info-300: var(--info-300);
+    --color-info-400: var(--info-400);
+    --color-info-500: var(--info-500);
+    --color-info-600: var(--info-600);
+    --color-info-700: var(--info-700);
+    --color-info-800: var(--info-800);
+    --color-info-900: var(--info-900);
+
+    --color-soft-bg-50: var(--soft-bg-50);
+    --color-soft-bg-100: var(--soft-bg-100);
+    --color-soft-bg-200: var(--soft-bg-200);
+    --color-soft-bg-300: var(--soft-bg-300);
+    --color-soft-bg-400: var(--soft-bg-400);
+    --color-soft-bg-500: var(--soft-bg-500);
+    --color-soft-bg-600: var(--soft-bg-600);
+    --color-soft-bg-700: var(--soft-bg-700);
+    --color-soft-bg-800: var(--soft-bg-800);
+    --color-soft-bg-900: var(--soft-bg-900);
+
+    --color-muted-slate-50: var(--muted-slate-50);
+    --color-muted-slate-100: var(--muted-slate-100);
+    --color-muted-slate-200: var(--muted-slate-200);
+    --color-muted-slate-300: var(--muted-slate-300);
+    --color-muted-slate-400: var(--muted-slate-400);
+    --color-muted-slate-500: var(--muted-slate-500);
+    --color-muted-slate-600: var(--muted-slate-600);
+    --color-muted-slate-700: var(--muted-slate-700);
+    --color-muted-slate-800: var(--muted-slate-800);
+    --color-muted-slate-900: var(--muted-slate-900);
+
+    --color-ink-50: var(--ink-50);
+    --color-ink-100: var(--ink-100);
+    --color-ink-200: var(--ink-200);
+    --color-ink-300: var(--ink-300);
+    --color-ink-400: var(--ink-400);
+    --color-ink-500: var(--ink-500);
+    --color-ink-600: var(--ink-600);
+    --color-ink-700: var(--ink-700);
+    --color-ink-800: var(--ink-800);
+    --color-ink-900: var(--ink-900);
+
+    --color-slate-50: var(--slate-50);
+    --color-slate-100: var(--slate-100);
+    --color-slate-200: var(--slate-200);
+    --color-slate-300: var(--slate-300);
+    --color-slate-400: var(--slate-400);
+    --color-slate-500: var(--slate-500);
+    --color-slate-600: var(--slate-600);
+    --color-slate-700: var(--slate-700);
+    --color-slate-800: var(--slate-800);
+    --color-slate-900: var(--slate-900);
+
+    --color-midnight-50: var(--midnight-50);
+    --color-midnight-100: var(--midnight-100);
+    --color-midnight-200: var(--midnight-200);
+    --color-midnight-300: var(--midnight-300);
+    --color-midnight-400: var(--midnight-400);
+    --color-midnight-500: var(--midnight-500);
+    --color-midnight-600: var(--midnight-600);
+    --color-midnight-700: var(--midnight-700);
+    --color-midnight-800: var(--midnight-800);
+    --color-midnight-900: var(--midnight-900);
+
+    --color-deep-blue-50: var(--deep-blue-50);
+    --color-deep-blue-100: var(--deep-blue-100);
+    --color-deep-blue-200: var(--deep-blue-200);
+    --color-deep-blue-300: var(--deep-blue-300);
+    --color-deep-blue-400: var(--deep-blue-400);
+    --color-deep-blue-500: var(--deep-blue-500);
+    --color-deep-blue-600: var(--deep-blue-600);
+    --color-deep-blue-700: var(--deep-blue-700);
+    --color-deep-blue-800: var(--deep-blue-800);
+    --color-deep-blue-900: var(--deep-blue-900);
+
+    --color-azure-50: var(--azure-50);
+    --color-azure-100: var(--azure-100);
+    --color-azure-200: var(--azure-200);
+    --color-azure-300: var(--azure-300);
+    --color-azure-400: var(--azure-400);
+    --color-azure-500: var(--azure-500);
+    --color-azure-600: var(--azure-600);
+    --color-azure-700: var(--azure-700);
+    --color-azure-800: var(--azure-800);
+    --color-azure-900: var(--azure-900);
+
+    --animate-modal-slide-up: modalSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    --animate-modal-fade-in: modalFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+    @keyframes modalSlideUp {
+        from {
+            transform: translateY(350px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes modalFadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+:root {
+    /* ── Typography Tokens ──────────────────────────────────── */
+<<<<<<<< HEAD:src/styles/colors.css
+    --fs-display: clamp(40px, calc(33.14px + 2.1429vw), 64px);
+    --fs-h1: clamp(32px, calc(25.14px + 2.1429vw), 56px);
+    --fs-h2: clamp(28px, calc(23.43px + 1.4286vw), 44px);
+    --fs-h3: clamp(24px, calc(21.71px + 0.7143vw), 32px);
+    --fs-h4: clamp(20px, calc(18.86px + 0.3571vw), 24px);
+    --fs-h5: clamp(18px, calc(17.43px + 0.1786vw), 20px);
+    --fs-h6: 16px;
+    --fs-body-l: clamp(16px, calc(14.86px + 0.3571vw), 20px);
+    --fs-body-m: clamp(14px, calc(13.43px + 0.1786vw), 16px);
+    --fs-body-s: clamp(12px, calc(11.43px + 0.1786vw), 14px);
+    --fs-body-xs: clamp(11px, calc(10.71px + 0.0893vw), 12px);
+    --fs-cta-primary: clamp(14px, calc(13.43px + 0.1786vw), 16px);
+    --fs-cta-secondary: clamp(14px, calc(13.43px + 0.1786vw), 16px);
+    --fs-label: clamp(12px, calc(11.43px + 0.1786vw), 14px);
+    --fs-input: clamp(14px, calc(13.43px + 0.1786vw), 16px);
+    --fs-helper: clamp(12px, calc(11.43px + 0.1786vw), 14px);
+    --fs-caption: clamp(11px, calc(10.71px + 0.0893vw), 12px);
+
+========
+    --fs-display: clamp(36px, 4.5vw, 64px);
+    --fs-h1: clamp(30px, 4vw, 56px);
+    --fs-h2: clamp(26px, 3vw, 44px);
+    --fs-h3: clamp(22px, 2.2vw, 32px);
+    --fs-h4: clamp(18px, 1.6vw, 24px);
+    --fs-h5: clamp(16px, 1.4vw, 20px);
+    --fs-h6: 16px;
+    --fs-body-l: clamp(16px, 1.1vw, 20px);
+    --fs-body-m: clamp(14px, 1vw, 16px);
+    --fs-body-s: clamp(12px, 0.85vw, 14px);
+    --fs-body-xs: clamp(11px, 0.75vw, 12px);
+    --fs-cta-primary: clamp(14px, 1vw, 16px);
+    --fs-cta-secondary: clamp(14px, 1vw, 16px);
+    --fs-label: clamp(12px, 0.85vw, 14px);
+    --fs-input: clamp(14px, 1vw, 16px);
+    --fs-helper: clamp(12px, 0.85vw, 14px);
+    --fs-caption: clamp(11px, 0.75vw, 12px);
+
+    /* Drastically restrict max font sizes on laptops and common Windows scaled screens (<1600px) */
+    @media (max-width: 1599px) {
+        :root {
+            --fs-display: clamp(32px, 3.5vw, 48px);
+            --fs-h1: clamp(28px, 3vw, 40px);
+            --fs-h2: clamp(24px, 2.5vw, 32px);
+            --fs-h3: clamp(20px, 2vw, 28px);
+            --fs-h4: clamp(18px, 1.5vw, 24px);
+            --fs-h5: clamp(16px, 1.2vw, 20px);
+            --fs-body-l: clamp(15px, 1vw, 18px);
+            --fs-body-m: 14px;
+            --fs-body-s: 13px;
+            --fs-body-xs: 12px;
+            --fs-cta-primary: 14px;
+            --fs-cta-secondary: 14px;
+            --fs-label: 13px;
+            --fs-input: 14px;
+        }
+    }
+
+>>>>>>>> dev:src/styles/global.css
+    --lh-display: 1.10;
+    --lh-h1: 1.15;
+    --lh-h2: 1.175;
+    --lh-h3: 1.20;
+    --lh-h4: 1.25;
+    --lh-h5: 1.30;
+    --lh-h6: 1.30;
+    --lh-body-l: 1.40;
+    --lh-body-m: 1.50;
+    --lh-body-s: 1.55;
+    --lh-body-xs: 1.60;
+    --lh-cta: 1.40;
+    --lh-label: 1.40;
+    --lh-input: 1.50;
+    --lh-helper: 1.45;
+    --lh-caption: 1.40;
+
+    --ls-cta-primary: -0.02em;
+    --ls-cta-secondary: -0.01em;
+    --ls-body-xs: -0.02em;
+
+    --fw-medium: 500;
+    --fw-bold: 700;
+
+    --font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont,
+        "Helvetica Neue", Arial, sans-serif;
+
+    /* ── Color Tokens ───────────────────────────────────────── */
+    --error-50: #fdecec;
+    --error-100: #fac5c5;
+    --error-200: #f8a9a9;
+    --error-300: #f48282;
+    --error-400: #f26969;
+    --error-500: #ef4444;
+    --error-600: #d93e3e;
+    --error-700: #aa3030;
+    --error-800: #832525;
+    --error-900: #641d1d;
+
+    --warning-50: #fef5e7;
+    --warning-100: #fce1b3;
+    --warning-200: #fad28f;
+    --warning-300: #f8be5c;
+    --warning-400: #f7b13c;
+    --warning-500: #f59e0b;
+    --warning-600: #df900a;
+    --warning-700: #ae7008;
+    --warning-800: #875706;
+    --warning-900: #674205;
+
+    --success-50: #e9f9ef;
+    --success-100: #baedcd;
+    --success-200: #99e4b5;
+    --success-300: #6bd893;
+    --success-400: #4ed17e;
+    --success-500: #22c55e;
+    --success-600: #1fb356;
+    --success-700: #188c43;
+    --success-800: #136c34;
+    --success-900: #0e5327;
+
+    --info-50: #edf7fe;
+    --info-100: #c8e6fd;
+    --info-200: #aedafc;
+    --info-300: #88c9fb;
+    --info-400: #71befa;
+    --info-500: #4eaef9;
+    --info-600: #479ee3;
+    --info-700: #377cb1;
+    --info-800: #2b6089;
+    --info-900: #214969;
+
+    --soft-bg-50: #feffff;
+    --soft-bg-100: #fdfdfe;
+    --soft-bg-200: #fcfdfe;
+    --soft-bg-300: #fafcfd;
+    --soft-bg-400: #f9fbfd;
+    --soft-bg-500: #f8fafc;
+    --soft-bg-600: #e2e4e5;
+    --soft-bg-700: #b0b2b3;
+    --soft-bg-800: #888a8b;
+    --soft-bg-900: #68696a;
+
+    --muted-slate-50: #f0f1f3;
+    --muted-slate-100: #cfd4db;
+    --muted-slate-200: #b8bfca;
+    --muted-slate-300: #97a2b1;
+    --muted-slate-400: #8390a2;
+    --muted-slate-500: #64748b;
+    --muted-slate-600: #5b6a7e;
+    --muted-slate-700: #475263;
+    --muted-slate-800: #37404c;
+    --muted-slate-900: #2a313a;
+
+    --ink-50: #e7e8ea;
+    --ink-100: #b5b7bd;
+    --ink-200: #91949d;
+    --ink-300: #5e6470;
+    --ink-400: #3f4555;
+    --ink-500: #0f172a;
+    --ink-600: #0e1526;
+    --ink-700: #0b101e;
+    --ink-800: #080d17;
+    --ink-900: #060a12;
+
+    --slate-50: #edeef0;
+    --slate-100: #c6cad1;
+    --slate-200: #aab1ba;
+    --slate-300: #848d9b;
+    --slate-400: #6c7787;
+    --slate-500: #475569;
+    --slate-600: #414d60;
+    --slate-700: #323c4b;
+    --slate-800: #272f3a;
+    --slate-900: #1e242c;
+
+    --midnight-50: #e8e8e9;
+    --midnight-100: #b7b8bb;
+    --midnight-200: #94959b;
+    --midnight-300: #64656d;
+    --midnight-400: #454751;
+    --midnight-500: #171925;
+    --midnight-600: #151722;
+    --midnight-700: #10121a;
+    --midnight-800: #0d0e14;
+    --midnight-900: #0a0b10;
+
+    --deep-blue-50: #ebf2f9;
+    --deep-blue-100: #c1d7ec;
+    --deep-blue-200: #a3c4e2;
+    --deep-blue-300: #7aa9d5;
+    --deep-blue-400: #6098cd;
+    --deep-blue-500: #387ec1;
+    --deep-blue-600: #3373b0;
+    --deep-blue-700: #285989;
+    --deep-blue-800: #1f456a;
+    --deep-blue-900: #183551;
+
+    --azure-50: #edf7fe;
+    --azure-100: #c8e6fd;
+    --azure-200: #aedafc;
+    --azure-300: #88c9fb;
+    --azure-400: #71befa;
+    --azure-500: #4eaef9;
+    --azure-600: #479ee3;
+    --azure-700: #377cb1;
+    --azure-800: #2b6089;
+    --azure-900: #214969;
+
+    /* ── Semantic Aliases ───────────────────────────────────── */
+    --color-surface: var(--soft-bg-50);
+    --color-surface-raised: var(--soft-bg-100);
+    --color-surface-overlay: var(--soft-bg-200);
+    --color-surface-sunken: var(--soft-bg-400);
+
+    --color-border-subtle: var(--muted-slate-100);
+    --color-border-default: var(--muted-slate-300);
+    --color-border-strong: var(--muted-slate-500);
+
+    --color-text-primary: var(--ink-500);
+    --color-text-secondary: var(--slate-500);
+    --color-text-muted: var(--muted-slate-500);
+    --color-text-disabled: var(--muted-slate-300);
+    --color-text-inverse: var(--soft-bg-50);
+
+    --color-brand: var(--deep-blue-500);
+    --color-brand-hover: var(--deep-blue-600);
+    --color-brand-active: var(--deep-blue-700);
+    --color-accent: var(--azure-500);
+    --color-accent-hover: var(--azure-600);
+
+    --color-feedback-error: var(--error-500);
+    --color-feedback-warning: var(--warning-500);
+    --color-feedback-success: var(--success-500);
+    --color-feedback-info: var(--info-500);
+}
+
+/* ── Base Styles ────────────────────────────────────────────── */
+@layer base {
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        @apply border-white/10;
+    }
+
+<<<<<<<< HEAD:src/styles/colors.css
+========
+    /* Sleek custom scrollbars for webkit-based browsers */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #171925;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 9999px;
+        border: 2px solid #171925;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+>>>>>>>> dev:src/styles/global.css
+    html {
+        font-family: var(--font-family);
+        font-size: var(--fs-body-m);
+        font-weight: var(--fw-medium);
+        line-height: var(--lh-body-m);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        scroll-behavior: smooth;
+<<<<<<<< HEAD:src/styles/colors.css
+        /* Hide scrollbar for IE, Edge and Firefox */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    html::-webkit-scrollbar {
+        display: none;
+========
+        /* Premium custom scrollbar styling for Firefox */
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.15) #171925;
+        scrollbar-gutter: stable;
+>>>>>>>> dev:src/styles/global.css
+    }
+
+    body {
+        @apply antialiased bg-midnight-500 text-white;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+<<<<<<<< HEAD:src/styles/colors.css
+}
+========
+}
+
+/* Lenis smooth scrolling integration styles */
+html.lenis, html.lenis body {
+    height: auto;
+}
+
+.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+/* ── Utility: hide scrollbar but keep scrollability ──────────── */
+.no-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+>>>>>>>> dev:src/styles/global.css

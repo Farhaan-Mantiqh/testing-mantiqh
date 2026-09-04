@@ -1,0 +1,275 @@
+---
+import {
+  Astroid,
+  Brain,
+  Cog,
+  Component,
+  Dice3,
+  Drone,
+  Expand,
+  TvMinimal,
+} from "lucide-react";
+import Navbar from "../../layout/Navbar.astro";
+import { aboutItems } from "../../../data/aboutItems";
+
+interface Props {
+  hideNavbar?: boolean;
+}
+
+const { hideNavbar = false } = Astro.props;
+---
+
+<div class="bg-[#171925]">
+  <div
+    class="flex flex-col flex-grow max-w-[1440px] mx-auto w-full border-x border-slate-200/20 relative border-t border-slate-200/20"
+  >
+    {!hideNavbar && <Navbar />}
+
+    <h2 class="text-h2 font-medium text-white py-10 px-6 md:px-10">
+      The Evolution of Mantiqh
+    </h2>
+
+    <div class="relative pt-2 pb-0 lg:pt-4 px-6 md:px-10 lg:px-0">
+      {
+        aboutItems.map((item, index) => (
+          <div
+            class="about-sticky-wrapper pb-10 lg:pb-[40vh] lg:sticky"
+            style={`z-index:${index + 1}`}
+          >
+            <div class="about-card-container flex flex-col lg:flex-row items-stretch w-full bg-white lg:bg-[#171925] rounded-2xl lg:rounded-none overflow-hidden border border-white/5 lg:border-none shadow-2xl lg:shadow-none">
+              <img
+                src={item.src}
+                alt={item.alt}
+                class="  lg:w-[60%]   lg:h-full object-cover flex-shrink-0"
+              />
+
+              <div class="about-card-info bg-white w-full lg:w-[40%] flex flex-col relative z-10">
+                <div class="about-card-number bg-[#fafafa] text-slate-400 border-b border-slate-200 py-4 px-6 sm:px-8 lg:px-10 text-body-m font-medium">
+                  {item.number}
+                </div>
+
+                <div class="about-card-title-block pt-6 sm:pt-8 pb-4 sm:pb-6 px-6 sm:px-8 lg:px-10">
+                  <h3 class="text-slate-900 text-h3 font-medium mb-2">
+                    {item.title}
+                  </h3>
+
+                  <span class="text-slate-600 text-h4 font-normal">
+                    {item.year}
+                  </span>
+                </div>
+
+                <div class="about-card-innovations px-6 sm:px-8 lg:px-10 flex-grow">
+                  <div class="pb-3 sm:pb-4">
+                    <span class="text-[#136C34] text-[11px] font-bold uppercase tracking-widest">
+                      INNOVATION:
+                    </span>
+                  </div>
+
+                  <div class="space-y-3">
+                    {item.innovations?.map((inv) => {
+                      const Icon = inv.icon;
+
+                      return (
+                        <div class="flex items-start gap-3">
+                          <Icon className="text-slate-500 shrink-0 w-[18px] h-[18px] mt-0.5" />
+                          <span class="text-slate-600 text-body-s font-normal">
+                            {inv.text}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div class="about-card-description px-6 sm:px-8 lg:px-10 pb-6 sm:pb-8 pt-4 sm:pt-6">
+                  <p class="text-slate-600 text-body-s leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="px-6 md:px-10 py-10 bg-[#171925] relative z-20 lg:-mt-[40vh]">
+      <h2 class="text-white text-h2 leading-tight font-medium w-full">
+        Capabilities Built for Modern Digital Innovation
+      </h2>
+
+      <p
+        class="text-[#C5C7CE] text-body-m font-normal mt-4 max-w-[720px] leading-relaxed"
+      >
+        Combining strategy, engineering, AI-driven thinking, and scalable
+        systems to help businesses evolve through modern digital ecosystems.
+      </p>
+
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10 mt-14"
+      >
+        <div>
+          <div class="mb-3">
+            <Brain
+              className="text-white w-6 h-6"
+              strokeWidth={1.25}
+            />
+          </div>
+          <div class="w-6 h-[1px] bg-white/30 mb-5"></div>
+
+          <div>
+            <h3 class="text-white text-body-l font-medium mb-3">Strategy</h3>
+
+            <p class="text-[#B7B8BB] text-body-s font-normal leading-relaxed">
+              Aligning business goals with scalable digital and AI driven
+              transformation strategies.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="mb-3">
+            <Component
+              className="text-white w-6 h-6"
+              strokeWidth={1.25}
+            />
+          </div>
+          <div class="w-6 h-[1px] bg-white/30 mb-5"></div>
+
+          <div>
+            <h3 class="text-white text-body-l font-medium mb-3">Design</h3>
+
+            <p class="text-[#B7B8BB] text-body-s font-normal leading-relaxed">
+              Crafting intuitive and modern digital experiences built around
+              usability and engagement.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="mb-3">
+            <Cog
+              className="text-white w-6 h-6"
+              strokeWidth={1.25}
+            />
+          </div>
+          <div class="w-6 h-[1px] bg-white/30 mb-5"></div>
+
+          <div>
+            <h3 class="text-white text-body-l font-medium mb-3">Engineering</h3>
+
+            <p class="text-[#B7B8BB] text-body-s font-normal leading-relaxed">
+              Building scalable platforms and enterprise systems optimized for
+              performance and growth.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="mb-3">
+            <Astroid
+              className="text-white w-6 h-6"
+              strokeWidth={1.25}
+            />
+          </div>
+          <div class="w-6 h-[1px] bg-white/30 mb-5"></div>
+
+          <div>
+            <h3 class="text-white text-body-l font-medium mb-3">
+              AI Workflows
+            </h3>
+
+            <p class="text-[#B7B8BB] text-body-s font-normal leading-relaxed">
+              Integrating intelligent automation and AI-powered workflows into
+              modern business ecosystems.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="mb-3">
+            <Expand
+              className="text-white w-6 h-6"
+              strokeWidth={1.25}
+            />
+          </div>
+          <div class="w-6 h-[1px] bg-white/30 mb-5"></div>
+
+          <div>
+            <h3 class="text-white text-body-l font-medium mb-3">
+              Scalable Infrastructure
+            </h3>
+
+            <p class="text-[#B7B8BB] text-body-s font-normal leading-relaxed">
+              Designing future-ready infrastructures capable of supporting
+              evolving enterprise operations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .about-sticky-wrapper {
+    top: max(140px, calc(50vh - 300px));
+  }
+
+  .about-card-container {
+    height: auto;
+  }
+
+  @media (min-width: 1024px) {
+    .about-card-container {
+      width: 100%;
+      max-width: calc((100vh - 210px) * 2.38);
+      margin-left: auto;
+      margin-right: auto;
+      max-height: none;
+    }
+  }
+
+  /* Short viewports responsive adjustments (e.g. laptop screens or scaled Windows screens) */
+  @media (max-height: 850px) and (min-width: 1024px),
+    (max-width: 1366px) and (min-width: 1024px) {
+    .about-card-title-block {
+      padding-top: 1.25rem !important;
+      padding-bottom: 0.75rem !important;
+    }
+    .about-card-description {
+      padding-top: 0.75rem !important;
+      padding-bottom: 1.25rem !important;
+    }
+  }
+
+  @media (max-height: 720px) and (min-width: 1024px),
+    (max-width: 1200px) and (min-width: 1024px) {
+    .about-card-number {
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+    }
+    .about-card-title-block {
+      padding-top: 0.75rem !important;
+      padding-bottom: 0.5rem !important;
+    }
+    .about-card-innovations {
+      padding-bottom: 0.25rem !important;
+    }
+    .about-card-innovations .space-y-3 > * + * {
+      margin-top: 0.35rem !important; /* reduce gap between innovations */
+    }
+    .about-card-description {
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.75rem !important;
+    }
+    .about-card-info p,
+    .about-card-info span {
+      font-size: 13px !important;
+      line-height: 1.4 !important;
+    }
+    .about-card-info h3 {
+      font-size: 1.25rem !important;
+    }
+  }
+</style>

@@ -1,0 +1,192 @@
+---
+import Navbar from "../../layout/Navbar.astro";
+---
+
+<div class="relative">
+  <div
+    class="hidden lg:block absolute top-0 left-0 w-full h-[45vh] xl:min-h-[490px] max-h-[560px] bg-white"
+  >
+  </div>
+
+  <div
+    class="relative z-10 flex flex-col flex-grow max-w-[1440px] mx-auto w-full border-x border-slate-200/20"
+  >
+    <Navbar theme="light" />
+    <div class="bg-white"></div>
+    <section>
+      <div class="bg-white">
+        <div
+          class="max-w-[1240px] mx-auto lg:border-x lg:border-dashed lg:border-[#D9D9D9]"
+        >
+          <div class="px-8 md:px-12 py-16 md:py-20">
+            <h1
+              class="text-[#0F172A] text-h2 font-medium leading-[1.1] max-w-[650px]"
+            >
+              Join the Minds Behind Modern <br /> Digital Experiences
+            </h1>
+
+            <p
+              class="mt-6 text-[#454751] text-h6 font-normal max-w-[580px] leading-relaxed"
+            >
+              Work alongside passionate innovators, designers, and engineers
+              building <br /> intelligent digital experiences that shape the future
+              of business and technology.
+            </p>
+          </div>
+
+          <div
+            class="h-10 border-t border-slate-200/50"
+            style="
+                    --gap: 24px;
+                    background-image:
+                    repeating-linear-gradient(
+                        to right,
+                        rgba(0,0,0,0.08) 0 1px,
+                        transparent 1px var(--gap)
+                    );
+                "
+          >
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t">
+        <div
+          class="max-w-[1240px] mx-auto lg:border-x lg:border-dashed lg:border-white/30"
+        >
+          <div class="px-8 md:px-12 py-10 md:py-12">
+            <form id="apply-form" class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-white text-label font-medium mb-2">
+                    Name <span class="text-red-400">*</span>
+                  </label>
+
+                  <input
+                    name="name"
+                    type="text"
+                    required
+                    placeholder="Enter your name"
+                    class="w-full h-12 px-4 rounded bg-white text-black outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-white text-label font-medium mb-2">
+                    Email <span class="text-red-400">*</span>
+                  </label>
+
+                  <input
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="Enter your email"
+                    class="w-full h-12 px-4 rounded bg-white text-black outline-none"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-white text-label font-medium mb-2">
+                  Phone
+                </label>
+
+                <input
+                  name="phone"
+                  type="tel"
+                  placeholder="Enter your phone number"
+                  class="w-full h-12 px-4 rounded bg-white text-black outline-none"
+                />
+              </div>
+
+              <div>
+                <label class="block text-white text-label font-medium mb-2">
+                  Introduction
+                </label>
+
+                <textarea
+                  name="introduction"
+                  rows="5"
+                  placeholder="Brief introduction about yourself"
+                  class="w-full px-4 py-3 rounded bg-white text-black outline-none resize-none"
+                ></textarea>
+              </div>
+
+              <div id="apply-form-status" class="hidden p-4 rounded-md text-sm font-medium"></div>
+
+              <button
+                id="apply-submit-btn"
+                type="submit"
+                class="px-8 py-3 bg-[#387EC1] text-white text-cta-secondary font-medium rounded-md hover:bg-[#2f6ca7] transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Submit Application
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div></div>
+    <div></div>
+
+    <script>
+      const form = document.getElementById("apply-form");
+      const submitBtn = document.getElementById("apply-submit-btn") as HTMLButtonElement | null;
+      const statusDiv = document.getElementById("apply-form-status");
+
+      if (form instanceof HTMLFormElement) {
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Submitting...";
+          }
+
+          if (statusDiv) {
+            statusDiv.className = "hidden";
+          }
+
+          const formData = new FormData(form);
+          const payload = {
+            name: formData.get("name"),
+            email: formData.get("email"),
+            phone: formData.get("phone"),
+            introduction: formData.get("introduction"),
+            formType: "apply",
+          };
+
+          try {
+            const res = await fetch("/api/send-email", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+
+            const data = await res.json();
+
+            if (res.ok && data.success) {
+              if (statusDiv) {
+                statusDiv.textContent = "Thank you! Your application has been submitted successfully.";
+                statusDiv.className = "p-4 rounded-md text-sm font-medium bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+              }
+              form.reset();
+            } else {
+              throw new Error(data.error || "Failed to submit application.");
+            }
+          } catch (err: any) {
+            if (statusDiv) {
+              statusDiv.textContent = err.message || "An error occurred. Please try again.";
+              statusDiv.className = "p-4 rounded-md text-sm font-medium bg-red-500/20 text-red-300 border border-red-500/30";
+            }
+          } finally {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Submit Application";
+            }
+          }
+        });
+      }
+    </script>
+  </div>
+</div>

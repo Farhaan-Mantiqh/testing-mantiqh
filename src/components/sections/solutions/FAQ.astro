@@ -1,0 +1,28 @@
+---
+import { FAQAccordion } from "../../ui/FAQAccordion";
+const { solution } = Astro.props;
+---
+
+<div class="bg-white">
+  <section
+    class="bg-white flex flex-col grow max-w-[1440px] mx-auto w-full border-x border-t border-slate-300/40 relative"
+  >
+    <div class="max-w-[1440px] mx-auto px-6 lg:px-10 pt-10 pb-16 lg:pb-24 w-full">
+      <div
+        class="grid lg:grid-cols-[minmax(0,35fr)_minmax(0,65fr)] gap-10 lg:gap-18 w-full"
+      >
+        <!-- LEFT -->
+        <div class="pt-4 md:pt-8">
+          <h2 class="text-h2 font-medium leading-[1.05] text-[#111827]">
+            Frequently Asked <br />
+            Questions
+          </h2>
+        </div>
+
+        <!-- RIGHT -->
+        <FAQAccordion client:load items={solution.faq} />
+      </div>
+    </div>
+  </section>
+</div>
+

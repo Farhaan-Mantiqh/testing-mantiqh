@@ -1,0 +1,9 @@
+{
+  "files.associations": {
+    "*.astro": "astro"
+  },
+  "emmet.includeLanguages": {
+    "astro": "html"
+  },
+  "astro.typescript.diagnostics": true
+}

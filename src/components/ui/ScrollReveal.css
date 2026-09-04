@@ -1,0 +1,11 @@
+.react-scroll-reveal {
+  margin: 20px 0;
+}
+
+.react-scroll-reveal-text {
+  /* Let Tailwind handle text styling */
+}
+
+.word {
+  display: inline-block;
+}

@@ -1,0 +1,81 @@
+---
+import Navbar from "../../layout/Navbar.astro";
+import ChevronRight from "../../ui/ChevronRight.astro";
+
+const { solution } = Astro.props;
+---
+
+<div
+  class="flex flex-col grow max-w-[1440px] mx-auto w-full border-x border-slate-200/20 relative"
+>
+  <Navbar />
+  <div class="flex flex-col lg:flex-row lg:h-[500px] overflow-hidden">
+    <div
+      class="bg-[#479EE3] w-full lg:w-[55%] min-h-[450px] md:min-h-[320px] lg:h-full flex items-center"
+    >
+      <div class="px-6 lg:px-10">
+        <span
+          class="inline-flex border border-white/30 px-4 py-1 text-body-xs font-medium text-white"
+        >
+          {solution.hero.badge}
+        </span>
+
+        <h1 class="mt-4 lg:mt-6 text-h2 font-medium leading-tight text-white">
+          {solution.hero.title}
+        </h1>
+
+        <p class="mt-4 lg:mt-6 max-w-xl text-white text-body-m font-normal">
+          {solution.hero.description}
+        </p>
+
+        <div class="mt-6 lg:mt-8 flex flex-wrap gap-4">
+            <a
+              href={solution.hero.primaryButton?.href || "/get-in-touch"}
+              class="group flex items-center gap-2 bg-[#3C7DBE] hover:bg-[#326a9f] transition-colors duration-300 px-5 py-2.5 rounded-lg text-cta-primary font-medium text-white"
+            >
+            {solution.hero.primaryButton?.text || "Schedule Call"}
+            <ChevronRight
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </a>
+
+          <a
+            href={solution.hero.secondaryButton?.href ||
+              "/work#projects-section-wrapper"}
+            class="group flex items-center gap-2 border border-white/50 hover:bg-white/10 transition-colors duration-300 px-5 py-2.5 rounded-lg text-cta-primary font-medium text-white"
+          >
+            {solution.hero.secondaryButton?.text || "Explore Work"}
+            <ChevronRight
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full lg:flex-1 h-[260px] lg:h-full">
+      <img
+        src={solution.hero.image}
+        alt="AI illustration"
+        class="w-full h-full object-cover"
+        
+        
+      />
+    </div>
+  </div>
+  <div
+    class="h-10 border-b"
+    style="
+    --line-color: rgba(226,232,240,0.2);
+    border-color: var(--line-color);
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--line-color) 0,
+      var(--line-color) 1px,
+      transparent 1px,
+      transparent 48px
+    );
+  "
+  >
+  </div>
+</div>

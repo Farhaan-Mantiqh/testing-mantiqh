@@ -1,0 +1,10 @@
+---
+return Astro.redirect('/');
+import { getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+import Blogs from '../../components/sections/blogs/blogs.astro';
+const posts = await getCollection('blogs');
+---
+<MainLayout title="blogs">
+    <Blogs />
+</MainLayout>

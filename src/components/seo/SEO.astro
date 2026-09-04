@@ -1,0 +1,114 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  image?: string;
+  canonicalURL?: string | URL;
+  type?: 'website' | 'article';
+}
+
+const {
+  title,
+  description,
+  keywords = "Mantiqh, software solutions, technology, AI, ML",
+  image = "/favicon.svg",
+  canonicalURL: canonicalURLProp,
+  type = 'website',
+} = Astro.props;
+
+const siteName = "Mantiqh";
+const siteRoot = Astro.site ?? "https://mantiqh.com";
+const canonicalURL = canonicalURLProp
+  ? new URL(canonicalURLProp.toString(), siteRoot).toString()
+  : new URL(Astro.url?.pathname ?? "/", siteRoot).toString();
+
+// Use proper social card image if available, otherwise use favicon
+const socialImage = image.endsWith('.svg') ? '/favicon.svg' : image;
+const imageUrl = new URL(socialImage, siteRoot).toString();
+const organizationUrl = siteRoot;
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Font Preloading -->
+<link rel="preload" href="/fonts/SF-Pro-Text-Regular.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/SF-Pro-Text-Medium.woff2" as="font" type="font/woff2" crossorigin />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:site_name" content={siteName} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={imageUrl} />
+
+<!-- JSON-LD Schema for Organization and WebSite -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${organizationUrl}/#organization`,
+      "name": siteName,
+      "url": organizationUrl,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${organizationUrl}/favicon.svg`
+      },
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "addressCountry": "IN",
+          "addressLocality": "Bengaluru",
+          "addressRegion": "Karnataka",
+          "postalCode": "560029",
+          "streetAddress": "#53, 4th Floor, 9th Main, 4th Cross, BTM Layout 1st Stage"
+        },
+        {
+          "@type": "PostalAddress",
+          "addressCountry": "GB",
+          "addressLocality": "Corby",
+          "addressRegion": "England",
+          "postalCode": "NN17 3NB",
+          "streetAddress": "16 Egan Close, Weldon"
+        }
+      ],
+      "sameAs": [
+        "https://linkedin.com/company/mantiqh",
+        "https://twitter.com/mantiqhtech",
+        "https://instagram.com/mantiqh",
+        "https://youtube.com/@mantiqh"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${organizationUrl}/#website`,
+      "url": organizationUrl,
+      "name": siteName,
+      "publisher": {
+        "@id": `${organizationUrl}/#organization`
+      }
+    }
+  ]
+})} />

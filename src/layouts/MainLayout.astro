@@ -1,0 +1,148 @@
+---
+import "../styles/global.css";
+import SiteLoader from "../components/ui/SiteLoader";
+import Footer from "../components/layout/Footer.astro";
+import SEO from "../components/seo/SEO.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  keywords?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title,
+  description = "Mantiqh - Solutions for the modern world",
+  keywords,
+  canonicalURL,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <SEO title={title} description={description} keywords={keywords} canonicalURL={canonicalURL} />
+    <script is:inline>
+      if (navigator.userAgent.indexOf("Windows") !== -1) {
+        document.documentElement.classList.add("is-windows");
+      }
+    </script>
+  </head>
+  <body
+    class="antialiased bg-midnight-500 text-white font-sans selection:bg-azure-500/30"
+  >
+    {/* <!-- Static loader overlay: visible instantly on "/" before React hydrates -->
+    <div
+      id="static-loader-overlay"
+      style="position:fixed;inset:0;z-index:9998;background:#171925;display:flex;align-items:center;justify-content:center;"
+    >
+      <svg
+        width="40"
+        height="28"
+        viewBox="0 0 50 36"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style="opacity:0;"
+      >
+        <path
+          d="M0 12.0839L24.6713 25.1748V32.2238L6.29371 22.4056V36L0 32.4755V12.0839Z"
+          fill="#387EC1"></path>
+        <path
+          d="M49.0908 12.0839L24.4195 25.1748V32.2238L42.7971 22.4056V36L49.0908 32.4755V12.0839Z"
+          fill="#4EAEF9"></path>
+        <path
+          d="M3.52441 9.56643L21.6503 0V7.8042L16.3636 10.3217L21.6503 13.3427V20.3916L3.52441 9.56643Z"
+          fill="#387EC1"></path>
+        <path
+          d="M45.5664 9.56643L27.4405 0V7.8042L32.7272 10.3217L27.4405 13.3427V20.3916L45.5664 9.56643Z"
+          fill="#4EAEF9"></path>
+      </svg>
+    </div>
+    <script
+      is:inline
+      define:vars={{
+        disableLoader: import.meta.env.PUBLIC_DISABLE_LOADER === "true",
+      }}
+    >
+      // Immediately hide static overlay on non-homepage routes (runs before paint)
+      if (window.location.pathname !== "/") {
+        document.getElementById("static-loader-overlay").style.display = "none";
+      } else if (!disableLoader) {
+        document.documentElement.style.overflow = "hidden";
+        document.body.style.overflow = "hidden";
+      }
+    </script>
+
+    <SiteLoader client:load /> */}
+    <main class="relative min-h-[calc(100vh-5rem)]">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      import Lenis from "lenis";
+
+      let lenis: Lenis | null = null;
+
+      function initLenis() {
+        if (lenis) {
+          lenis.destroy();
+        }
+
+        lenis = new Lenis({
+          lerp: 0.1,
+          prevent: (node: Element) => {
+            return (
+              node.hasAttribute("data-lenis-prevent") ||
+              node.closest("[data-lenis-prevent]") !== null
+            );
+          },
+        });
+
+        // Expose lenis instance globally for interactions
+        (window as any).lenis = lenis;
+
+        // Synchronize GSAP ScrollTrigger with Lenis scroll updates
+        lenis.on("scroll", () => {
+          if (window.ScrollTrigger) {
+            window.ScrollTrigger.update();
+          }
+        });
+
+        // If the loader is visible on the home page, stop scroll immediately
+        /* const isLoaderVisible =
+          document.getElementById("static-loader-overlay")?.style.display !==
+          "none";
+        if (isLoaderVisible && window.location.pathname === "/") {
+          lenis.stop();
+        } */
+
+        function raf(time: number) {
+          lenis?.raf(time);
+          requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+      }
+
+      // Initial page load
+      initLenis();
+
+      // View Transitions compatibility
+      document.addEventListener("astro:page-load", () => {
+        if (!lenis) {
+          initLenis();
+        }
+      });
+
+      document.addEventListener("astro:before-swap", () => {
+        if (lenis) {
+          lenis.destroy();
+          lenis = null;
+          (window as any).lenis = null;
+        }
+      });
+    </script>
+  </body>
+</html>

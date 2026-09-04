@@ -1,0 +1,305 @@
+---
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import {
+    carouselData,
+    carouselHeader,
+    carouselButtonText,
+} from "../../../data/carousel";
+
+const itemsCount = carouselData.length;
+const indices = Array.from({ length: itemsCount }, (_, i) => i);
+---
+
+<div class="bg-[#FBFCFD] overflow-hidden">
+    <div
+        class="max-w-[1440px] mx-auto border-x border-slate-200 pt-10 md:pt-20 pb-20 md:pb-32"
+    >
+        <div
+            class="flex flex-col md:flex-row w-full justify-between px-6 lg:px-10 mb-8 md:mb-12 items-start md:items-end gap-6 md:gap-0"
+        >
+            <h2
+                class="w-full lg:max-w-[50%] text-[#0F172A] text-h3 md:text-h2 font-medium leading-[120%]"
+            >
+                {carouselHeader}
+            </h2>
+            <div class="flex gap-4">
+                <button
+                    id="prev-slide"
+                    aria-label="Previous slide"
+                    class="border border-[#A0A5AA] p-2.5 rounded-full h-fit cursor-pointer hover:bg-slate-50 transition-colors"
+                >
+                    <ArrowLeft size={20} color="#2B2E32" />
+                </button>
+                <button
+                    id="next-slide"
+                    aria-label="Next slide"
+                    class="border border-[#A0A5AA] p-2.5 rounded-full h-fit cursor-pointer hover:bg-slate-50 transition-colors"
+                >
+                    <ArrowRight size={20} color="#2B2E32" />
+                </button>
+            </div>
+        </div>
+
+        <div class="px-6 lg:px-10">
+            <div class="carousel-viewport relative overflow-hidden">
+                <div id="carousel-track" class="flex items-start">
+                    {
+                        indices.map((i) => (
+                            <div
+                                class="carousel-item flex-shrink-0 relative overflow-hidden rounded-[8px] bg-slate-200 h-[350px] md:h-[450px] flex items-center justify-center text-slate-500 font-bold text-2xl"
+                                data-index={i}
+                            >
+                                {i + 1}
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="carousel-content-footer flex flex-col md:flex-row justify-between items-start md:items-center mt-12 px-6 lg:px-10 gap-6 md:gap-12"
+        >
+            <div class="max-w-full md:max-w-[60%] overflow-hidden">
+                <h3
+                    id="active-title"
+                    class="text-[#0F172A] text-xl md:text-2xl font-medium mb-2"
+                >
+                    {carouselData[0].title}
+                </h3>
+                <p
+                    id="active-description"
+                    class="text-slate-600 text-sm md:text-base leading-relaxed"
+                >
+                    {carouselData[0].description}
+                </p>
+            </div>
+            <button
+                class="bg-[#387EC1] text-white hover:bg-[#3270AD] px-6 py-3 rounded-lg flex items-center gap-2 transition-all group whitespace-nowrap text-base font-medium cursor-pointer"
+            >
+                {carouselButtonText}
+                <ArrowRight
+                    size={16}
+                    className="group-hover:translate-x-1 transition-transform"
+                />
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    import { gsap } from "gsap";
+    import { carouselData } from "../../../data/carousel";
+
+    const track = document.querySelector("#carousel-track") as HTMLElement;
+    const prevBtn = document.querySelector("#prev-slide");
+    const nextBtn = document.querySelector("#next-slide");
+
+    if (track) {
+        const sequences = {
+            desktop: [40, 20, 15, 9, 4, 4, 4, 4],
+            tablet: [50, 30, 20],
+            mobile: [100],
+        };
+
+        const GAP = 4;
+        const MIN_WIDTH = 18;
+
+        const getActiveConfig = () => {
+            const width = window.innerWidth;
+            if (width < 768) return { seq: sequences.mobile, gaps: 0 };
+            if (width < 1024) return { seq: sequences.tablet, gaps: 2 };
+            return { seq: sequences.desktop, gaps: 7 };
+        };
+
+        const updateLayout = (duration = 0.8, offset = 0) => {
+            const { seq, gaps } = getActiveConfig();
+            const items = Array.from(track.children) as HTMLElement[];
+            const adjustment = gaps > 0 ? (gaps * GAP) / (gaps + 1) : 0;
+
+            items.forEach((item, i) => {
+                let targetPercent = 4;
+                if (i < offset) {
+                    targetPercent = seq[i] || seq[seq.length - 1];
+                } else {
+                    const seqIdx = i - offset;
+                    targetPercent =
+                        seq[seqIdx] || (window.innerWidth < 1024 ? 0 : 4);
+                }
+
+                const targetWidth =
+                    targetPercent === 0
+                        ? "0px"
+                        : `calc(${targetPercent}% - ${adjustment}px)`;
+                const isLastVisible = i - offset === seq.length - 1;
+                const targetMargin =
+                    i < offset || isLastVisible || targetPercent === 0
+                        ? "0px"
+                        : `${GAP}px`;
+
+                gsap.to(item, {
+                    width: targetWidth,
+                    minWidth: targetPercent === 0 ? "0px" : `${MIN_WIDTH}px`,
+                    marginRight: targetMargin,
+                    duration: duration,
+                    ease: "power3.inOut",
+                });
+            });
+
+            if (duration > 0) {
+                updateActiveContent(offset);
+            }
+        };
+
+        const updateActiveContent = (offset = 0) => {
+            const activeTitle = document.querySelector("#active-title");
+            const activeDesc = document.querySelector("#active-description");
+            if (!activeTitle || !activeDesc) return;
+
+            const items = Array.from(track.children) as HTMLElement[];
+            const activeItem = items[offset];
+            if (!activeItem) return;
+
+            const idx = parseInt(activeItem.dataset.index || "0");
+            const data = carouselData[idx];
+
+            if (data) {
+                if (activeTitle.textContent?.trim() === data.title) return;
+
+                const tl = gsap.timeline();
+                tl.to([activeTitle, activeDesc], {
+                    opacity: 0,
+                    duration: 0.3,
+                    ease: "power2.in",
+                    onComplete: () => {
+                        activeTitle.textContent = data.title;
+                        activeDesc.textContent = data.description;
+                    },
+                });
+                tl.to([activeTitle, activeDesc], {
+                    opacity: 1,
+                    duration: 0.4,
+                    ease: "power2.out",
+                });
+            }
+        };
+
+        const slideNext = (count = 1) => {
+            const items = Array.from(track.children) as HTMLElement[];
+            if (count <= 0) return;
+
+            const slidingOut = items.slice(0, count);
+            let totalMove = 0;
+            slidingOut.forEach((item) => {
+                totalMove +=
+                    item.getBoundingClientRect().width +
+                    (parseFloat(item.style.marginRight) || 0);
+            });
+            slidingOut.forEach((item, i) => {
+                const clone = item.cloneNode(true) as HTMLElement;
+                track.appendChild(clone);
+            });
+
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    slidingOut.forEach((item) => item.remove());
+                    gsap.set(track, { x: 0 });
+                },
+            });
+
+            tl.to(
+                track,
+                {
+                    x: -totalMove,
+                    duration: 0.8,
+                    ease: "power3.inOut",
+                },
+                0,
+            );
+
+            updateLayout(0.8, count);
+        };
+
+        const slidePrev = (count = 1) => {
+            const items = Array.from(track.children) as HTMLElement[];
+            if (count <= 0 || items.length === 0) return;
+
+            const slidingIn = items.slice(items.length - count);
+            let totalMove = 0;
+            slidingIn.forEach((item) => {
+                totalMove +=
+                    item.getBoundingClientRect().width +
+                    (parseFloat(item.style.marginRight) || 0);
+            });
+
+            for (let i = slidingIn.length - 1; i >= 0; i--) {
+                const clone = slidingIn[i].cloneNode(true) as HTMLElement;
+                track.prepend(clone);
+            }
+
+            gsap.set(track, { x: -totalMove });
+
+            updateLayout(0.8, 0);
+
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    const currentItems = Array.from(
+                        track.children,
+                    ) as HTMLElement[];
+                    for (let i = 0; i < count; i++) {
+                        currentItems[currentItems.length - 1 - i].remove();
+                    }
+                    gsap.set(track, { x: 0 });
+                },
+            });
+
+            tl.to(
+                track,
+                {
+                    x: 0,
+                    duration: 0.8,
+                    ease: "power3.inOut",
+                },
+                0,
+            );
+        };
+        updateLayout(0);
+
+        nextBtn?.addEventListener("click", () => slideNext(1));
+        prevBtn?.addEventListener("click", () => slidePrev(1));
+
+        track.addEventListener("click", (e) => {
+            const target = e.target as HTMLElement;
+            const item = target.closest(".carousel-item") as HTMLElement;
+            if (item && track.contains(item)) {
+                const items = Array.from(track.children);
+                const index = items.indexOf(item);
+                if (index > 0) {
+                    slideNext(index);
+                }
+            }
+        });
+
+        window.addEventListener("resize", () => updateLayout(0));
+    }
+</script>
+
+<style>
+    .carousel-item {
+        cursor: pointer;
+        min-width: 18px;
+        transition: background-color 0.3s;
+        will-change: width, transform;
+    }
+    .carousel-item:hover {
+        background-color: #e2e8f0;
+    }
+
+    .carousel-viewport {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .carousel-viewport::-webkit-scrollbar {
+        display: none;
+    }
+</style>

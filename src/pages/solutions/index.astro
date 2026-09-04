@@ -1,0 +1,11 @@
+---
+import Hero from "../../components/sections/solutions/hero.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+import { solutions } from "../../data/solutions";
+
+const { solution = solutions[0] } = Astro.props;
+---
+
+<MainLayout title="solutions">
+  <Hero solution={solution} />
+</MainLayout>

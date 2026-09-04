@@ -1,0 +1,477 @@
+---
+import { Box, Equal, ExternalLink, MoveRight } from "lucide-react";
+import Navbar from "../../layout/Navbar.astro";
+import ChevronRight from "../../ui/ChevronRight.astro";
+
+import { projectsData } from "../../../data/projects";
+---
+
+<div id="outer-page-wrapper" class="bg-white">
+  <div
+    id="main-content-wrapper"
+    class="bg-white flex flex-col flex-grow max-w-[1440px] mx-auto w-full border-x border-slate-200/20 relative"
+  >
+    <Navbar theme="light" />
+
+    {/* Hero Section */}
+    <div class="px-3 lg:px-0 lg:pt-10 lg:pl-10 border-b border-slate-200/20">
+      <h2 class="hero-title text-[#0F172A] text-h2 font-medium">
+        Delivering digital solutions that drive
+        <br class="hidden lg:block" />
+        measurable impact
+      </h2>
+
+      <p class="hero-desc text-[#454751] text-h6 font-normal pt-4 pb-8">
+        We partner with organizations to design, build, and scale secure,
+        high-performing digital solutions
+        <br class="hidden lg:block" />
+        that drive measurable business outcomes
+      </p>
+
+      <div class="flex gap-3 pb-10">
+        <a href="/get-in-touch">
+          <button
+            class="text-cta-primary font-medium bg-[#387EC1] rounded-[6px] px-4 flex py-2 gap-1 items-center cursor-pointer hover:bg-deep-blue-600 transition-all duration-300 group"
+          >
+            Get In Touch
+            <ChevronRight
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </button>
+        </a>
+      </div>
+    </div>
+
+    {/* Projects Section */}
+    <div
+      id="projects-section-wrapper"
+      class="work-theme-light pt-10 px-3 lg:px-10 pb-10 bg-white scroll-mt-[90px]"
+    >
+      {/* Heading */}
+      <div class="flex justify-between items-center pb-6">
+        <h3 id="projects-heading" class="text-[#0F172A] text-h3 font-medium">
+          All Projects
+        </h3>
+
+        <div class="hidden md:flex text-body-s font-medium gap-4 items-center">
+          <button
+            id="btn-grid"
+            class="text-[var(--list-title-color)] opacity-100 transition-all duration-300 cursor-pointer flex items-center gap-2"
+          >
+            <Box className="w-5 h-5" />
+            Grid
+          </button>
+
+          <button
+            id="btn-list"
+            class="text-[var(--list-title-color)] opacity-50 transition-all duration-300 hover:opacity-80 cursor-pointer flex items-center gap-2"
+          >
+            <Equal className="w-5 h-5" />
+            Rows
+          </button>
+        </div>
+      </div>
+
+      {/* Grid View */}
+      <div id="grid-view" class="block">
+        {/* Featured Card */}
+        <div class="block w-full rounded-[10px] mb-6 overflow-hidden relative group">
+          {/* Base Card Link */}
+          <a
+            href="/work/ecocrew"
+            class="absolute inset-0 z-10"
+            aria-label="View Ecocrew project"
+          ></a>
+
+          {/* Desktop / Tablet Image */}
+          <img
+            fetchpriority="high"
+            src="/work/Outer-images/EcoCrew.png"
+            alt="Featured Project"
+            class="hidden md:block w-full h-[620px] md:h-[420px] lg:h-[546px] object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+
+          {/* Mobile Image */}
+          <img
+            src="/work/Outer-images/eccorew-mobile.png"
+            alt=""
+            class="block md:hidden w-full transition-transform duration-700 group-hover:scale-105"
+          />
+
+          {/* Desktop Overlay Content */}
+          <div class="hidden md:flex absolute inset-0 flex-col justify-between pointer-events-none z-20">
+            {/* Top Bar */}
+            <div
+              class="flex items-center justify-between px-6 py-6 border-b-[0.4px] border-white"
+            >
+              {/* Left Dots */}
+              <div class="flex gap-1">
+                <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                <span class="w-3 h-3 rounded-full bg-green-500"></span>
+              </div>
+
+              {/* Domain */}
+              <a
+                href="https://ecocrew.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-[#0E1325] text-white px-6 py-2 rounded-[4px] text-sm md:text-base min-w-[180px] md:min-w-[300px] text-center pointer-events-auto relative z-30 hover:bg-[#151c36] transition-colors cursor-pointer"
+              >
+                ecocrew.in
+              </a>
+
+              {/* Link Icon */}
+              <a
+                href="https://ecocrew.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-white pointer-events-auto relative z-30 hover:opacity-80 transition-opacity cursor-pointer"
+                aria-label="Visit ecocrew.in website"
+              >
+                <ExternalLink className="w-6 h-6 " />
+              </a>
+            </div>
+
+            {/* Bottom Content */}
+            <div
+              class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 pl-6 pb-[125px]"
+            >
+              {/* Left Content */}
+              <div class="max-w-[520px]">
+                {/* Tags */}
+                <div class="flex gap-2 mb-5 mt-11">
+                  <span
+                    class="border border-white/40 text-white text-xs px-3 py-1 rounded-[3px]"
+                  >
+                    SUSTAINABILITY
+                  </span>
+
+                  <span
+                    class="border border-white/40 text-white text-xs px-3 py-1 rounded-[3px]"
+                  >
+                    RECYCLING
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h2 class="text-white text-h3 font-medium mb-4">Ecocrew</h2>
+
+                {/* Description */}
+                <p
+                  class="text-white/90 text-body-m font-medium leading-relaxed mb-6 w-32 md:w-83 lg:w-110 xl:w-full"
+                >
+                  Redefining sustainability with Ecocrew an innovative platform
+                  that transforms recycling into rewards, promoting
+                  eco-conscious habits and a cleaner future.
+                </p>
+
+                {/* Button */}
+                <div
+                  class="bg-white text-black px-1 md:px-6 py-3 rounded-[8px] inline-flex items-center gap-2 text-base font-medium w-fit transition-transform"
+                >
+                  View Project
+                  <ChevronRight />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Grid */}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {
+            projectsData.slice(1).map((project) => (
+              <a
+                href={`/work/${project.slug}`}
+                class="group relative rounded-[8px] h-[120px] lg:h-[171px] overflow-hidden block"
+              >
+                {/* Image */}
+                {project.outerImages ? (
+                  <img
+                    src={project.outerImages}
+                    alt={project.title}
+                    loading="lazy"
+                    decoding="async"
+                    class="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-110 group-hover:blur-sm"
+                  />
+                ) : (
+                  <div class="w-full h-full bg-[#E5E7EB]" />
+                )}
+
+                {/* Overlay */}
+                <div class="absolute inset-0 flex flex-col justify-between p-4 opacity-0 translate-y-full group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out bg-black/10 backdrop-blur-[1px]">
+                  {/* Top */}
+                  <div class="flex items-start justify-between">
+                    <h3 class={`text-body-mfont-medium ${project.textColor}`}>
+                      {project.title}
+                    </h3>
+
+                    <div class="flex gap-1">
+                      <span class="w-3 h-3 rounded-full bg-red-500" />
+                      <span class="w-3 h-3 rounded-full bg-yellow-500" />
+                      <span class="w-3 h-3 rounded-full bg-green-500" />
+                    </div>
+                  </div>
+
+                  {/* Bottom */}
+                  <div>
+                    <div
+                      class={`flex items-center justify-between text-cta-secondary font-normal ${project.textColor}`}
+                    >
+                      <span>View Project</span>
+                      <MoveRight className={`w-5 h-5 ${project.textColor}`} />
+                    </div>
+
+                    <div
+                      class={`w-full h-[1px] mt-2 overflow-hidden ${
+                        project.textColor === "text-white"
+                          ? "bg-white/30"
+                          : "bg-black/20"
+                      }`}
+                    >
+                      <div
+                        class={`h-full w-full scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-700 ease-out delay-150 ${
+                          project.textColor === "text-white"
+                            ? "bg-white"
+                            : "bg-black"
+                        }`}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      {/* End Grid View */}
+
+      {/* List View (Rows) */}
+      <div
+        id="list-view"
+        class="hidden flex-col border-t border-[var(--list-border-color)] mt-2 w-full"
+      >
+        {
+          projectsData.map((project) => (
+            <a
+              href={`/work/${project.slug}`}
+              class="group flex flex-col md:flex-row md:items-center justify-between py-6 border-b border-[var(--list-border-color)] hover:bg-[var(--list-hover-bg)] transition-[background-color] duration-300 px-4 -mx-4 rounded-[8px] w-full"
+            >
+              {/* Left: Icon + Title */}
+              <div class="flex items-center gap-4 w-full md:w-[320px] shrink-0 mb-4 md:mb-0">
+                <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 border border-slate-200">
+                  {(project.logo || project.image) ? (
+                    <img
+                      src={project.logo || project.image}
+                      alt={project.title}
+                      loading="lazy"
+                      decoding="async"
+                      class="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <span class="text-[#0E1325] font-bold text-lg">
+                      {project.title.charAt(0)}
+                    </span>
+                  )}
+                </div>
+                <h3 class="text-[var(--list-title-color)] text-base font-medium group-hover:text-[#387EC1]">
+                  {project.title}
+                </h3>
+              </div>
+
+              {/* Middle: Short Description */}
+              <div class="w-full md:flex-1 md:px-8 mb-4 md:mb-0">
+                <p class="text-[var(--list-desc-color)] text-[14px] line-clamp-2 leading-relaxed">
+                  {project.shortDescription}
+                </p>
+              </div>
+
+              {/* Right: CTA */}
+              <div class="flex items-center gap-2 text-[var(--list-desc-color)] group-hover:text-[var(--list-title-color)] text-[13px] font-medium shrink-0">
+                View project{" "}
+                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const setupWorkToggle = () => {
+    const wrapper = document.getElementById("projects-section-wrapper");
+    const outerWrapper = document.getElementById("outer-page-wrapper");
+    const mainContentWrapper = document.getElementById("main-content-wrapper");
+    const heading = document.getElementById("projects-heading");
+    const btnGrid = document.getElementById("btn-grid");
+    const btnList = document.getElementById("btn-list");
+    const gridView = document.getElementById("grid-view");
+    const listView = document.getElementById("list-view");
+
+    if (!btnGrid || !btnList || !wrapper) return;
+
+    // Toggle UI Logic
+    btnGrid.addEventListener("click", () => {
+      // Button Active States
+      btnGrid.classList.remove("opacity-50", "hover:opacity-80");
+      btnGrid.classList.add("opacity-100");
+
+      btnList.classList.remove("opacity-100");
+      btnList.classList.add("opacity-50", "hover:opacity-80");
+
+      // View State
+      listView?.classList.add("hidden");
+      listView?.classList.remove("flex");
+      gridView?.classList.remove("hidden");
+      gridView?.classList.add("block");
+    });
+
+    btnList.addEventListener("click", () => {
+      // Button Active States
+      btnList.classList.remove("opacity-50", "hover:opacity-80");
+      btnList.classList.add("opacity-100");
+
+      btnGrid.classList.remove("opacity-100");
+      btnGrid.classList.add("opacity-50", "hover:opacity-80");
+
+      // View State
+      gridView?.classList.add("hidden");
+      gridView?.classList.remove("block");
+      listView?.classList.remove("hidden");
+      listView?.classList.add("flex");
+    });
+
+    // Scroll Fade Logic
+    const interpolateColor = (
+      color1: number[],
+      color2: number[],
+      factor: number,
+    ): string => {
+      const r = Math.round(color1[0] + factor * (color2[0] - color1[0]));
+      const g = Math.round(color1[1] + factor * (color2[1] - color1[1]));
+      const b = Math.round(color1[2] + factor * (color2[2] - color1[2]));
+      const a =
+        color1[3] !== undefined && color2[3] !== undefined
+          ? (color1[3] + factor * (color2[3] - color1[3])).toFixed(3)
+          : null;
+      return a !== null
+        ? `rgba(${r}, ${g}, ${b}, ${a})`
+        : `rgb(${r}, ${g}, ${b})`;
+    };
+
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (!wrapper) {
+            ticking = false;
+            return;
+          }
+          let progress = 0;
+          const startScroll = 20;
+          const endScroll = 120;
+
+          if (window.scrollY > startScroll) {
+            if (window.scrollY >= endScroll) {
+              progress = 1;
+            } else {
+              progress =
+                (window.scrollY - startScroll) / (endScroll - startScroll);
+            }
+          }
+
+          // Apply interpolated colors as inline styles
+          const bgColor = interpolateColor(
+            [255, 255, 255],
+            [19, 22, 39],
+            progress,
+          );
+          wrapper.style.backgroundColor = bgColor;
+          if (outerWrapper) outerWrapper.style.backgroundColor = bgColor;
+          if (mainContentWrapper)
+            mainContentWrapper.style.backgroundColor = bgColor;
+
+          const heroTitle = document.querySelector(
+            ".hero-title",
+          ) as HTMLElement;
+          const heroDesc = document.querySelector(".hero-desc") as HTMLElement;
+
+          if (heroTitle) {
+            heroTitle.style.color = interpolateColor(
+              [15, 23, 42],
+              [255, 255, 255],
+              progress,
+            );
+          }
+          if (heroDesc) {
+            heroDesc.style.color = interpolateColor(
+              [69, 71, 81],
+              [148, 163, 184],
+              progress,
+            );
+          }
+
+          if (heading) {
+            heading.style.color = interpolateColor(
+              [15, 23, 42],
+              [255, 255, 255],
+              progress,
+            );
+          }
+
+          wrapper.style.setProperty(
+            "--list-title-color",
+            interpolateColor([26, 54, 93], [255, 255, 255], progress),
+          );
+          wrapper.style.setProperty(
+            "--list-desc-color",
+            interpolateColor([44, 82, 130], [255, 255, 255], progress),
+          );
+          wrapper.style.setProperty(
+            "--list-border-color",
+            interpolateColor([0, 0, 0, 0.1], [255, 255, 255, 0.1], progress),
+          );
+          wrapper.style.setProperty(
+            "--list-hover-bg",
+            interpolateColor([0, 0, 0, 0.02], [255, 255, 255, 0.02], progress),
+          );
+
+          if (progress >= 0.5) {
+            wrapper.classList.remove("work-theme-light");
+            wrapper.classList.add("work-theme-dark");
+          } else {
+            wrapper.classList.remove("work-theme-dark");
+            wrapper.classList.add("work-theme-light");
+          }
+
+          ticking = false;
+          window.dispatchEvent(new CustomEvent("nav-theme-update"));
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Trigger once on load
+  };
+
+  setupWorkToggle();
+  document.addEventListener("astro:page-load", setupWorkToggle);
+</script>
+
+<style is:global>
+  .work-theme-light {
+    --list-title-color: #1a365d;
+    --list-desc-color: #2c5282;
+    --list-border-color: rgba(0, 0, 0, 0.1);
+    --list-hover-bg: rgba(0, 0, 0, 0.02);
+  }
+  .work-theme-dark {
+    --list-title-color: #ffffff;
+    --list-desc-color: #94a3b8; /* slate-400 */
+    --list-border-color: rgba(255, 255, 255, 0.1);
+    --list-hover-bg: rgba(255, 255, 255, 0.02);
+  }
+</style>

@@ -1,0 +1,97 @@
+---
+import ChallengesIcon from "./ChallengesIcon";
+
+const { solution } = Astro.props as { solution: any };
+---
+
+<!-- CHALLENGES SECTION -->
+<div class="bg-white">
+  <section
+    class="bg-white flex flex-col grow max-w-[1440px] mx-auto w-full border-x border-slate-200/20 relative"
+  >
+    <div class="flex flex-col lg:flex lg:flex-row border-b border-slate-300/40 gap-4 lg:gap-12 lg:py-4">
+      <div class="pl-7 py-4 lg:p-8">
+        <h2 class="text-h2 font-medium leading-tight text-[#111827]">
+          {solution.challenges.title}
+        </h2>
+      </div>
+
+      <div class="pl-7 pb-4 lg:p-8 flex items-start">
+        <p class="max-w-lg font-normal text-[#454751]  ">
+          {solution.challenges.description}
+        </p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      {
+        solution.challenges.items.map((item: any, index: number) => {
+          return (
+            <div
+              class={`accordion-item border-b border-slate-300/40 ${
+                index === 0 ? "active" : ""
+              }`}
+            >
+              <button class="accordion-trigger w-full flex items-center justify-between px-5 md:px-8 py-5 cursor-pointer text-left gap-4">
+                <div class="flex items-center gap-4 md:gap-5">
+                  <div class="h-10 w-10 shrink-0 rounded bg-[#16A34A] flex items-center justify-center">
+                    <ChallengesIcon
+                      icon={item.icon}
+                      className="h-6 w-6 shrink-0 text-white"
+                    />
+                  </div>
+
+                  <span class="text-h6 md:text-h4 font-normal text-[#111827]">
+                    {item.title}
+                  </span>
+                </div>
+
+                <div class="accordion-icon shrink-0 h-10 w-10 rounded border-[0.4px] border-[#7AA9D5] flex items-center justify-center bg-[#EBF2F9] text-[#479EE3] text-2xl font-light">
+                  {index === 0 ? "−" : "+"}
+                </div>
+              </button>
+
+              <div
+                class={`accordion-content px-8 ${
+                  index === 0 ? "" : "hidden"
+                }`}
+              >
+                <div class="accordion-content-inner pb-6">
+                  <p class="text-slate-500 text-body-m font-normal max-w-2xl mb-6">
+                    {item.description}
+                  </p>
+
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    class="w-full h-auto rounded-lg block"
+                  />
+                </div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
+</div>
+
+<style>
+  .accordion-content {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 300ms ease-in-out, opacity 300ms ease-in-out;
+    opacity: 1;
+  }
+
+  .accordion-content.hidden {
+    grid-template-rows: 0fr;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .accordion-content-inner {
+    min-height: 0;
+    overflow: hidden;
+  }
+</style>

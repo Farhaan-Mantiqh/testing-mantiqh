@@ -1,0 +1,422 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Navbar from "../../components/layout/Navbar.astro";
+import ChevronRight from "../../components/ui/ChevronRight.astro";
+import DashedGrid from "../../components/visuals/DashedGrid.astro";
+import CompanyCarousel from "../../components/visuals/CompanyCarousel.astro";
+import HeroGraphic from "../../components/visuals/HeroGraphic.astro";
+import EcosystemCard from "../../components/ui/cards/EcosystemCard.astro";
+import About from "../../components/sections/aboutUs/aboutUs.astro";
+---
+
+<MainLayout title="About Mantiqh — Enterprise AI Solutions | Mantiqh" description="Learn about Mantiqh's journey in building AI-powered platforms. Discover our expertise in enterprise software, product development, and digital transformation across two decades of innovation." canonicalURL="https://mantiqh.com/about-us">
+  <div class="bg-midnight-500 w-full flex flex-col relative">
+    <Navbar theme="dark" />
+
+    <!-- Hero Section (Exactly 1 viewport height) -->
+    <section
+      class="about-hero-wrapper w-full h-[calc(100vh-90px)] min-h-[569px] relative overflow-hidden flex flex-col border-b border-slate-200/20"
+    >
+      <div
+        class="flex flex-col flex-grow max-w-[1440px] mx-auto w-full border-x border-slate-200/20 relative z-10"
+      >
+        <!-- About Hero Section -->
+        <div
+          class="about-hero-header px-6 lg:px-[3.20%] py-8 md:py-12 flex flex-col lg:flex-row items-start border-b border-slate-200/20"
+        >
+          <!-- Left Column (Title) -->
+          <div class="w-full lg:w-[50%]">
+            <h1
+              class="text-h2 font-medium leading-[120%] text-white tracking-tight"
+            >
+              Engineering AI-Powered Platforms for the Future of Enterprise
+              Innovation
+            </h1>
+          </div>
+
+          <!-- Right Column (Description + Button) -->
+          <div class="w-full lg:w-[50%] flex flex-col gap-6 lg:mt-2">
+            <p
+              class="text-body-m font-normal leading-[160%] text-[#AAB1BA]"
+            >
+              Building future-ready digital experiences through AI-driven
+              thinking, scalable engineering, and enterprise-focused innovation
+              designed to help modern businesses evolve and grow
+            </p>
+            <div class="pt-2">
+              <a href="/get-in-touch">
+                <button
+                  type="button"
+                  class="flex items-center gap-2 px-5 h-[42px] rounded-lg bg-deep-blue-500 hover:bg-deep-blue-600 transition-all duration-300 shadow-lg shadow-deep-blue-500/20 cursor-pointer group"
+                >
+                  <span class="text-cta-secondary font-medium text-white"
+                    >Get In Touch</span
+                  >
+                  <ChevronRight
+                    className="text-white transition-transform duration-300 group-hover:translate-x-1"
+                  />
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lower Section (Empty spacing matching the layout in screenshot) -->
+        <div class="flex-grow relative overflow-hidden">
+          <DashedGrid />
+          <CompanyCarousel />
+          <HeroGraphic />
+
+          <!-- Stats Cards -->
+          <div
+            class="absolute bottom-4 right-6 left-auto sm:right-[3.20%] flex gap-2 sm:gap-6 justify-end z-20"
+          >
+            <div
+              class="w-[92px] h-[92px] sm:w-[150px] sm:h-[150px] rounded-[4px] border-[0.8px] border-[#C6CAD1] bg-white/25 backdrop-blur-[35px] p-2 sm:p-5 flex flex-col justify-between animate-card delay-1"
+            >
+              <span
+                class="text-[#C6CAD1] text-[10px] tracking-tight sm:text-body-s font-normal"
+                >Projects</span
+              >
+              <h4 class="text-white text-base sm:text-3xl font-medium">50+</h4>
+            </div>
+            <div
+              class="w-[92px] h-[92px] sm:w-[150px] sm:h-[150px] rounded-[4px] border-[0.8px] border-[#C6CAD1] bg-white/25 backdrop-blur-[35px] p-2 sm:p-5 flex flex-col justify-between animate-card delay-2"
+            >
+              <span
+                class="text-[#C6CAD1] text-[10px] tracking-tight sm:text-body-s font-normal"
+                >Clients</span
+              >
+              <h4 class="text-white text-base sm:text-3xl font-medium">50+</h4>
+            </div>
+            <div
+              class="w-[92px] h-[92px] sm:w-[150px] sm:h-[150px] rounded-[4px] border-[0.8px] border-[#C6CAD1] bg-white/25 backdrop-blur-[35px] p-2 sm:p-5 flex flex-col justify-between animate-card delay-3"
+            >
+              <span
+                class="text-[#C6CAD1] text-[10px] tracking-tight sm:text-body-s font-normal"
+                >Satisfaction</span
+              >
+              <h4 class="text-white text-base sm:text-3xl font-medium">100%</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section class="w-full relative flex flex-col">
+      <div
+        class="max-w-[1440px] mx-auto w-full border-x border-slate-200/20 relative z-10"
+      >
+        <!-- Top Header Grid -->
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 lg:gap-24 py-10 px-6 lg:px-[3.20%] border-b border-slate-200/20"
+        >
+          <div class="flex flex-col items-start gap-8">
+            <h2
+              class="text-h2 font-medium leading-[120%] text-white tracking-tight"
+            >
+              What Mantiqh Does
+            </h2>
+            <a href="/work">
+              <button
+                type="button"
+                class="hidden lg:flex items-center justify-center gap-2 px-5 h-[42px] rounded-lg border border-slate-200/20 hover:bg-slate-800/50 transition-colors duration-300 cursor-pointer"
+              >
+              
+                <span class="text-cta-primary text-body-xs font-medium text-white"
+                  >View Projects</span
+                >
+                <ChevronRight className="text-white w-4 h-4" />
+              </button>
+            </a>
+          </div>
+          <div class="flex flex-col items-start gap-8">
+            <p
+              class="text-body-m font-normal leading-[160%] text-[#AAB1BA]"
+            >
+              Smarter businesses don't run on disconnected tools: they run on
+              integrated intelligence. Mantiqh builds platforms that embed AI
+              into core systems and workflows, improve the economics of real
+              work and scale securely across hybrid cloud environments. We apply
+              these capabilities inside Mantiqh first through our Client Zero
+              approach, then deliver them to clients, ensuring what we offer is
+              not just designed, but proven.
+            </p>
+            <a href="/work">
+            <button
+              type="button"
+              class="flex lg:hidden items-center justify-center gap-2 px-5 h-[42px] rounded-lg border border-slate-200/20 hover:bg-slate-800/50 transition-colors duration-300 cursor-pointer"
+            >
+              <span class="text-body-s font-medium text-white"
+                >View Projects</span
+              >
+              <ChevronRight className="text-white w-4 h-4" />
+            </button>
+          </a>
+          </div>
+        </div>
+
+        <!-- Ecosystem Core Section -->
+        <div
+          class="flex flex-col items-center bg-[#171925] py-24 px-6 relative overflow-hidden"
+        >
+          <img  
+            id="bg-img-1"
+            src="/company/1.png"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            class="absolute inset-0 w-full h-full object-cover object-center z-0 transition-all duration-500 ease-out opacity-0 scale-105 pointer-events-none transform-gpu will-change-transform"
+          />
+          <img  
+            id="bg-img-2"
+            src="/company/2.png"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            class="absolute inset-0 w-full h-full object-cover object-center z-0 transition-all duration-500 ease-out opacity-0 scale-105 pointer-events-none transform-gpu will-change-transform"
+          />
+          <img  
+            id="bg-img-3"
+            src="/company/3.png"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            class="absolute inset-0 w-full h-full object-cover object-center z-0 transition-all duration-500 ease-out opacity-0 scale-105 pointer-events-none transform-gpu will-change-transform"
+          />
+
+          <h3
+            class="relative z-10 text-h4 md:text-[28px] font-medium leading-[140%] text-center text-white tracking-tight max-w-[800px] mb-16"
+          >
+            Mantiqh Engineers AI-Powered Digital Ecosystems<br
+              class="hidden sm:inline"
+            />
+            With Intelligence, Scalability, And Operational<br
+              class="hidden sm:inline"
+            />
+            Clarity At The Core
+          </h3>
+
+          <div
+            id="ecosystem-cards-container"
+            class="flex flex-col w-full max-w-[600px] relative z-10"
+          >
+            <!-- Connecting lines decoration behind cards could go here if needed -->
+            <div
+              class="absolute top-12 bottom-12 left-12 sm:left-[72px] w-px bg-slate-700/50 -z-10 block"
+            >
+            </div>
+
+            <div
+              class="group ecosystem-card-wrapper relative z-10 transition-all duration-500 ease-out hover:z-50 mb-8 last:mb-0"
+              data-index="1"
+            >
+              <div class="relative z-20">
+                <EcosystemCard
+                  title="AI-Powered Workflows"
+                  description="Automating operations through intelligent and scalable AI-driven systems."
+                  theme="dark"
+                  icon="hexagon"
+                />
+              </div>
+            </div>
+
+            <div
+              class="group ecosystem-card-wrapper relative z-10 transition-all duration-500 ease-out hover:z-50 mb-8 last:mb-0"
+              data-index="2"
+            >
+              <div class="relative z-20">
+                <EcosystemCard
+                  title="Intelligent Enterprise Ecosystems"
+                  description="Building connected digital infrastructures for modern business operations."
+                  theme="dark"
+                  icon="layers"
+                />
+              </div>
+            </div>
+
+            <div
+              class="group ecosystem-card-wrapper relative z-10 transition-all duration-500 ease-out hover:z-50 mb-8 last:mb-0"
+              data-index="3"
+            >
+              <div class="relative z-20">
+                <EcosystemCard
+                  title="Future-Ready Digital Engineering"
+                  description="Designing scalable platforms built for evolving technologies and growth."
+                  theme="dark"
+                  icon="cpu"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <About hideNavbar={true} />
+  </div>
+</MainLayout>
+
+<script>
+  const setupEcosystemCards = () => {
+    const cards = document.querySelectorAll(".ecosystem-card-wrapper");
+    const container = document.getElementById("ecosystem-cards-container");
+    const bgImages: Record<string, HTMLElement | null> = {
+      "1": document.getElementById("bg-img-1"),
+      "2": document.getElementById("bg-img-2"),
+      "3": document.getElementById("bg-img-3"),
+    };
+
+    const resetImages = () => {
+      Object.values(bgImages).forEach((img) => {
+        if (img) {
+          img.classList.remove(
+            "opacity-100",
+            "scale-100",
+            "scale-110",
+            "rotate-12",
+            "-rotate-12",
+            "rotate-6",
+            "-rotate-6",
+            "animate-bg-rock",
+            "duration-300",
+          );
+          img.classList.add(
+            "opacity-0",
+            "scale-105",
+            "rotate-0",
+            "duration-500",
+          );
+        }
+      });
+    };
+
+    cards.forEach((card) => {
+      card.addEventListener("mouseenter", () => {
+        const index = card.getAttribute("data-index");
+        if (!index) return;
+
+        resetImages();
+
+        if (bgImages[index]) {
+          if (index === "3") {
+            bgImages[index].classList.remove(
+              "opacity-0",
+              "scale-105",
+              "rotate-0",
+              "duration-500",
+            );
+            bgImages[index].classList.add(
+              "opacity-100",
+              "scale-110",
+              "rotate-12",
+              "duration-300",
+            );
+
+            setTimeout(() => {
+              if (
+                bgImages[index] &&
+                bgImages[index].classList.contains("opacity-100")
+              ) {
+                bgImages[index].classList.remove("rotate-12");
+                bgImages[index].classList.add("rotate-0");
+              }
+            }, 300);
+          } else {
+            bgImages[index].classList.remove(
+              "opacity-0",
+              "scale-105",
+              "duration-300",
+            );
+            bgImages[index].classList.add(
+              "opacity-100",
+              "scale-100",
+              "duration-500",
+            );
+          }
+        }
+      });
+    });
+
+    if (container) {
+      container.addEventListener("mouseleave", resetImages);
+    }
+  };
+
+  setupEcosystemCards();
+  document.addEventListener("astro:page-load", setupEcosystemCards);
+</script>
+
+<style>
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-card {
+    opacity: 0;
+    animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .delay-1 {
+    animation-delay: 2.2s;
+  }
+
+  .delay-2 {
+    animation-delay: 2.4s;
+  }
+
+  .delay-3 {
+    animation-delay: 2.7s;
+  }
+
+  /* Short height viewports overrides for Hero Section */
+  @media (max-height: 820px) and (min-width: 1024px) {
+    .about-hero-header {
+      padding-top: 1rem !important;
+      padding-bottom: 1rem !important;
+    }
+    .about-hero-wrapper .hero-graphic-svg-wrapper {
+      top: 60px !important;
+    }
+  }
+
+  @media (max-height: 720px) and (min-width: 1024px) {
+    .about-hero-header {
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+    }
+    .about-hero-header h1 {
+      font-size: var(--fs-h3) !important;
+    }
+    .about-hero-header p {
+      font-size: var(--fs-body-s) !important;
+      line-height: 1.4 !important;
+    }
+    .about-hero-header button {
+      height: 36px !important;
+    }
+    .about-hero-wrapper .hero-graphic-svg-wrapper {
+      top: 20px !important;
+    }
+    /* Stats cards resize */
+    .about-hero-wrapper .animate-card {
+      width: 110px !important;
+      height: 110px !important;
+      padding: 0.75rem !important;
+    }
+    .about-hero-wrapper .animate-card h4 {
+      font-size: 1.5rem !important;
+    }
+    .about-hero-wrapper .animate-card span {
+      font-size: 11px !important;
+    }
+  }
+</style>

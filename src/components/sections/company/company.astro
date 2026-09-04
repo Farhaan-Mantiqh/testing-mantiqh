@@ -1,0 +1,536 @@
+---
+import Navbar from "../../layout/Navbar.astro";
+import {
+  Handshake,
+  Shirt,
+  ShieldPlus,
+  Venus,
+  BadgeDollarSign,
+  GraduationCap,
+  BookOpenCheck,
+  UtensilsCrossed,
+  Gamepad2,
+  HandCoins,
+  TvMinimal,
+  CalendarCheck,
+  ScanText,
+  Shapes,
+  Briefcase,
+  Expand,
+  Sparkles,
+  ArrowRight,
+} from "lucide-react";
+import ChevronRight from "../../ui/ChevronRight.astro";
+
+const carouselItems = [
+  { icon: Briefcase, text: "Enterprise Innovation" },
+  { icon: ScanText, text: "Future-Ready" },
+  { icon: Shapes, text: "Collaboration" },
+  { icon: Expand, text: "Scalable Infrastructure" },
+  { icon: Sparkles, text: "AI-Powered Systems" },
+];
+const items = [...carouselItems, ...carouselItems, ...carouselItems];
+---
+
+<div>
+  <div
+    class="flex flex-col flex-grow max-w-[1440px] mx-auto w-full border-x border-slate-200/20 relative"
+  >
+    <Navbar />
+
+    <section class="border-t border-white/10">
+      <div class="flex flex-col lg:flex-row">
+        <div
+          class="flex-1 flex flex-col items-center text-center lg:items-start lg:text-left p-6 md:p-10 border-b lg:border-b-0 lg:border-r border-white/10"
+        >
+          <h2 class="text-white text-h2 font-medium mb-4">
+            Join Mantiqh Technologies
+          </h2>
+
+          <p
+            class="text-[#B7B8BB] text-body-m font-normal max-w-[500px] leading-relaxed mb-8"
+          >
+            Build the future of intelligent digital innovation alongside a team
+            driven by creativity, engineering, and AI-first thinking.
+          </p>
+
+          <button
+            class="group flex items-center gap-2.5 px-5 py-3 bg-[#387EC1] cursor-pointer text-white rounded-[6px] text-cta-secondary font-medium transition-all"
+            onclick="document.getElementById('open-positions')?.scrollIntoView({ behavior: 'smooth' })"
+          >
+            Open Positions
+            <ChevronRight
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </button>
+        </div>
+
+        <div class="flex-1 relative overflow-hidden min-h-[350px]">
+          <img fetchpriority="high"  
+            src="/company/team.png"
+            alt=""
+            class="absolute inset-0 w-full h-full object-cover lg:h-[350px] xl:h-full"
+          />
+          <!-- Subtle dark overlay to match the design without making it too dark -->
+          <div class="absolute inset-0 bg-[#171925]/60 z-0"></div>
+
+          <img fetchpriority="high"  
+            src="/company/comp_bg.svg"
+            alt=""
+            class="absolute inset-0 w-full h-full object-cover z-10 opacity-70"
+          />
+
+          <!-- Marquee Animation -->
+          <div
+            class="absolute left-0 w-full top-1/2 -translate-y-1/2 overflow-hidden z-20 pointer-events-none"
+          >
+            <div class="flex items-center gap-12 w-max animate-marquee">
+              {
+                items.map((item) => (
+                  <div class="flex items-center gap-2 px-5 py-2 rounded-full border border-white bg-[#C6CAD1]/10 backdrop-blur-md whitespace-nowrap">
+                    {item.icon && (
+                      <item.icon
+                        className="w-4 h-4 text-white"
+                        strokeWidth={1.5}
+                      />
+                    )}
+                    <span class="text-[13px] font-medium text-white tracking-wide">
+                      {item.text}
+                    </span>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-white/10 px-6 md:px-10 py-12 md:py-16">
+      <div class="mt-6 flex flex-col gap-2 w-fit mx-auto">
+        <span
+          class="text-[#B7B8BB] uppercase tracking-[0.2em] text-body-s font-normal pb-5"
+        >
+          AT MANTIQH WE
+        </span>
+
+        <div
+          class="flex items-center gap-3 text-white text-h2 leading-[1.1] font-normal"
+        >
+          <span>Think beyond limitations.</span>
+
+          <img  
+            src="/company/atMantiqh-1.png"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            class="w-5 h-5 md:w-8 md:h-8 object-contain shrink-0 opacity-70"
+          />
+        </div>
+
+        <div
+          class="flex items-center gap-3 text-white text-h2 leading-[1.1] font-normal"
+        >
+          <img  
+            src="/company/atMantiqh-2.png"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            class="w-5 h-5 md:w-8 md:h-8 object-contain shrink-0 opacity-70"
+          />
+
+          <span>Build for the future.</span>
+        </div>
+
+        <div
+          class="flex items-center gap-3 text-white text-h2 leading-[1.1] font-normal"
+        >
+          <span>Challenge conventional thinking.</span>
+
+          <img  
+            src="/company/atMantiqh-3.png"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            class="w-5 h-5 md:w-8 md:h-8 object-contain shrink-0 opacity-70"
+          />
+        </div>
+
+        <div
+          class="flex items-center gap-3 text-white text-h2 leading-[1.1] font-normal"
+        >
+          <span>Continuously evolve with technology.</span>
+        </div>
+      </div>
+    </section>
+
+    <div
+      class="h-14 border-t border-white/10"
+      style="
+    --gap: 45px;
+    background-image:
+      repeating-linear-gradient(
+        to right,
+        rgba(255,255,255,0.08) 0 1px,
+        transparent 1px var(--gap)
+      );
+  "
+    >
+    </div>
+
+    <section>
+      <div class="px-6 md:px-10 py-8 border-y border-white/10">
+        <h2 class="text-white text-h2 font-medium">
+          Benefits & Facilities at Mantiqh
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        {
+          [
+            {
+              icon: Handshake,
+              title: "Joining Bonus",
+              desc: "Performance-driven rewards to welcome and support your journey at Mantiqh",
+            },
+            {
+              icon: Shirt,
+              title: "No Dress Code",
+              desc: "Work comfortably in an environment that values creativity over formality.",
+            },
+            {
+              icon: ShieldPlus,
+              title: "Insurance",
+              desc: "Comprehensive health coverage designed to support employee well-being.",
+            },
+            {
+              icon: Venus,
+              title: "Women Friendly",
+              desc: "An inclusive and supportive workplace built on equality and respect.",
+            },
+            {
+              icon: BadgeDollarSign,
+              title: "Yearly Bonus",
+              desc: "Recognition and rewards for your contributions and performance each year.",
+            },
+            {
+              icon: TvMinimal,
+              title: "Remote Work",
+              desc: "Flexible work opportunities that support productivity from anywhere.",
+            },
+            {
+              icon: CalendarCheck,
+              title: "Mandatory Offs",
+              desc: "Encouraging healthy work-life balance through planned time off policies.",
+            },
+            {
+              icon: GraduationCap,
+              title: "Training & Certifications",
+              desc: "Continuous learning opportunities to grow your skills and expertise.",
+            },
+            {
+              icon: BookOpenCheck,
+              title: "Tuition Reimbursement",
+              desc: "Supporting professional education and career advancement initiatives.",
+            },
+            {
+              icon: UtensilsCrossed,
+              title: "Team Outings & Dinners",
+              desc: "Regular team experiences designed to strengthen collaboration and culture.",
+            },
+            {
+              icon: Gamepad2,
+              title: "Game Zone",
+              desc: "Relax, recharge, and connect through engaging recreational spaces.",
+            },
+            {
+              icon: HandCoins,
+              title: "No Interest Loan",
+              desc: "Financial support programs designed to assist employees when needed.",
+            },
+          ].map((benefit) => (
+            <div class="border-r border-b border-white/10 p-6 md:p-8">
+              <benefit.icon
+                className="w-5 h-5 text-white mb-4"
+                strokeWidth={1.5}
+              />
+
+              <h3 class="text-white text-h5 font-medium mb-1">
+                {benefit.title}
+              </h3>
+
+              <p class="text-[#B7B8BB] text-body-s font-normal leading-relaxed">
+                {benefit.desc}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+
+  <div class="bg-white w-full">
+    <section
+      id="open-positions"
+      class="max-w-[1440px] mx-auto w-full border-x border-b border-slate-400/40 scroll-mt-24 pb-8"
+    >
+      <div class="px-6 md:px-10 py-8 border-y-[0.4px] border-slate-200/10">
+        <h2 class="text-black text-h2 font-medium">Open Positions</h2>
+      </div>
+
+      <div>
+        {
+          [
+            {
+              title: "Full Stack Developer",
+              type: "FULL-TIME",
+              desc: "A versatile professional with expertise in both front-end and back-end web development. Skilled in programming languages, frameworks, and databases, capable of designing and implementing end-to-end solutions. Collaborates with cross-functional teams to create seamless and interactive web applications.",
+              featured: false,
+            },
+            {
+              title: "QA Lead",
+              type: "FULL-TIME",
+              desc: "An experienced professional responsible for leading and managing the Quality Assurance process. Ensures the delivery of high-quality software products through comprehensive testing and quality control measures. Oversees test planning, execution, and defect management, while providing guidance and support to the QA team. Drives continuous improvement initiatives to enhance the overall software quality and customer satisfaction.",
+              featured: false,
+            },
+            {
+              title: "Devops Engineer",
+              type: "FULL-TIME",
+              desc: "Bridging development and operations, enabling efficient software deployment. Automates workflows, improves performance, and ensures reliable releases. Manages configurations, monitoring, and troubleshooting for seamless operations.",
+              featured: false,
+            },
+            {
+              title: "Sr. UX/UI Designer",
+              type: "FULL-TIME",
+              desc: "Drives user-centric design, creating intuitive and visually appealing interfaces. Balances aesthetics with functionality, ensuring seamless user experiences. Collaborates with cross-functional teams to translate user needs into compelling designs.",
+              featured: false,
+            },
+          ].map((job) => (
+            <div
+              class="group border-b-[0.4px] border-slate-200 first:border-t-[0.4px] first:border-slate-200 group-hover:border-white/20 transition-all duration-300 hover:bg-[#387EC1]"
+              data-ignore-nav-theme
+            >
+              <div
+                class="
+                            px-6 md:px-10
+                            py-8 md:py-10
+                            flex flex-col lg:flex-row
+                            lg:items-center
+                            lg:justify-between
+                            gap-6 lg:gap-10
+                        "
+              >
+                <div class="w-full lg:max-w-[75%]">
+                  <span
+                    class:list={[
+                      "inline-flex items-center px-3 py-1 border text-[11px] tracking-wide mb-5",
+                      job.featured
+                        ? "border-white/30 text-white"
+                        : "border-[#171925] text-[#171925] group-hover:border-white/30 group-hover:text-white",
+                    ]}
+                  >
+                    {job.type}
+                  </span>
+
+                  <h3
+                    class:list={[
+                      "text-2xl md:text-h4 font-medium mb-3 transition-colors duration-300 group-hover:text-white",
+                      job.featured ? "text-white" : "text-[#171925]",
+                    ]}
+                  >
+                    {job.title}
+                  </h3>
+                  <p
+                    class:list={[
+                      "text-body-s md:text-body-m leading-relaxed transition-colors",
+                      job.featured
+                        ? "text-white/80"
+                        : "text-[#454751] group-hover:text-white/80",
+                    ]}
+                  >
+                    {job.desc}
+                  </p>
+                </div>
+
+                <a href="/apply-form" class="w-auto flex lg:justify-end">
+                  <button
+                    class="
+                      apply-button
+                      group/button
+                      flex items-center
+                      h-[46px]
+                      p-1.5 pl-5 pr-1.5
+                      border border-[#AAB1BA]
+                      rounded-[1px]
+                      cursor-pointer
+                    "
+                  >
+                    <span
+                      class="
+                        apply-button-text
+                        text-body-s
+                        whitespace-nowrap
+                        mr-4
+                      "
+                    >
+                      Apply Now
+                    </span>
+
+                    <span
+                      class="
+                        apply-button-arrow-box
+                        w-[34px] h-[34px]
+                        flex items-center justify-center
+                        rounded-[1px]
+                      "
+                    >
+                      <span class="apply-button-arrow">
+                        <ArrowRight size={14} strokeWidth={2.5} />
+                      </span>
+                    </span>
+                  </button>
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</div>
+
+<style>
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-33.333333% - 16px));
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+
+  .apply-button {
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    transition: border-color 0.3s ease;
+    z-index: 1;
+  }
+
+  .apply-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff; /* White sliding background */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-out;
+    z-index: -1;
+  }
+
+  .group:hover .apply-button::before,
+  .apply-button:hover::before {
+    transform: scaleX(1);
+  }
+
+  .group:hover .apply-button,
+  .apply-button:hover {
+    border-color: #ffffff;
+  }
+
+  .apply-button-text {
+    color: #171925;
+    transition: color 0.3s ease;
+    position: relative;
+    z-index: 2;
+  }
+
+  .group:hover .apply-button-text,
+  .apply-button:hover .apply-button-text {
+    color: #111827;
+  }
+
+  .apply-button-arrow-box {
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    color: #ffffff;
+    z-index: 2;
+  }
+
+  .apply-button-arrow-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #111827; /* Dark blue background */
+    transform: scaleX(1);
+    transform-origin: right;
+    z-index: -1;
+  }
+
+  .group:hover .apply-button-arrow-box::before,
+  .apply-button:hover .apply-button-arrow-box::before {
+    animation: box-slide 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes box-slide {
+    0% {
+      transform: scaleX(1);
+      transform-origin: right;
+    }
+    40% {
+      transform: scaleX(0);
+      transform-origin: right;
+    }
+    41% {
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+    100% {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+
+  .apply-button-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+  }
+
+  @keyframes arrow-slide {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    40% {
+      transform: translateX(180%);
+      opacity: 0;
+    }
+    41% {
+      transform: translateX(-180%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .group:hover .apply-button-arrow,
+  .apply-button:hover .apply-button-arrow {
+    animation: arrow-slide 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+</style>

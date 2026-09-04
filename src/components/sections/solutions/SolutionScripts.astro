@@ -1,0 +1,214 @@
+---
+const { solution } = Astro.props;
+---
+
+<script>
+  const industriesBtn = document.getElementById("industries-btn");
+  const usecasesBtn = document.getElementById("usecases-btn");
+
+  if (industriesBtn && usecasesBtn) {
+    industriesBtn.addEventListener("click", () => {
+      industriesBtn.classList.add("bg-[#479EE3]", "text-white");
+      industriesBtn.classList.remove("text-[#111827]");
+
+      usecasesBtn.classList.remove("bg-[#479EE3]", "text-white");
+      usecasesBtn.classList.add("text-[#111827]");
+    });
+
+    usecasesBtn.addEventListener("click", () => {
+      usecasesBtn.classList.add("bg-[#479EE3]", "text-white");
+      usecasesBtn.classList.remove("text-[#111827]");
+
+      industriesBtn.classList.remove("bg-[#479EE3]", "text-white");
+      industriesBtn.classList.add("text-[#111827]");
+    });
+  }
+</script>
+
+<script>
+  function initializeFaq() {
+    const items = document.querySelectorAll(".faq-item");
+
+    items.forEach((item) => {
+      const trigger = item.querySelector(".faq-trigger");
+      const content = item.querySelector(".faq-content");
+      const icon = item.querySelector(".faq-icon");
+
+      trigger?.addEventListener("click", () => {
+        const isOpen = !content?.classList.contains("hidden");
+
+        items.forEach((faq) => {
+          faq.querySelector(".faq-content")?.classList.add("hidden");
+
+          const faqIcon = faq.querySelector(".faq-icon");
+          if (faqIcon) faqIcon.textContent = "+";
+        });
+
+        if (!isOpen) {
+          content?.classList.remove("hidden");
+          if (icon) icon.textContent = "×";
+        }
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeFaq);
+  } else {
+    initializeFaq();
+  }
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const industriesBtn = document.getElementById("industries-btn");
+    const usecasesBtn = document.getElementById("usecases-btn");
+
+    const industries = document.getElementById("industries-content");
+    const usecases = document.getElementById("usecases-content");
+
+    if (!industriesBtn || !usecasesBtn || !industries || !usecases) {
+      return;
+    }
+
+    industriesBtn.addEventListener("click", () => {
+      industries.classList.remove("hidden");
+      usecases.classList.add("hidden");
+
+      industriesBtn.classList.add("bg-[#479EE3]", "text-white");
+      industriesBtn.classList.remove("text-[#111827]");
+
+      usecasesBtn.classList.remove("bg-[#479EE3]", "text-white");
+      usecasesBtn.classList.add("text-[#111827]");
+    });
+
+    usecasesBtn.addEventListener("click", () => {
+      usecases.classList.remove("hidden");
+      industries.classList.add("hidden");
+
+      usecasesBtn.classList.add("bg-[#479EE3]", "text-white");
+      usecasesBtn.classList.remove("text-[#111827]");
+
+      industriesBtn.classList.remove("bg-[#479EE3]", "text-white");
+      industriesBtn.classList.add("text-[#111827]");
+    });
+  });
+</script>
+
+<script>
+  function initializeScrollReveal() {
+    const revealElements =
+      document.querySelectorAll<HTMLElement>(".scroll-reveal");
+
+    revealElements.forEach((element) => {
+      if (element.dataset.initialized) return;
+
+      element.dataset.initialized = "true";
+
+      // Get text while preserving paragraph breaks
+      const text = element.innerText.trim();
+
+      // Convert multiple line breaks into a placeholder
+      const processedText = text.replace(/\n\s*\n/g, " __PARAGRAPH__ ");
+
+      const words = processedText.split(/\s+/);
+
+      element.innerHTML = words
+        .map((word) => {
+          if (word === "__PARAGRAPH__") {
+            return "<div class='h-3'></div>";
+          }
+
+          return `<span class="reveal-word" style="transition: opacity 0.25s ease, filter 0.25s ease; opacity: 0.2; filter: blur(4px);">${word}</span>`;
+        })
+        .join(" ");
+    });
+
+    const updateReveal = () => {
+      document.querySelectorAll<HTMLElement>(".scroll-reveal").forEach((el) => {
+        const rect = el.getBoundingClientRect();
+
+        const start = window.innerHeight * 0.9;
+        const end = window.innerHeight * 0.2;
+
+        let progress = (start - rect.top) / (start - end);
+        progress = Math.max(0, Math.min(1, progress));
+
+        const words = el.querySelectorAll<HTMLElement>(".reveal-word");
+
+        const totalWords = words.length;
+
+        words.forEach((word, index) => {
+          const wordProgress = index / totalWords;
+
+          if (progress > wordProgress) {
+            word.style.opacity = "1";
+            word.style.filter = "blur(0px)";
+          } else {
+            word.style.opacity = "0.4";
+            word.style.filter = "blur(4px)";
+          }
+        });
+      });
+    };
+
+    updateReveal();
+
+    window.addEventListener("scroll", updateReveal);
+    window.addEventListener("resize", updateReveal);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeScrollReveal);
+  } else {
+    initializeScrollReveal();
+  }
+</script>
+
+<script>
+  function initializeAccordion() {
+    const items = document.querySelectorAll<HTMLElement>(".accordion-item");
+
+    items.forEach((item) => {
+      const trigger = item.querySelector<HTMLElement>(".accordion-trigger");
+      const content = item.querySelector<HTMLElement>(".accordion-content");
+      const icon = item.querySelector<HTMLElement>(".accordion-icon");
+
+      if (!trigger || !content || !icon) return;
+      if (trigger.dataset.initialized) return;
+
+      trigger.dataset.initialized = "true";
+
+      trigger.addEventListener("click", () => {
+        const isOpen = !content.classList.contains("hidden");
+
+        // Close all other items
+        items.forEach((otherItem) => {
+          if (otherItem === item) return;
+
+          const otherContent =
+            otherItem.querySelector<HTMLElement>(".accordion-content");
+          const otherIcon =
+            otherItem.querySelector<HTMLElement>(".accordion-icon");
+
+          if (otherContent) otherContent.classList.add("hidden");
+          if (otherIcon) otherIcon.textContent = "+";
+        });
+
+        if (isOpen) {
+          content.classList.add("hidden");
+          icon.textContent = "+";
+        } else {
+          content.classList.remove("hidden");
+          icon.textContent = "−";
+        }
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeAccordion);
+  } else {
+    initializeAccordion();
+  }
+  document.addEventListener("astro:page-load", initializeAccordion);
+</script>

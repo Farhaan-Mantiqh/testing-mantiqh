@@ -1,0 +1,944 @@
+---
+import Logo from "./Logo.astro";
+import RainbowButton from "../ui/RainbowButton.astro";
+import Star from "../ui/Star.astro";
+import ChevronRight from "../ui/ChevronRight.astro";
+import {
+  BrainCircuit,
+  PenTool,
+  Headset,
+  FolderOpen,
+  BarChart4,
+  CheckCircle2,
+  Code2,
+  CloudUpload,
+  Smartphone,
+  Briefcase,
+  Menu,
+  X,
+  ChevronDown,
+} from "lucide-react";
+
+interface Props {
+  theme?: "light" | "dark";
+  hideBorder?: boolean;
+}
+
+const { theme = "dark", hideBorder = false } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+
+const solutionsItems = [
+  {
+    name: "AI/ML Technologies",
+    description: "AI-powered business solutions",
+    href: "/solutions/ai-ml-technologies",
+    icon: BrainCircuit,
+  },
+  {
+    name: "Product Designing",
+    description: "User-focused digital experiences",
+    href: "/solutions/product-designing",
+    icon: PenTool,
+  },
+  {
+    name: "Managed Support Service",
+    description: "Continuous support and maintenance",
+    href: "/solutions/managed-support",
+    icon: Headset,
+  },
+  {
+    name: "Enterprise Content Management",
+    description: "Streamlined enterprise content systems",
+    href: "/solutions/enterprise-content-management",
+    icon: FolderOpen,
+  },
+  {
+    name: "Data & Analytics Solutions",
+    description: "Actionable insights through data",
+    href: "/solutions/data-analytics",
+    icon: BarChart4,
+  },
+  {
+    name: "Testing & Quality Assurance",
+    description: "Reliable testing and quality assurance",
+    href: "/solutions/testing-quality-assurance",
+    icon: CheckCircle2,
+  },
+  {
+    name: "Product Development",
+    description: "Scalable web and mobile applications",
+    href: "/solutions/product-development",
+    icon: Code2,
+  },
+  {
+    name: "Cloud Solutions",
+    description: "Secure and scalable cloud systems",
+    href: "/solutions/cloud-solutions",
+    icon: CloudUpload,
+  },
+];
+
+const companyItems = [
+  {
+    name: "About Us",
+    description: "Who we are",
+    href: "/about-us",
+    icon: Smartphone,
+  },
+  {
+    name: "Careers",
+    description: "Work with us",
+    href: "/company",
+    icon: Briefcase,
+  },
+];
+---
+
+<div class="w-full h-[90px] relative z-50">
+  <nav
+    class:list={[
+      "fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[1440px] h-[90px] flex items-center justify-between py-6 px-6 lg:px-[3.20%] z-50 backdrop-blur-md custom-nav",
+      !hideBorder && "border-x border-b",
+      theme === "light" ? "is-light" : "is-dark",
+    ]}
+  >
+    <!-- Left Section: Logo and Links -->
+    <div class="flex items-center gap-12">
+      <a
+        href="/"
+        class="hover:opacity-80 transition-opacity"
+        aria-label="Mantiqh Home"
+      >
+        <Logo width={40} height={28} />
+      </a>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center">
+        <!-- Solutions Dropdown -->
+        <div class="group relative py-2">
+          <a
+            href="#"
+            class:list={[
+              "px-3 py-1.5 rounded-md text-body-s font-medium transition-all duration-300 nav-link",
+              currentPath.startsWith("/solutions") && "active",
+            ]}
+          >
+            Solutions
+          </a>
+
+          <!-- Dropdown Card -->
+          <div
+            class="absolute left-0 top-full pt-6 w-[90vw] max-w-[990px] lg:w-[1200px] opacity-0 pointer-events-none translate-y-2 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 transition-all duration-300 ease-out z-50 md:-left-16 lg:left-0"
+          >
+            <div
+              class="rounded-none border-t p-3 lg:p-6 transition-colors duration-300 dropdown-card"
+            >
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {
+                  solutionsItems.map((item) => {
+                    const IconComponent = item.icon;
+                    return (
+                      <a
+                        href={item.href}
+                        class="flex items-start gap-4 p-3 -m-3 rounded-md transition-all duration-300 group/item dropdown-item"
+                      >
+                        <div class="flex items-center justify-center w-10 h-10 rounded-md shrink-0 transition-colors duration-300 dropdown-item-icon">
+                          <IconComponent class="w-5 h-5" strokeWidth={2} />
+                        </div>
+                        <div class="flex flex-col gap-0.5">
+                          <span class="text-body-s font-semibold transition-colors duration-200 dropdown-item-title">
+                            {item.name}
+                          </span>
+                          <span class="text-body-xs font-normal leading-relaxed dropdown-item-desc">
+                            {item.description}
+                          </span>
+                        </div>
+                      </a>
+                    );
+                  })
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Work Link -->
+        <div class="group relative py-2">
+          <a
+            href="/work"
+            class:list={[
+              "px-3 py-1.5 rounded-md text-body-s font-medium transition-all duration-300 nav-link",
+              currentPath.startsWith("/work") && "active",
+            ]}
+          >
+            Work
+          </a>
+        </div>
+
+        <!-- Blogs Link (hidden temporarily) -->
+        <!--
+        <a
+          href="/blogs"
+          class:list={[
+            "text-body-s font-medium leading-[160%] transition-colors duration-300 px-3 py-1.5 rounded-md nav-link",
+            currentPath.startsWith("/blogs") && "active",
+          ]}
+        >
+          Blogs
+        </a>
+        -->
+
+        <!-- Company Dropdown -->
+        <div class="group relative py-2">
+          <a
+            href="#"
+            class:list={[
+              "px-3 py-1.5 rounded-md text-body-s font-medium transition-all duration-300 nav-link",
+              (currentPath.startsWith("/company") || currentPath.startsWith("/about-us")) && "active",
+            ]}
+          >
+            Company
+          </a>
+
+          <!-- Dropdown Card -->
+          <div
+            class="absolute left-0 top-full pt-6 w-[280px] md:w-[480px] opacity-0 pointer-events-none translate-y-2 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 transition-all duration-300 ease-out z-50"
+          >
+            <div
+              class="rounded-none border-t p-3 lg:p-6 transition-colors duration-300 dropdown-card"
+            >
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {
+                  companyItems.map((item) => {
+                    const IconComponent = item.icon;
+                    return (
+                      <a
+                        href={item.href}
+                        class="flex items-start gap-4 p-3 -m-3 rounded-xl transition-all duration-300 group/item dropdown-item"
+                      >
+                        <div class="flex items-center justify-center w-10 h-10 rounded-md shrink-0 transition-colors duration-300 dropdown-item-icon">
+                          <IconComponent class="w-5 h-5" strokeWidth={2} />
+                        </div>
+                        <div class="flex flex-col gap-0.5">
+                          <span class="text-body-s font-semibold transition-colors duration-200 dropdown-item-title">
+                            {item.name}
+                          </span>
+                          <span class="text-body-xs font-normal leading-relaxed dropdown-item-desc">
+                            {item.description}
+                          </span>
+                        </div>
+                      </a>
+                    );
+                  })
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Section: Actions -->
+    <div class="flex items-center gap-4">
+      <!-- Ask AI Button (hidden temporarily) -->
+      <!--
+      <a href="/askAI" class="hidden md:block">
+        <RainbowButton variant="outline">
+          <Star width={16} height={16} delay="0.5s" />
+          <span class="text-body-s font-medium text-white">Ask AI</span>
+        </RainbowButton>
+      </a>
+      -->
+
+      <!-- Schedule Call Button -->
+      <a
+        href="/get-in-touch"
+        class="hidden md:flex items-center justify-center gap-2 px-4 py-2 h-[42px] rounded-lg bg-deep-blue-500 hover:bg-deep-blue-600 transition-all duration-300 shadow-lg shadow-deep-blue-500/20 cursor-pointer schedule-btn group"
+      >
+        <span class="text-body-s font-medium text-white"> Schedule Call </span>
+        <ChevronRight
+          class="text-white transition-transform duration-300 group-hover:translate-x-1"
+        />
+      </a>
+
+      <!-- Hamburger Button (Visible on Mobile) -->
+      <button
+        id="mobile-menu-open"
+        class="md:hidden flex items-center p-2 focus:outline-none transition-colors duration-200 cursor-pointer mobile-hamburger"
+        aria-label="Open Mobile Menu"
+        aria-expanded="false"
+      >
+        <Menu class="w-6 h-6" />
+      </button>
+    </div>
+  </nav>
+</div>
+
+<!-- Mobile Menu Drawer (Overlay) -->
+<div
+  id="mobile-menu-drawer"
+  data-lenis-prevent
+  class={`fixed inset-0 z-[100] w-full max-w-[1440px] left-1/2 -translate-x-1/2 hidden flex-col justify-between border-x transition-all duration-300 mobile-drawer ${
+    theme === "light" ? "is-light" : "is-dark"
+  }`}
+>
+  <!-- Header -->
+  <div
+    class="flex items-center justify-between py-6 px-6 border-b mobile-drawer-header"
+  >
+    <Logo width={40} height={28} />
+    <button
+      id="mobile-menu-close"
+      class="flex items-center p-2 focus:outline-none cursor-pointer mobile-drawer-close"
+      aria-label="Close Mobile Menu"
+    >
+      <X class="w-6 h-6" />
+    </button>
+  </div>
+
+  <!-- Navigation Links Accordion -->
+  <div class="flex-grow overflow-y-auto py-8 px-6 flex flex-col gap-6">
+    <!-- Solutions Accordion -->
+    <div class="flex flex-col gap-2">
+      <button
+        data-mobile-toggle="solutions"
+        class={`w-full flex items-center justify-between py-2 text-body-l font-medium focus:outline-none cursor-pointer mobile-drawer-toggle ${currentPath.startsWith("/solutions") ? "active" : ""}`}
+      >
+        <span>Solutions</span>
+        <ChevronDown
+          class="w-5 h-5 transition-transform duration-300"
+          data-mobile-chevron
+        />
+      </button>
+      <div
+        data-mobile-content="solutions"
+        class="hidden flex-col gap-4 pl-4 border-l py-2 mobile-drawer-content"
+      >
+        {
+          solutionsItems.map((item) => {
+            const IconComponent = item.icon;
+            return (
+              <a
+                href={item.href}
+                class="flex items-start gap-4 py-2 group/item dropdown-item"
+              >
+                <div class="flex items-center justify-center w-10 h-10 rounded-md shrink-0 transition-colors duration-300 dropdown-item-icon">
+                  <IconComponent class="w-5 h-5" strokeWidth={2} />
+                </div>
+                <div class="flex flex-col gap-0.5">
+                  <span class="text-body-m font-semibold dropdown-item-title">
+                    {item.name}
+                  </span>
+                  <span class="text-body-xs font-normal dropdown-item-desc">
+                    {item.description}
+                  </span>
+                </div>
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+
+    <!-- Work Link -->
+    <a
+      href="/work"
+      class={`py-2 text-body-l font-medium mobile-drawer-link ${currentPath.startsWith("/work") ? "active" : ""}`}
+    >
+      Work
+    </a>
+
+    <!-- Blogs Link (hidden temporarily) -->
+    <!--
+    <a
+      href="/blogs"
+      class={`py-2 text-body-l font-medium mobile-drawer-link ${currentPath.startsWith("/blogs") ? "active" : ""}`}
+    >
+      Blogs
+    </a>
+    -->
+
+    <!-- Company Accordion -->
+    <div class="flex flex-col gap-2">
+      <button
+        data-mobile-toggle="company"
+        class={`w-full flex items-center justify-between py-2 text-body-l font-medium focus:outline-none cursor-pointer mobile-drawer-toggle ${currentPath.startsWith("/company") || currentPath.startsWith("/about-us") ? "active" : ""}`}
+      >
+        <span>Company</span>
+        <ChevronDown
+          class="w-5 h-5 transition-transform duration-300"
+          data-mobile-chevron
+        />
+      </button>
+      <div
+        data-mobile-content="company"
+        class="hidden flex-col gap-4 pl-4 border-l py-2 mobile-drawer-content"
+      >
+        {
+          companyItems.map((item) => {
+            const IconComponent = item.icon;
+            return (
+              <a
+                href={item.href}
+                class="flex items-start gap-4 py-2 group/item dropdown-item"
+              >
+                <div class="flex items-center justify-center w-10 h-10 rounded-md shrink-0 transition-colors duration-300 dropdown-item-icon">
+                  <IconComponent className="w-5 h-5" strokeWidth={2} />
+                </div>
+                <div class="flex flex-col gap-0.5">
+                  <span class="text-body-m font-semibold dropdown-item-title">
+                    {item.name}
+                  </span>
+                  <span class="text-body-xs font-normal dropdown-item-desc">
+                    {item.description}
+                  </span>
+                </div>
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer CTA (Schedule Call) -->
+  <div class="py-6 px-6 border-t mobile-drawer-footer flex flex-col gap-4">
+    <!--
+    <a href="/askAI" class="w-full">
+      <RainbowButton variant="outline" className="w-full h-[50px] !w-full">
+        <Star width={16} height={16} delay="0.5s" />
+        <span class="text-body-m font-medium text-white">Ask AI</span>
+      </RainbowButton>
+    </a>
+    -->
+    <a
+      href="/get-in-touch"
+      class="w-full flex items-center justify-center h-[50px] rounded-lg bg-deep-blue-500 hover:bg-deep-blue-600 transition-all duration-300 text-white font-medium text-body-m"
+    >
+      Schedule Call
+    </a>
+  </div>
+</div>
+
+<script>
+  function setupMobileMenu() {
+    const openBtn = document.getElementById("mobile-menu-open");
+    const closeBtn = document.getElementById("mobile-menu-close");
+    const drawer = document.getElementById("mobile-menu-drawer");
+
+    if (
+      openBtn &&
+      closeBtn &&
+      drawer &&
+      openBtn.parentNode &&
+      closeBtn.parentNode
+    ) {
+      // Clean up previous event listeners just in case
+      const cleanOpen = openBtn.cloneNode(true) as HTMLElement;
+      openBtn.parentNode?.replaceChild(cleanOpen, openBtn);
+      const cleanClose = closeBtn.cloneNode(true) as HTMLElement;
+      closeBtn.parentNode?.replaceChild(cleanClose, closeBtn);
+
+      cleanOpen.addEventListener("click", () => {
+        drawer.classList.remove("hidden");
+        drawer.classList.add("flex");
+        document.body.style.overflow = "hidden";
+      });
+
+      cleanClose.addEventListener("click", () => {
+        drawer.classList.add("hidden");
+        drawer.classList.remove("flex");
+        document.body.style.overflow = "";
+      });
+    }
+
+    // Toggle accordions in mobile drawer
+    const toggles = document.querySelectorAll("[data-mobile-toggle]");
+    toggles.forEach((toggle) => {
+      const cleanToggle = toggle.cloneNode(true) as HTMLElement;
+      toggle.parentNode?.replaceChild(cleanToggle, toggle);
+    });
+
+    const activeToggles = document.querySelectorAll("[data-mobile-toggle]");
+    activeToggles.forEach((toggle) => {
+      toggle.addEventListener("click", () => {
+        const targetName = toggle.getAttribute("data-mobile-toggle");
+        const content = document.querySelector(
+          `[data-mobile-content="${targetName}"]`,
+        );
+        const chevron = toggle.querySelector("[data-mobile-chevron]");
+
+        if (content) {
+          const isHidden = content.classList.contains("hidden");
+          if (isHidden) {
+            content.classList.remove("hidden");
+            content.classList.add("flex");
+            if (chevron) chevron.classList.add("rotate-180");
+          } else {
+            content.classList.add("hidden");
+            content.classList.remove("flex");
+            if (chevron) chevron.classList.remove("rotate-180");
+          }
+        }
+      });
+    });
+  }
+
+  function setupNavbarScroll() {
+    const nav = document.querySelector(".custom-nav") as HTMLElement;
+    const mobileDrawer = document.getElementById("mobile-menu-drawer");
+    if (!nav) return;
+
+    function updateNavTheme() {
+      // Check at the vertical center of the navbar (y = 45px)
+      const checkY = 45;
+      const checkX = window.innerWidth / 2;
+
+      // Use elementsFromPoint to inspect all elements at this coordinate
+      const elements = document.elementsFromPoint(checkX, checkY);
+
+      let resolvedColor = "rgb(23, 25, 37)"; // Default fallback (midnight-500)
+
+      // Minimum width threshold: only consider elements that span at least
+      // 70% of the viewport width, so we skip cards and pick up sections.
+      const minWidth = window.innerWidth * 0.7;
+
+      for (const el of elements) {
+        // Skip the navbar itself, its children, and the mobile drawer
+        if (
+          el === nav ||
+          nav.contains(el) ||
+          el === mobileDrawer ||
+          (mobileDrawer && mobileDrawer.contains(el))
+        ) {
+          continue;
+        }
+
+        // Skip elements marked to be ignored or inside ignored containers
+        if (
+          el.hasAttribute("data-ignore-nav-theme") ||
+          el.closest("[data-ignore-nav-theme]")
+        ) {
+          continue;
+        }
+
+        // Skip small/card-like elements — only consider section-level containers
+        const rect = el.getBoundingClientRect();
+        if (rect.width < minWidth) {
+          continue;
+        }
+
+        const style = window.getComputedStyle(el);
+        const bg = style.backgroundColor;
+
+        // We look for a non-transparent background color
+        if (bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)") {
+          const match = bg.match(
+            /rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/,
+          );
+          if (match) {
+            const a = match[4] !== undefined ? parseFloat(match[4]) : 1;
+            if (a > 0.1) {
+              resolvedColor = bg;
+              break;
+            }
+          }
+        }
+      }
+
+      // Fallback to body background if none of the hit elements had a color
+      if (
+        resolvedColor === "rgb(23, 25, 37)" ||
+        resolvedColor === "rgba(0, 0, 0, 0)"
+      ) {
+        const bodyBg = window.getComputedStyle(document.body).backgroundColor;
+        if (
+          bodyBg &&
+          bodyBg !== "transparent" &&
+          bodyBg !== "rgba(0, 0, 0, 0)"
+        ) {
+          resolvedColor = bodyBg;
+        }
+      }
+
+      // Check relative luminance to decide if background is light or dark
+      let isLight = false;
+      const match = resolvedColor.match(
+        /rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/,
+      );
+      if (match) {
+        const r = parseInt(match[1], 10);
+        const g = parseInt(match[2], 10);
+        const b = parseInt(match[3], 10);
+        const a = match[4] !== undefined ? parseFloat(match[4]) : 1;
+
+        if (a >= 0.1) {
+          // Relative luminance formula: 0.2126 * R + 0.7152 * G + 0.0722 * B
+          const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+          isLight = luminance > 160;
+        }
+        nav.style.setProperty("--dynamic-bg-rgb", `${r}, ${g}, ${b}`);
+      } else {
+        if (isLight) {
+          nav.style.setProperty("--dynamic-bg-rgb", "255, 255, 255");
+        } else {
+          nav.style.setProperty("--dynamic-bg-rgb", "23, 25, 37");
+        }
+      }
+
+      if (isLight) {
+        nav.classList.remove("is-dark");
+        nav.classList.add("is-light");
+        if (mobileDrawer) {
+          mobileDrawer.classList.remove("is-dark");
+          mobileDrawer.classList.add("is-light");
+        }
+      } else {
+        nav.classList.remove("is-light");
+        nav.classList.add("is-dark");
+        if (mobileDrawer) {
+          mobileDrawer.classList.remove("is-light");
+          mobileDrawer.classList.add("is-dark");
+        }
+      }
+    }
+
+    // Run on scroll with requestAnimationFrame throttling
+    let scheduledAnimationFrame = false;
+    function onScroll() {
+      if (scheduledAnimationFrame) return;
+      scheduledAnimationFrame = true;
+      requestAnimationFrame(() => {
+        updateNavTheme();
+        scheduledAnimationFrame = false;
+      });
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("nav-theme-update", updateNavTheme);
+    // Also run immediately to set the correct theme for the starting position
+    updateNavTheme();
+
+    // Clean up event listener when page transitions occur (important for Astro View Transitions)
+    document.addEventListener(
+      "astro:before-swap",
+      () => {
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("nav-theme-update", updateNavTheme);
+      },
+      { once: true },
+    );
+  }
+
+  // Run initial setup
+  setupMobileMenu();
+  setupNavbarScroll();
+
+  // Run on view transitions load
+  document.addEventListener("astro:page-load", () => {
+    setupMobileMenu();
+    setupNavbarScroll();
+  });
+</script>
+
+<style>
+  .custom-nav.is-dark,
+  .mobile-drawer.is-dark {
+    --nav-bg: rgba(var(--dynamic-bg-rgb, 23, 25, 37), 0.95);
+    --nav-border: rgba(255, 255, 255, 0.2);
+    --nav-text: rgba(255, 255, 255, 0.7);
+    --nav-text-hover: #ffffff;
+    --nav-link-hover-bg: rgba(255, 255, 255, 0.1);
+    --nav-dropdown-bg: rgb(var(--dynamic-bg-rgb, 23, 25, 37));
+    --nav-dropdown-border: rgba(255, 255, 255, 0.1);
+    --nav-dropdown-shadow: rgba(0, 0, 0, 0.4);
+    --nav-item-title: #ffffff;
+    --nav-item-title-hover: #4eaef9; /* azure-400 */
+    --nav-item-desc: #94a3b8; /* slate-400 */
+    --nav-item-icon-bg: #4eaef9; /* azure-400 solid */
+    --nav-item-icon-bg-hover: #4eaef9; /* azure-400 solid (no change on hover) */
+    --nav-item-icon-text: #ffffff; /* white */
+    --nav-hamburger: rgba(255, 255, 255, 0.7);
+    --nav-hamburger-hover: #ffffff;
+    --nav-item-hover-bg: rgba(255, 255, 255, 0.05);
+  }
+
+  .custom-nav.is-light,
+  .mobile-drawer.is-light {
+    --nav-bg: rgba(var(--dynamic-bg-rgb, 255, 255, 255), 0.95);
+    --nav-border: rgba(226, 232, 240, 0.6); /* slate-200/60 */
+    --nav-text: #475569; /* slate-600 */
+    --nav-text-hover: #0f172a; /* slate-900 */
+    --nav-link-hover-bg: #f1f5f9; /* slate-100 */
+    --nav-dropdown-bg: rgb(var(--dynamic-bg-rgb, 255, 255, 255));
+    --nav-dropdown-border: rgba(226, 232, 240, 0.6); /* slate-200/60 */
+    --nav-dropdown-shadow: rgba(148, 163, 184, 0.25); /* shadow-slate-200/50 */
+    --nav-item-title: #0f172a; /* slate-900 */
+    --nav-item-title-hover: #387ec1; /* deep-blue-600 */
+    --nav-item-desc: #64748b; /* slate-500 */
+    --nav-item-icon-bg: #4eaef9; /* azure-400 solid */
+    --nav-item-icon-bg-hover: #4eaef9; /* azure-400 solid (no change on hover) */
+    --nav-item-icon-text: #ffffff; /* white */
+    --nav-hamburger: #475569; /* slate-600 */
+    --nav-hamburger-hover: #0f172a; /* slate-900 */
+    --nav-item-hover-bg: rgba(241, 245, 249, 0.5);
+  }
+
+  .custom-nav {
+    background-color: var(--nav-bg);
+    border-color: var(--nav-border);
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .nav-link {
+    color: var(--nav-text);
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease;
+  }
+
+  .nav-link:hover,
+  .group:hover > .nav-link,
+  .nav-link.active {
+    color: var(--nav-text-hover) !important;
+  }
+
+  .nav-link:hover,
+  .group:hover > .nav-link {
+    background-color: var(--nav-link-hover-bg) !important;
+  }
+
+  .dropdown-card {
+    background-color: var(--nav-dropdown-bg);
+    border-color: var(--nav-dropdown-border);
+    box-shadow:
+      0 10px 15px -3px var(--nav-dropdown-shadow),
+      0 4px 6px -4px var(--nav-dropdown-shadow);
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .dropdown-item {
+    transition: background-color 0.3s ease;
+  }
+
+  .dropdown-item:hover {
+    background-color: var(--nav-item-hover-bg);
+  }
+
+  .dropdown-item-icon {
+    background-color: var(--nav-item-icon-bg);
+    color: var(--nav-item-icon-text);
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .dropdown-item:hover .dropdown-item-icon {
+    background-color: var(--nav-item-icon-bg-hover);
+  }
+
+  .dropdown-item-title {
+    color: var(--nav-item-title);
+    transition: color 0.3s ease;
+  }
+
+  .dropdown-item:hover .dropdown-item-title {
+    color: var(--nav-item-title-hover);
+  }
+
+  .dropdown-item-desc {
+    color: var(--nav-item-desc);
+    transition: color 0.3s ease;
+  }
+
+  .mobile-hamburger {
+    color: var(--nav-hamburger);
+    transition: color 0.3s ease;
+  }
+
+  .mobile-hamburger:hover {
+    color: var(--nav-hamburger-hover);
+  }
+
+  .mobile-drawer-link,
+  .mobile-drawer-toggle {
+    color: var(--nav-text);
+    transition: color 0.3s ease;
+  }
+
+  .mobile-drawer-link:hover,
+  .mobile-drawer-toggle:hover,
+  .mobile-drawer-link.active,
+  .mobile-drawer-toggle.active {
+    color: var(--nav-text-hover) !important;
+  }
+
+  /* Size override for CTA Buttons in Navbar to be equal in width and height */
+  .custom-nav .rainbow-button {
+    width: 120px !important;
+    height: 42px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border-radius: 0.5rem !important; /* rounded-lg */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .custom-nav .schedule-btn {
+    display: none !important;
+  }
+
+  @media (min-width: 768px) {
+    .custom-nav .rainbow-button,
+    .custom-nav .schedule-btn {
+      width: 170px !important;
+      height: 42px !important;
+      border-radius: 0.5rem !important; /* rounded-lg */
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+  }
+
+  /* Globally remove default browser focus outlines/dashed borders */
+  :global(a),
+  :global(a:focus),
+  :global(a:active),
+  :global(a:focus-visible),
+  :global(button),
+  :global(button:focus),
+  :global(button:active),
+  :global(button:focus-visible),
+  :global(input:focus),
+  :global(textarea:focus),
+  :global(*:focus),
+  :global(*:focus-visible) {
+    outline: none !important;
+    outline-style: none !important;
+    box-shadow: none !important;
+  }
+
+  :global(::-moz-focus-inner),
+  :global(*::-moz-focus-inner) {
+    border: 0 !important;
+    outline: none !important;
+  }
+
+  /* Translucent sky-blue glossy gradient for Ask AI button in light navbar theme */
+  .custom-nav.is-light .rainbow-button {
+    background-image:
+      linear-gradient(rgba(107, 187, 244, 0.85), rgba(89, 155, 206, 0.85)),
+      linear-gradient(rgba(255, 255, 255, 0.35), transparent),
+      linear-gradient(
+        90deg,
+        var(--color-1),
+        var(--color-2),
+        var(--color-3),
+        var(--color-4),
+        var(--color-5),
+        var(--color-1)
+      ) !important;
+    border-color: transparent !important;
+    box-shadow: 0 4px 14px rgba(79, 174, 246, 0.3) !important;
+  }
+
+  .custom-nav.is-light .rainbow-button::before {
+    background-image: linear-gradient(
+      90deg,
+      var(--color-1),
+      var(--color-2),
+      var(--color-3),
+      var(--color-4),
+      var(--color-5),
+      var(--color-1)
+    ) !important;
+    opacity: 0.45 !important;
+  }
+
+  .custom-nav.is-light .rainbow-button:hover {
+    background-image:
+      linear-gradient(rgba(97, 178, 237, 0.95), rgba(76, 142, 194, 0.95)),
+      linear-gradient(rgba(255, 255, 255, 0.4), transparent),
+      linear-gradient(
+        90deg,
+        var(--color-1),
+        var(--color-2),
+        var(--color-3),
+        var(--color-4),
+        var(--color-5),
+        var(--color-1)
+      ) !important;
+    box-shadow: 0 6px 18px rgba(79, 174, 246, 0.4) !important;
+  }
+
+  /* Mobile Drawer */
+  .mobile-drawer {
+    background-color: var(--nav-dropdown-bg);
+    border-color: var(--nav-dropdown-border);
+    color: var(--nav-item-title);
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .mobile-drawer-header {
+    border-color: var(--nav-dropdown-border);
+    transition: border-color 0.3s ease;
+  }
+
+  .mobile-drawer-close {
+    color: var(--nav-text);
+    transition: color 0.3s ease;
+  }
+
+  .mobile-drawer-close:hover {
+    color: var(--nav-text-hover);
+  }
+
+  .mobile-drawer-toggle {
+    color: var(--nav-item-title);
+    transition: color 0.3s ease;
+  }
+
+  .mobile-drawer-toggle:hover {
+    color: var(--nav-text-hover);
+  }
+
+  .mobile-drawer-content {
+    border-color: var(--nav-dropdown-border);
+    transition: border-color 0.3s ease;
+  }
+
+  .mobile-drawer-link {
+    color: var(--nav-item-title);
+    transition: color 0.3s ease;
+  }
+
+  .mobile-drawer-link:hover {
+    color: var(--nav-text-hover);
+  }
+
+  .mobile-drawer-footer {
+    border-color: var(--nav-dropdown-border);
+    transition: border-color 0.3s ease;
+  }
+
+  /* Custom Glow for Ask AI Button (Already handled by RainbowButton but kept for reference if needed) */
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      opacity: 0.1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+</style>

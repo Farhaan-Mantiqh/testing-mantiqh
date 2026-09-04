@@ -1,0 +1,35 @@
+---
+interface Props {
+  shimmerWidth?: number;
+  className?: string;
+}
+
+const { shimmerWidth = 100, className = "" } = Astro.props;
+---
+
+<span
+  style={`--shiny-width: ${shimmerWidth}px;`}
+  class:list={[
+    "mx-auto max-w-md text-white",
+    "animate-shiny-text bg-[length:var(--shiny-width)_100%] bg-clip-text bg-[position:0_0] bg-no-repeat [transition:background-position_1s_cubic-bezier(.6,.6,0,1)_infinite]",
+    "bg-linear-to-r from-transparent via-white/80 via-50% to-transparent",
+    className,
+  ]}
+>
+  <slot />
+</span>
+
+<style>
+  @keyframes shiny-text {
+    0% {
+      background-position: calc(-100% - var(--shiny-width)) 0;
+    }
+    100% {
+      background-position: calc(100% + var(--shiny-width)) 0;
+    }
+  }
+
+  .animate-shiny-text {
+    animation: shiny-text 3s ease-in-out infinite alternate;
+  }
+</style>

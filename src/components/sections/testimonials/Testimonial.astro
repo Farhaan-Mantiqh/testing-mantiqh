@@ -1,0 +1,269 @@
+---
+import {
+  testimonialsData,
+  testimonialsHeader,
+} from "../../../data/testimonials";
+---
+
+<section class="w-full bg-[#FBFCFD]  ">
+  <div class="max-w-[1440px] mx-auto border-x border-slate-200 border-t border-slate-200 overflow-hidden">
+    <!-- Section Header -->
+    <div class="w-full flex flex-col items-center text-center">
+      <h2
+        class="text-h2 font-medium leading-[120%] text-[#08101C] max-w-2xl pt-10 pb-6 px-6"
+      >
+        {testimonialsHeader}
+      </h2>
+      <div class="w-full h-[1px] bg-slate-200"></div>
+    </div>
+
+    <!-- Main Testimonial Display -->
+    <div
+      class="relative min-h-[340px] flex flex-col items-center justify-center py-10 overflow-hidden"
+    >
+      {
+        testimonialsData.map((t, i) => (
+          <div
+            id={`testimonial-content-${i}`}
+            class:list={[
+              "testimonial-content absolute inset-0 flex flex-col  items-center justify-center text-center transition-opacity duration-500",
+              i === 0
+                ? "opacity-100 pointer-events-auto"
+                : "opacity-0 pointer-events-none",
+            ]}
+          >
+            <div class="mb-8 h-20 md:h-24 flex items-center justify-center">
+              <img
+                src={t.logo}
+                alt={t.brand}
+                class="h-16 md:h-20 max-w-full object-contain"
+              />
+            </div>
+
+            <blockquote class="text-h4 font-normal leading-[130%] text-slate-800 max-w-4xl px-4 ">
+              “{t.quote}”
+            </blockquote>
+
+            <div class="mt-8">
+              <span class="text-body-s font-medium text-slate-900">
+                {t.author}
+              </span>
+              <span class="text-slate-500">, {t.role}</span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Navigation Container (Scrollable on Mobile) -->
+    <div
+      id="testimonial-scroll-container"
+      class="relative overflow-x-auto no-scrollbar -mx-6 px-6 md:mx-0 md:px-0 scroll-smooth"
+    >
+      <div class="min-w-max md:min-w-0 relative">
+        <!-- Dashed Line -->
+        <div
+          class="absolute top-0 left-0 w-full h-[1px] border-t border-[#08101C] border-dashed opacity-20"
+        >
+        </div>
+
+        <!-- Unified Active Indicator Bar -->
+        <div
+          id="active-indicator-bar"
+          class="absolute top-0 left-0 h-[2px] z-10"
+          style="background-color: #387EC1; width: 0;"
+        >
+        </div>
+
+        <!-- Brand Logos Grid -->
+        <div
+          id="testimonial-nav-grid"
+          class="flex md:grid md:grid-cols-5 gap-8 md:gap-0 relative overflow-hidden"
+        >
+          {
+            testimonialsData.map((t, i) => (
+              <button
+                class="testimonial-nav-btn group cursor-pointer relative flex flex-col items-center pt-8 pb-10 transition-all duration-300 flex-shrink-0 w-32 md:w-auto"
+                data-index={i}
+              >
+                <div class="testimonial-logo-container h-14 w-32 flex items-center justify-center grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
+                  <img
+                    src={t.logo}
+                    alt={t.brand}
+                    class="h-10 md:h-12 max-w-full object-contain"
+                    
+                    
+                  />
+                </div>
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+
+  const navButtons = document.querySelectorAll(".testimonial-nav-btn");
+  const contents = document.querySelectorAll(".testimonial-content");
+  const logoContainers = document.querySelectorAll(
+    ".testimonial-logo-container",
+  );
+  const indicatorBar = document.getElementById("active-indicator-bar");
+  const navGrid = document.getElementById("testimonial-nav-grid");
+  const scrollContainer = document.getElementById(
+    "testimonial-scroll-container",
+  );
+
+  let currentIndex = 0;
+  let isAnimating = false;
+
+  function centerButton(index: number) {
+    if (!scrollContainer || !navButtons[index]) return;
+
+    const btn = navButtons[index] as HTMLElement;
+    const containerWidth = scrollContainer.offsetWidth;
+    const btnWidth = btn.offsetWidth;
+    const btnOffsetLeft = btn.offsetLeft;
+
+    const targetScroll = btnOffsetLeft - containerWidth / 2 + btnWidth / 2;
+
+    gsap.to(scrollContainer, {
+      scrollLeft: targetScroll,
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
+  }
+
+  function updateIndicator(index: number, immediate = false) {
+    if (!indicatorBar || !navButtons[index] || !navGrid) return;
+
+    const targetBtn = navButtons[index];
+    const btnRect = targetBtn.getBoundingClientRect();
+    const gridRect = navGrid.getBoundingClientRect();
+
+    const targetX = btnRect.left - gridRect.left;
+    const targetWidth = btnRect.width;
+
+    gsap.to(indicatorBar, {
+      x: targetX,
+      width: targetWidth,
+      duration: immediate ? 0 : 0.5,
+      ease: "power2.inOut",
+    });
+  }
+
+  function switchTestimonial(index: number) {
+    if (index === currentIndex || isAnimating || !contents[index]) return;
+    isAnimating = true;
+
+    const prevContent = contents[currentIndex];
+    const nextContent = contents[index];
+    const direction = index > currentIndex ? 1 : -1;
+
+    // Physical "Push" Animation using Timeline
+    const tl = gsap.timeline({
+      onComplete: () => {
+        isAnimating = false;
+        if (prevContent) {
+          gsap.set(prevContent, {
+            opacity: 0,
+            visibility: "hidden",
+            xPercent: 0,
+            pointerEvents: "none",
+          });
+        }
+      },
+    });
+
+    if (prevContent) {
+      tl.to(
+        prevContent,
+        {
+          xPercent: -100 * direction,
+          duration: 0.6,
+          ease: "power2.inOut",
+        },
+        0,
+      );
+    }
+
+    if (nextContent) {
+      // Prepare next content
+      gsap.set(nextContent, {
+        opacity: 1,
+        visibility: "visible",
+        pointerEvents: "auto",
+        xPercent: 100 * direction,
+      });
+
+      tl.to(
+        nextContent,
+        {
+          xPercent: 0,
+          duration: 0.6,
+          ease: "power2.inOut",
+        },
+        0,
+      );
+    } else {
+      isAnimating = false;
+    }
+
+    // Update Indicators
+    updateIndicator(index);
+    centerButton(index);
+
+    // Update Logo opacity
+    if (logoContainers[currentIndex])
+      logoContainers[currentIndex].classList.add("grayscale", "opacity-40");
+    if (logoContainers[index])
+      logoContainers[index].classList.remove("grayscale", "opacity-40");
+
+    currentIndex = index;
+  }
+
+  navButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const indexAttr = btn.getAttribute("data-index");
+      if (indexAttr !== null) {
+        const index = parseInt(indexAttr);
+        switchTestimonial(index);
+      }
+    });
+  });
+
+  // Handle Resize
+  window.addEventListener("resize", () => {
+    updateIndicator(currentIndex, true);
+  });
+
+  // Initialize
+  window.addEventListener("load", () => {
+    updateIndicator(0, true);
+    if (logoContainers[0]) {
+      logoContainers[0].classList.remove("grayscale", "opacity-40");
+    }
+  });
+
+  // Initial run for SSR/Hydration if load event already fired
+  if (document.readyState === "complete") {
+    updateIndicator(0, true);
+    if (logoContainers[0]) {
+      logoContainers[0].classList.remove("grayscale", "opacity-40");
+    }
+  }
+</script>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

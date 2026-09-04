@@ -1,0 +1,223 @@
+---
+import MetallicPaint from "../visuals/MetallicPaint.astro";
+
+interface Props {
+  className?: string;
+  variant?: "default" | "outline" | "hollowtext" | "hollowtext-frosted";
+  size?: "default" | "sm" | "lg" | "icon";
+  useSilver?: boolean;
+}
+
+const { className = "", variant = "default", size = "default", useSilver = false } = Astro.props;
+
+const variantStyles = {
+  default:
+    "border-0 bg-[linear-gradient(#121213,#121213),linear-gradient(#121213_50%,rgba(18,18,19,0.6)_80%,rgba(18,18,19,0)),linear-gradient(90deg,var(--color-1),var(--color-2),var(--color-3),var(--color-4),var(--color-5),var(--color-1))] bg-[length:200%] text-white [background-clip:padding-box,border-box,border-box] [background-origin:border-box] [border:calc(0.085rem)_solid_transparent] before:absolute before:bottom-[-20%] before:left-1/2 before:z-0 before:h-1/5 before:w-3/5 before:-translate-x-1/2 before:animate-rainbow before:bg-[linear-gradient(90deg,var(--color-1),var(--color-2),var(--color-3),var(--color-4),var(--color-5),var(--color-1))] before:bg-[length:200%] before:[filter:blur(0.75rem)]",
+  outline:
+    "border border-white/10 bg-[linear-gradient(rgba(23,25,37,0.6),rgba(23,25,37,0.6)),linear-gradient(rgba(255,255,255,0.05),transparent),linear-gradient(90deg,var(--color-1),var(--color-2),var(--color-3),var(--color-4),var(--color-5),var(--color-1))] bg-[length:200%] text-white [background-clip:padding-box,border-box,border-box] [background-origin:border-box] before:absolute before:bottom-[-20%] before:left-1/2 before:z-0 before:h-1/5 before:w-3/5 before:-translate-x-1/2 before:animate-rainbow before:bg-[linear-gradient(90deg,var(--color-1),var(--color-2),var(--color-3),var(--color-4),var(--color-5),var(--color-1))] before:bg-[length:200%] before:[filter:blur(0.75rem)] backdrop-blur-2xl",
+  hollowtext:
+    `border border-white/5 bg-[#171925] hover:bg-[#1f2235] hover:border-white/10 transition-colors duration-300 before:absolute before:bottom-[-20%] before:left-1/2 before:z-0 before:h-1/5 before:w-3/5 before:-translate-x-1/2 before:animate-rainbow before:bg-[linear-gradient(90deg,${useSilver ? "var(--silver-1),var(--silver-2),var(--silver-3),var(--silver-4),var(--silver-5),var(--silver-1)" : "var(--color-1),var(--color-2),var(--color-3),var(--color-4),var(--color-5),var(--color-1)"})] before:bg-[length:200%] before:[filter:blur(0.75rem)]`,
+  "hollowtext-frosted":
+    "border border-white/10 bg-[#171925]/60 before:absolute before:bottom-[-20%] before:left-1/2 before:z-0 before:h-1/5 before:w-3/5 before:-translate-x-1/2 before:animate-rainbow before:bg-[linear-gradient(135deg,var(--silver-1),var(--silver-2),var(--silver-3),var(--silver-4),var(--silver-5))] before:bg-[length:200%] before:[filter:blur(0.75rem)] backdrop-blur-3xl",
+};
+
+const sizeStyles = {
+  default: "h-[42px] px-12 py-2.5",
+  sm: "h-8 rounded-xl px-6 text-xs",
+  lg: "h-11 rounded-xl px-12",
+  icon: "size-9",
+};
+---
+
+<button
+  class:list={[
+    "rainbow-button relative cursor-pointer group transition-all animate-rainbow inline-flex items-center justify-center gap-2 shrink-0 rounded-lg outline-none focus:outline-none focus-visible:outline-none aria-invalid:border-destructive text-sm font-medium whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0",
+    variantStyles[variant],
+    sizeStyles[size],
+    className,
+  ]}
+>
+  <div class="relative flex items-center gap-2 z-10 w-full h-full justify-center">
+    {variant === "hollowtext-frosted" ? (
+      <div class="metallic-stencil-container relative w-full h-full flex items-center justify-center gap-2 overflow-hidden pointer-events-none">
+        
+        <!-- The Metallic Shader (Hidden by default, will be revealed by the mask) -->
+        <div class="shader-clipping-wrapper absolute inset-0 z-0">
+          <div class="shader-inner absolute inset-[-20px]">
+            <MetallicPaint 
+              imageSrc="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==" 
+              brightness={2.0}
+              contrast={1.8}
+              liquid={1.0}
+              speed={0.2}
+              lightColor="#ffffff"
+              darkColor="#121214"
+              scale={4}
+            />
+          </div>
+        </div>
+        
+        <!-- The Original Content (For Layout and Sizing) 
+             We make this transparent so it doesn't block the shader underneath.
+        -->
+        <div class="stencil-source relative z-10 flex items-center justify-center gap-2 text-transparent">
+           <slot />
+        </div>
+      </div>
+    ) : (
+      <div
+        class:list={[
+          "relative flex items-center gap-2",
+          variant === "hollowtext" ? (useSilver ? "animate-rainbow bg-silver-text-gradient bg-[length:200%] bg-clip-text text-transparent" : "animate-rainbow bg-rainbow-gradient bg-[length:200%] bg-clip-text text-transparent") : "",
+        ]}
+      >
+        <slot />
+      </div>
+    )}
+  </div>
+</button>
+
+<style>
+  :root {
+    --color-1: #40c0ff;
+    --color-2: #5ed4ff;
+    --color-3: #80e0ff;
+    --color-4: #a0f0ff;
+    --color-5: #ffffff;
+    --silver-1: #ffffff;
+    --silver-2: #f8fafc;
+    --silver-3: #cbd5e1;
+    --silver-4: #94a3b8;
+    --silver-5: #ffffff;
+  }
+
+  @keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+
+  /* 
+    The Definite Cutout Strategy:
+    1. shader-clipping-wrapper uses background-clip: text.
+    2. We set its background-image to be the MetallicPaint canvas via JS.
+    3. We clone the stencil-source content into the shader-clipping-wrapper 
+       to provide the text shapes for the clip.
+  */
+  .metallic-stencil-container {
+    isolation: isolate;
+  }
+
+  .shader-clipping-wrapper {
+    /* Standard mask-clip logic doesn't work on complex children, 
+       so we use -webkit-background-clip: text on a container 
+       that contains a copy of the text. */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* We make the shader-inner the 'background' of the clip-wrapper */
+  .shader-inner {
+    /* This ensures the shader follows the clip */
+    pointer-events: none;
+  }
+
+  .stencil-source {
+    /* Color: transparent ensures the shader is the only thing providing color */
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+
+  /* Ensure Star and other SVG icons in the slot are also transparent */
+  .stencil-source :global(svg),
+  .stencil-source :global(span) {
+    color: transparent !important;
+    fill: transparent !important;
+  }
+
+  .animate-rainbow {
+    animation: rainbow 3s linear infinite;
+  }
+
+  .rainbow-button {
+    overflow: visible;
+  }
+
+  .bg-rainbow-gradient {
+    background-image: linear-gradient(90deg, var(--color-1), var(--color-2), var(--color-3), var(--color-4), var(--color-5), var(--color-1));
+  }
+
+  .bg-silver-text-gradient {
+    background-image: linear-gradient(90deg, var(--silver-1), var(--silver-2), var(--silver-3), var(--silver-4), var(--silver-5), var(--silver-1));
+  }
+
+  .rainbow-button::before {
+    border-radius: inherit;
+    opacity: 0.8;
+  }
+
+  /* Remove default browser focus outlines and Firefox inner dotted rings */
+  .rainbow-button,
+  .rainbow-button:focus,
+  .rainbow-button:active,
+  .rainbow-button:focus-visible,
+  .rainbow-button *,
+  .rainbow-button *:focus,
+  .rainbow-button *:active {
+    outline: none !important;
+    outline-style: none !important;
+    box-shadow: none !important;
+    --tw-ring-offset-shadow: 0 0 #0000 !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+  }
+
+  .rainbow-button::-moz-focus-inner,
+  .rainbow-button *::-moz-focus-inner {
+    border: 0 !important;
+    padding: 0 !important;
+    outline: none !important;
+  }
+</style>
+
+<script>
+  // To handle the Star icon and text perfectly, we use a custom initialization
+  function initMetallicCutouts() {
+    const containers = document.querySelectorAll('.metallic-stencil-container');
+    
+    containers.forEach(container => {
+      const clipWrapper = container.querySelector('.shader-clipping-wrapper') as HTMLElement;
+      const stencilSource = container.querySelector('.stencil-source') as HTMLElement;
+      
+      if (!clipWrapper || !stencilSource) return;
+
+      // We clone the text and icons into the clip wrapper. 
+      // Because the clip wrapper has background-clip: text, it will 
+      // restrict the visibility of the shader inside it to these shapes.
+      
+      // Clear existing clones if any
+      const existingClones = clipWrapper.querySelectorAll('.stencil-clone');
+      existingClones.forEach(c => c.remove());
+
+      const clone = stencilSource.cloneNode(true) as HTMLElement;
+      clone.classList.remove('stencil-source', 'text-transparent');
+      clone.classList.add('stencil-clone');
+      
+      // Make the clone OPAQUE black (this provides the 'shape' for the clip)
+      clone.style.color = 'black';
+      clone.style.webkitTextFillColor = 'black';
+      
+      // Force SVGs in the clone to be black
+      const svgs = clone.querySelectorAll('svg');
+      svgs.forEach(svg => {
+        svg.style.fill = 'black';
+        svg.style.color = 'black';
+      });
+
+      clipWrapper.appendChild(clone);
+    });
+  }
+
+  document.addEventListener('astro:page-load', initMetallicCutouts);
+  initMetallicCutouts();
+</script>

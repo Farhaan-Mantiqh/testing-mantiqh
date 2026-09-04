@@ -1,0 +1,136 @@
+---
+import ChevronRight from "../../ui/ChevronRight.astro";
+const { solution } = Astro.props;
+---
+
+<div class="max-w-[1440px] mx-auto border-x border-slate-300/40 bg-[#171925]">
+  <section
+    id="cta-section"
+    class="cta-hover-group bg-[#10121A] relative overflow-hidden"
+  >
+    <!-- Background SVG — V-shaped chevron lines that pop in on hover -->
+    <div
+      class="absolute inset-0 z-0 pointer-events-none flex justify-center items-end"
+    >
+      <svg
+        class="cta-bg-svg w-full h-auto max-w-[1184px] flex-shrink-0"
+        viewBox="0 0 1184 320"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMax meet"
+      >
+        <defs>
+          <linearGradient
+            id="paint_cta_line"
+            x1="0"
+            y1="320"
+            x2="1184"
+            y2="0"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#AAB1BA"></stop>
+            <stop offset="1" stop-color="#2F2F2F"></stop>
+          </linearGradient>
+        </defs>
+
+        <!-- Outer V-line -->
+        <path
+          class="cta-v-line cta-v-outer"
+          d="M 79 320 L 575.125 26 Q 592 16 608.875 26 L 1105 320"
+          stroke="url(#paint_cta_line)"
+          stroke-width="0.8"
+          fill="none"></path>
+        <!-- Middle V-line -->
+        <path
+          class="cta-v-line cta-v-mid"
+          d="M 165 320 L 574.5 86 Q 592 76 609.5 86 L 1019 320"
+          stroke="url(#paint_cta_line)"
+          stroke-width="0.8"
+          fill="none"></path>
+        <!-- Inner V-line -->
+        <path
+          class="cta-v-line cta-v-inner"
+          d="M 320 320 L 574.34 176 Q 592 166 609.66 176 L 864 320"
+          stroke="url(#paint_cta_line)"
+          stroke-width="0.8"
+          fill="none"></path>
+      </svg>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-10">
+      <div
+        class="flex flex-col items-center justify-center text-center py-10 md:py-14"
+      >
+        <h2 class="text-h2 max-w-4xl font-medium leading-[1.05] text-white">
+          {solution.cta?.title}
+        </h2>
+
+        <p
+          class="mt-6 max-w-4xl text-body-m font-normal leading-relaxed text-white/80"
+        >
+          {solution.cta?.description}
+        </p>
+
+        <a
+          href={solution.cta?.buttonLink}
+          class="mt-8 inline-flex items-center justify-center gap-2 rounded-lg bg-[#387EC1] px-5 py-3 text-cta-primary font-medium text-white transition-all duration-300 hover:bg-[#3270AD] group"
+        >
+          <span>{solution.cta?.buttonText}</span>
+          <ChevronRight
+            className="text-white transition-transform duration-300 group-hover:translate-x-1"
+          />
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  /* ── SVG container: always visible, no separate fade ── */
+  .cta-bg-svg {
+    opacity: 1;
+  }
+
+  /* ── Individual lines: collapsed at center (doors closed) ── */
+  .cta-v-line {
+    transform: scaleX(0);
+    opacity: 0;
+    transition:
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.3s ease;
+  }
+
+  /* Each line opens from its own apex (top center of the V) */
+  .cta-v-outer {
+    transform-origin: 592px 16px;
+    transition-delay: 0s;
+  }
+
+  .cta-v-mid {
+    transform-origin: 592px 76px;
+    transition-delay: 0.12s;
+  }
+
+  .cta-v-inner {
+    transform-origin: 592px 166px;
+    transition-delay: 0.24s;
+  }
+
+  /* ── Hover: open the doors ── */
+  .cta-hover-group:hover .cta-v-line {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  /* ── Hover-out: close in reverse (inner first) ── */
+  .cta-hover-group:not(:hover) .cta-v-inner {
+    transition-delay: 0s;
+  }
+  .cta-hover-group:not(:hover) .cta-v-mid {
+    transition-delay: 0.08s;
+  }
+  .cta-hover-group:not(:hover) .cta-v-outer {
+    transition-delay: 0.16s;
+  }
+</style>

@@ -1,0 +1,44 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+import Hero from "../../components/sections/solutions/hero.astro";
+import WhyItMatters from "../../components/sections/solutions/whyItMatters.astro";
+import Challenges from "../../components/sections/solutions/challenges.astro";
+import Capabilities from "../../components/sections/solutions/capabilities.astro";
+import Innovation from "../../components/sections/solutions/innovation.astro";
+// import Resources from "../../components/sections/solutions/resources.astro";
+import FAQ from "../../components/sections/solutions/FAQ.astro";
+import CTA from "../../components/sections/solutions/CTA.astro";
+import SolutionScripts from "../../components/sections/solutions/SolutionScripts.astro";
+
+import { solutions } from "../../data/solutions/index";
+
+const slugParam = Astro.params.slug;
+const slug = Array.isArray(slugParam) ? slugParam.join("/") : slugParam || "";
+
+const solution = solutions.find((item) => item.slug === slug);
+
+if (!solution) {
+  throw new Error(`Solution not found: ${slug}`);
+}
+---
+
+<MainLayout title="Solution">
+  <Hero solution={solution} />
+
+  <WhyItMatters solution={solution} />
+
+  <Challenges solution={solution} />
+
+  <Capabilities solution={solution} />
+
+  <Innovation solution={solution} />
+
+  {/* <Resources solution={solution} /> */}
+
+  <FAQ solution={solution} />
+
+  <CTA solution={solution} />
+
+  <SolutionScripts />
+</MainLayout>

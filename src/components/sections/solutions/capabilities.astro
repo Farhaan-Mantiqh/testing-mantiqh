@@ -1,0 +1,1164 @@
+---
+const { solution } = Astro.props;
+
+import {
+  BrainCircuit,
+  ChartColumnIncreasing,
+  MessageSquare,
+  Network,
+  Sparkles,
+  Workflow,
+} from "lucide-react";
+import ChallengesIcon from "./ChallengesIcon";
+---
+
+<!-- CAPABILITIES SECTION -->
+<div class="bg-white">
+  <section
+    class="bg-white flex flex-col grow max-w-[1440px] mx-auto w-full border-x border-slate-200/20 relative"
+  >
+    <div class="max-w-[1440px] mx-auto px-6 lg:px-10 py-10">
+      <h2
+        class="text-h2 font-medium leading-tight text-[#111827]"
+      >
+        {solution.capabilities?.title}
+      </h2>
+
+      <div class="mt-10 space-y-4">
+        <!-- ROW 1 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-8 gap-4">
+          <!-- BIG -->
+          <div
+            class="group lg:col-span-4 border border-[#D9DDE3] bg-white p-6 md:p-8 min-h-[400px] md:min-h-[500px] flex flex-col cursor-pointer transition-all duration-300 hover:bg-[#171925] overflow-hidden relative"
+          >
+            <div class="relative z-10">
+              <ChallengesIcon
+  icon={solution.capabilities.cards[0].icon}
+  className="text-[#387EC1] transition-colors duration-300 group-hover:text-[#E8E8E9]"
+/>
+            </div>
+
+            <h3
+              class="mt-6 text-h5 font-normal text-[#111827] transition-colors duration-300 group-hover:text-[#E8E8E9] relative z-10"
+            >
+              {solution.capabilities?.cards?.[0]?.title}
+            </h3>
+
+            <p
+              class="mt-4 w-full text-[#6B7280] text-body-s font-normal transition-colors duration-300 group-hover:text-[#E8E8E9] relative z-10"
+            >
+              {solution.capabilities?.cards?.[0]?.description}
+            </p>
+
+            <!-- IMAGE SPACE - Inline SVG with animated bubbles -->
+            {
+              solution.capabilities?.cards?.[0]?.image && (
+                <div
+                  class="mt-auto -mx-6 md:-mx-8 -mb-6 md:-mb-8 overflow-hidden"
+                  style="aspect-ratio: 504 / 250;"
+                >
+                  {/* AI/ML — isometric cubes */}
+                  {solution.capabilities.cards[0].image.startsWith('/') && (
+                    <svg width="100%" height="100%" viewBox="0 0 504 400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+                      <g clip-path="url(#cap-clip0)">
+                        <circle cx="252" cy="369" r="199.9" stroke="#AAB1BA" stroke-width="0.2" class="cap-ring"/>
+                        <circle cx="252" cy="369" r="149.9" stroke="#AAB1BA" stroke-width="0.2" stroke-dasharray="4 4" class="cap-ring"/>
+                        <circle cx="252" cy="369" r="99.9" stroke="#AAB1BA" stroke-width="0.2" class="cap-ring"/>
+                        <path d="M252.752 247.615V322.384L188 359.77L123.248 322.384V247.615L188 210.229L252.752 247.615Z" fill="#4EAEF9" stroke="#171925" stroke-width="0.4"/>
+                        <line x1="123.697" y1="247.883" x2="188.095" y2="282.574" stroke="#171925" stroke-width="0.4"/>
+                        <line x1="123.697" y1="257.883" x2="188.095" y2="292.574" stroke="#171925" stroke-width="0.4"/>
+                        <line x1="187.8" y1="359.25" x2="187.8" y2="282" stroke="#171925" stroke-width="0.4"/>
+                        <line y1="-0.2" x2="73.8093" y2="-0.2" transform="matrix(-0.884035 0.467421 0.467421 0.884035 252.5 248.25)" stroke="#171925" stroke-width="0.4"/>
+                        <line y1="-0.2" x2="73.8093" y2="-0.2" transform="matrix(-0.884035 0.467421 0.467421 0.884035 252.5 258.25)" stroke="#171925" stroke-width="0.4"/>
+                        <path d="M381.752 247.615V322.384L317 359.77L252.248 322.384V247.615L317 210.229L381.752 247.615Z" fill="#EDF7FE" stroke="#171925" stroke-width="0.4"/>
+                        <line x1="252.697" y1="247.883" x2="317.095" y2="282.574" stroke="#171925" stroke-width="0.4"/>
+                        <line x1="252.697" y1="257.883" x2="317.095" y2="292.574" stroke="#171925" stroke-width="0.4"/>
+                        <line x1="316.8" y1="359.25" x2="316.8" y2="282" stroke="#171925" stroke-width="0.4"/>
+                        <line y1="-0.2" x2="73.8093" y2="-0.2" transform="matrix(-0.884035 0.467421 0.467421 0.884035 381.5 248.25)" stroke="#171925" stroke-width="0.4"/>
+                        <line y1="-0.2" x2="73.8093" y2="-0.2" transform="matrix(-0.884035 0.467421 0.467421 0.884035 381.5 258.25)" stroke="#171925" stroke-width="0.4"/>
+                        <circle cx="102.86" cy="204.353" r="4" class="cap-bubble-blue design-bubble-a"/>
+                        <circle cx="366.539" cy="198.54" r="4" class="cap-bubble-blue design-bubble-b"/>
+                        <circle cx="42.3525" cy="325.353" r="4" class="cap-bubble-dark design-bubble-b"/>
+                        <circle cx="442.539" cy="354.282" r="4" class="cap-bubble-dark design-bubble-c"/>
+                        <circle cx="59.0145" cy="259.702" r="3" class="cap-bubble-gray design-bubble-c"/>
+                        <circle cx="415.978" cy="248.956" r="3" class="cap-bubble-gray design-bubble-a"/>
+                        <circle cx="64.4807" cy="352.909" r="2" class="cap-bubble-blue design-bubble-a"/>
+                        <circle cx="472.644" cy="335.77" r="2" class="cap-bubble-blue design-bubble-c"/>
+                        <circle cx="251.77" cy="189.77" r="2" class="cap-bubble-gray design-bubble-b"/>
+                        <circle cx="79.009" cy="323.28" r="2" class="cap-bubble-blue design-bubble-b"/>
+                        <circle cx="419.98" cy="306.618" r="2" class="cap-bubble-blue design-bubble-a"/>
+                      </g>
+                      <defs>
+                        <clipPath id="cap-clip0">
+                          <rect width="504" height="400" rx="4" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  )}
+                  {/* ECM — Document Management: single solid-blue card + orbital arcs */}
+                  {solution.capabilities.cards[0].image === 'ecm-docs' && (
+                    <svg width="100%" height="100%" viewBox="0 0 504 400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+                      <g clip-path="url(#cap-clip0-ecm)">
+                        <g transform="translate(25.2, 40) scale(0.9)">
+                          <!-- Background rings arching over the card -->
+                          <circle cx="252" cy="340" r="195" stroke="#AAB1BA" stroke-width="0.3" class="cap-ring"/>
+                          <circle cx="252" cy="340" r="145" stroke="#AAB1BA" stroke-width="0.3" stroke-dasharray="4 4" class="cap-ring"/>
+                          <circle cx="252" cy="340" r="95" stroke="#AAB1BA" stroke-width="0.3" class="cap-ring"/>
+                          
+                          <!-- Solid blue document card -->
+                          <rect x="152" y="170" width="200" height="230" rx="6" fill="#4EAEF9"/>
+                          
+                          <!-- Row 1 -->
+                          <rect x="172" y="195" width="20" height="20" rx="4" fill="white"/>
+                          <rect x="202" y="198" width="130" height="6" rx="3" fill="white" fill-opacity="1"/>
+                          <rect x="202" y="212" width="90" height="6" rx="3" fill="white" fill-opacity="0.8"/>
+                          <rect x="172" y="230" width="160" height="6" rx="3" fill="white" fill-opacity="0.5"/>
+                          <rect x="172" y="244" width="120" height="6" rx="3" fill="white" fill-opacity="0.3"/>
+                          
+                          <!-- Row 2 -->
+                          <rect x="172" y="280" width="20" height="20" rx="4" fill="white"/>
+                          <rect x="202" y="283" width="130" height="6" rx="3" fill="white" fill-opacity="1"/>
+                          <rect x="202" y="297" width="90" height="6" rx="3" fill="white" fill-opacity="0.8"/>
+                          <rect x="172" y="315" width="160" height="6" rx="3" fill="white" fill-opacity="0.5"/>
+                          <rect x="172" y="329" width="120" height="6" rx="3" fill="white" fill-opacity="0.3"/>
+  
+                          <!-- Animated dots -->
+                          <circle cx="102" cy="204" r="4" class="cap-bubble-blue design-bubble-a"/>
+                          <circle cx="396" cy="198" r="4" class="cap-bubble-blue design-bubble-b"/>
+                          <circle cx="42" cy="325" r="4" class="cap-bubble-dark design-bubble-b"/>
+                          <circle cx="442" cy="354" r="4" class="cap-bubble-dark design-bubble-c"/>
+                          <circle cx="59" cy="259" r="3" class="cap-bubble-gray design-bubble-c"/>
+                          <circle cx="415" cy="248" r="3" class="cap-bubble-gray design-bubble-a"/>
+                          <circle cx="64" cy="352" r="2" class="cap-bubble-blue design-bubble-a"/>
+                          <circle cx="452" cy="315" r="2" class="cap-bubble-blue design-bubble-c"/>
+                          <circle cx="251" cy="160" r="2" class="cap-bubble-gray design-bubble-b"/>
+                          <circle cx="119" cy="323" r="2" class="cap-bubble-blue design-bubble-b"/>
+                          <circle cx="389" cy="306" r="2" class="cap-bubble-blue design-bubble-a"/>
+                        </g>
+                      </g>
+                      <defs>
+                        <clipPath id="cap-clip0-ecm">
+                          <rect width="504" height="400" rx="4" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  )}
+                  {/* PD — Web App Dev / Intelligent Automation */}
+                  {solution.capabilities.cards[0].image === 'pd-web' && (
+                    <svg width="100%" height="100%" viewBox="0 0 504 400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+                      <g clip-path="url(#cap-clip-pd-web)">
+                        <g transform="translate(25.2, 40) scale(0.9)">
+                          <!-- Background rings arching over the card -->
+                          <circle cx="252" cy="340" r="195" stroke="#AAB1BA" stroke-width="0.3" class="cap-ring"/>
+                          <circle cx="252" cy="340" r="145" stroke="#AAB1BA" stroke-width="0.3" stroke-dasharray="4 4" class="cap-ring"/>
+                          
+                          <g transform="translate(40, 48) scale(0.85)">
+                            <!-- Light Blue Back Window -->
+                            <rect x="80" y="200" width="240" height="190" rx="4" fill="#D2E8FF"/>
+                            <rect x="80" y="200" width="240" height="14" rx="4" fill="#BDE0FF"/> <!-- Subtle header -->
+                            
+                            <!-- Window Content -->
+                            <rect x="100" y="235" width="20" height="20" rx="4" fill="#4EAEF9"/>
+                            <rect x="130" y="238" width="120" height="4" rx="2" fill="#4EAEF9" fill-opacity="1"/>
+                            <rect x="130" y="248" width="90" height="4" rx="2" fill="#4EAEF9" fill-opacity="0.8"/>
+
+                            <rect x="100" y="280" width="20" height="20" rx="4" fill="#4EAEF9"/>
+                            <rect x="130" y="283" width="140" height="4" rx="2" fill="#4EAEF9" fill-opacity="1"/>
+                            <rect x="130" y="293" width="110" height="4" rx="2" fill="#4EAEF9" fill-opacity="0.8"/>
+
+                            <!-- Solid Blue Front Window -->
+                            <rect x="160" y="160" width="260" height="200" rx="4" fill="#4EAEF9"/>
+                            
+                            <!-- Top Header Controls -->
+                            <circle cx="175" cy="172" r="3" fill="white"/>
+                            <circle cx="185" cy="172" r="3" fill="white"/>
+                            <circle cx="195" cy="172" r="3" fill="white"/>
+                            
+                            <rect x="230" y="170" width="120" height="4" rx="2" fill="white"/>
+                            <rect x="390" y="170" width="20" height="4" rx="2" fill="white"/>
+
+                            <!-- Center Code Symbol < > -->
+                            <path d="M 265 240 L 235 265 L 265 290" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <path d="M 315 240 L 345 265 L 315 290" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                          </g>
+
+                          <!-- Animated dots -->
+                          <circle cx="102" cy="204" r="4" class="cap-bubble-blue design-bubble-a"/>
+                          <circle cx="396" cy="198" r="4" class="cap-bubble-blue design-bubble-b"/>
+                          <circle cx="42" cy="325" r="4" class="cap-bubble-dark design-bubble-b"/>
+                          <circle cx="442" cy="354" r="4" class="cap-bubble-dark design-bubble-c"/>
+                          <circle cx="59" cy="259" r="3" class="cap-bubble-gray design-bubble-c"/>
+                          <circle cx="415" cy="248" r="3" class="cap-bubble-gray design-bubble-a"/>
+                          <circle cx="64" cy="352" r="2" class="cap-bubble-blue design-bubble-a"/>
+                        </g>
+                      </g>
+                      <defs>
+                        <clipPath id="cap-clip-pd-web">
+                          <rect width="504" height="400" rx="4" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  )}
+                  {/* DESIGN — UX Research */}
+                  {solution.capabilities.cards[0].image === 'design-ux' && (
+                    <svg width="100%" height="100%" viewBox="0 0 504 400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+                      <g clip-path="url(#cap-clip-design-ux)">
+                        <g transform="translate(37.8, 60) scale(0.85)">
+                          <!-- Background large arc -->
+                          <circle cx="252" cy="340" r="195" stroke="#AAB1BA" stroke-width="0.3" class="cap-ring"/>
+                          <circle cx="252" cy="340" r="145" stroke="#AAB1BA" stroke-width="0.3" stroke-dasharray="4 4" class="cap-ring"/>
+
+                          <!-- Dotted connector lines -->
+                          <path d="M 152 260 L 152 230 L 252 230 L 352 230 L 352 260" stroke="#AAB1BA" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+
+                          <!-- Left Diamond -->
+                          <path d="M 152 260 L 202 310 L 152 360 L 102 310 Z" fill="#E6F4FF" stroke="#AAB1BA" stroke-width="1"/>
+                          <!-- Gear Icon inside Left Diamond -->
+                          <g transform="translate(152, 310) scale(1.2) translate(-12, -12)">
+                            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" fill="none" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="12" r="3" fill="none" stroke="#6B7280" stroke-width="1.5" />
+                          </g>
+
+                          <!-- Right Diamond -->
+                          <path d="M 352 260 L 402 310 L 352 360 L 302 310 Z" fill="#D2E8FF" stroke="#AAB1BA" stroke-width="1"/>
+                          <!-- Shield Check Icon inside Right Diamond -->
+                          <g transform="translate(352, 310) scale(1.2) translate(-12, -12)">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 12l2 2 4-4" fill="none" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          </g>
+
+                          <!-- Center Solid Blue Diamond -->
+                          <path d="M 252 160 L 322 230 L 252 300 L 182 230 Z" fill="#4EAEF9"/>
+                          <!-- User Icon inside Center Diamond -->
+                          <g transform="translate(252, 230) scale(1.8) translate(-12, -12)">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="7" r="4" fill="none" stroke="white" stroke-width="1.5"/>
+                          </g>
+
+                          <!-- Animated dots -->
+                          <circle cx="102" cy="204" r="4" class="cap-bubble-blue design-bubble-a"/>
+                          <circle cx="396" cy="198" r="4" class="cap-bubble-blue design-bubble-b"/>
+                          <circle cx="42" cy="325" r="4" class="cap-bubble-dark design-bubble-b"/>
+                          <circle cx="442" cy="354" r="4" class="cap-bubble-dark design-bubble-c"/>
+                          <circle cx="59" cy="259" r="3" class="cap-bubble-gray design-bubble-c"/>
+                          <circle cx="415" cy="248" r="3" class="cap-bubble-gray design-bubble-a"/>
+                          <circle cx="64" cy="352" r="2" class="cap-bubble-blue design-bubble-a"/>
+                        </g>
+                      </g>
+                      <defs>
+                        <clipPath id="cap-clip-design-ux">
+                          <rect width="504" height="400" rx="4" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  )}
+                  {/* DATA ANALYTICS — Business Intelligence */}
+                                    {solution.capabilities.cards[0].image === 'da-bi' && (
+                    <svg width="100%" height="100%" viewBox="0 0 504 400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+                      <g clip-path="url(#cap-clip-da-bi)">
+                        <g transform="translate(0, 158)">
+<circle cx="252" cy="211" r="199.9" stroke="#AAB1BA" stroke-width="0.2"/>
+<circle cx="252" cy="211" r="149.9" stroke="#AAB1BA" stroke-width="0.2" stroke-dasharray="4 4"/>
+<circle cx="252" cy="211" r="99.9" stroke="#AAB1BA" stroke-width="0.2"/>
+<circle cx="102.86" cy="46.3525" r="4" transform="rotate(26.1201 102.86 46.3525)" fill="#4EAEF9" class="design-bubble-a"/>
+<circle cx="366.539" cy="40.54" r="4" transform="rotate(-56.7039 366.539 40.54)" fill="#4EAEF9" class="design-bubble-b"/>
+<circle cx="42.3525" cy="167.353" r="4" transform="rotate(26.1201 42.3525 167.353)" fill="#171925" class="design-bubble-c"/>
+<circle cx="442.539" cy="196.282" r="4" transform="rotate(-56.7039 442.539 196.282)" fill="#171925" class="design-bubble-a"/>
+<circle cx="59.0145" cy="101.702" r="3" transform="rotate(26.1201 59.0145 101.702)" fill="#64656D" class="design-bubble-b"/>
+<circle cx="415.978" cy="90.9558" r="3" transform="rotate(-56.7039 415.978 90.9558)" fill="#64656D" class="design-bubble-c"/>
+<circle cx="64.4807" cy="194.909" r="2" transform="rotate(26.1201 64.4807 194.909)" fill="#4EAEF9" class="design-bubble-a"/>
+<circle cx="472.644" cy="177.77" r="2" transform="rotate(-56.7039 472.644 177.77)" fill="#4EAEF9" class="design-bubble-b"/>
+<circle cx="251.77" cy="31.77" r="2" transform="rotate(-56.7039 251.77 31.77)" fill="#64656D" class="design-bubble-c"/>
+<circle cx="79.009" cy="165.28" r="2" transform="rotate(26.1201 79.009 165.28)" fill="#4EAEF9" class="design-bubble-a"/>
+<circle cx="419.98" cy="148.618" r="2" transform="rotate(-56.7039 419.98 148.618)" fill="#4EAEF9" class="design-bubble-b"/>
+<rect x="86.2" y="55.2" width="99.6" height="99.6" rx="9.8" fill="#EDF7FE" stroke="#AAB1BA" stroke-width="0.4"/>
+<rect x="318.2" y="55.2" width="99.6" height="99.6" rx="9.8" fill="#AEDAFC" stroke="#AAB1BA" stroke-width="0.4"/>
+<rect x="94" y="63" width="13" height="13" rx="2" fill="#4EAEF9"/>
+<rect x="326" y="63" width="13" height="13" rx="2" fill="white"/>
+<rect x="94" y="84" width="81" height="4" rx="2" fill="#4EAEF9"/>
+<rect x="326" y="84" width="81" height="4" rx="2" fill="white"/>
+<rect x="94" y="121" width="81" height="4" rx="2" fill="#4EAEF9"/>
+<rect x="326" y="121" width="81" height="4" rx="2" fill="white"/>
+<rect x="94" y="94" width="58" height="4" rx="2" fill="#4EAEF9"/>
+<rect x="326" y="94" width="58" height="4" rx="2" fill="white"/>
+<rect x="94" y="131" width="58" height="4" rx="2" fill="#4EAEF9"/>
+<rect x="326" y="131" width="58" height="4" rx="2" fill="white"/>
+<rect x="94" y="104" width="81" height="4" rx="2" fill="#4EAEF9"/>
+<rect x="326" y="104" width="81" height="4" rx="2" fill="white"/>
+<rect x="94" y="141" width="81" height="4" rx="2" fill="#4EAEF9"/>
+<rect x="326" y="141" width="81" height="4" rx="2" fill="white"/>
+<path d="M186.258 94.1407C186.181 94.0622 186.181 93.9356 186.26 93.8579L187.539 92.5916C187.618 92.5139 187.744 92.5146 187.822 92.5931C187.9 92.6716 187.899 92.7982 187.82 92.8759L186.683 94.0015L187.809 95.1386C187.886 95.2171 187.886 95.3438 187.807 95.4215C187.729 95.4992 187.602 95.4985 187.524 95.42L186.258 94.1407ZM234.701 94.2482L234.702 94.0482L234.902 94.0493L234.901 94.2493L234.701 94.2482ZM234.51 170.248L235.454 172.253L233.145 172.241L234.11 170.246L234.51 170.248ZM186.4 94L186.401 93.8L188.414 93.8104L188.413 94.0103L188.412 94.2103L186.399 94.2L186.4 94ZM192.438 94.031L192.439 93.831L196.464 93.8517L196.463 94.0517L196.462 94.2517L192.437 94.231L192.438 94.031ZM200.488 94.0724L200.489 93.8724L204.514 93.8931L204.513 94.0931L204.512 94.2931L200.487 94.2724L200.488 94.0724ZM208.538 94.1138L208.539 93.9138L212.564 93.9345L212.563 94.1345L212.562 94.3345L208.537 94.3138L208.538 94.1138ZM216.588 94.1552L216.589 93.9552L220.614 93.9758L220.613 94.1758L220.612 94.3758L216.587 94.3551L216.588 94.1552ZM224.638 94.1965L224.639 93.9965L228.664 94.0172L228.663 94.2172L228.662 94.4172L224.637 94.3965L224.638 94.1965ZM232.688 94.2379L232.689 94.0379L234.702 94.0482L234.701 94.2482L234.7 94.4482L232.687 94.4379L232.688 94.2379ZM234.701 94.2482L234.901 94.2493L234.891 96.1992L234.691 96.1982L234.491 96.1972L234.501 94.2472L234.701 94.2482ZM234.67 100.098L234.87 100.099L234.85 103.999L234.65 103.998L234.45 103.997L234.47 100.097L234.67 100.098ZM234.63 107.898L234.83 107.899L234.81 111.799L234.61 111.798L234.41 111.797L234.43 107.897L234.63 107.898ZM234.59 115.698L234.79 115.699L234.77 119.599L234.57 119.598L234.37 119.597L234.39 115.697L234.59 115.698ZM234.55 123.498L234.75 123.499L234.73 127.399L234.53 127.398L234.33 127.397L234.35 123.497L234.55 123.498ZM234.51 131.298L234.71 131.299L234.69 135.199L234.49 135.198L234.29 135.197L234.31 131.297L234.51 131.298ZM234.47 139.098L234.67 139.099L234.65 142.999L234.45 142.998L234.25 142.997L234.27 139.097L234.47 139.098ZM234.43 146.898L234.63 146.899L234.61 150.799L234.41 150.797L234.21 150.796L234.23 146.897L234.43 146.898ZM234.39 154.697L234.59 154.698L234.57 158.598L234.37 158.597L234.17 158.596L234.19 154.696L234.39 154.697ZM234.35 162.497L234.55 162.498L234.53 166.398L234.33 166.397L234.13 166.396L234.15 162.496L234.35 162.497ZM234.31 170.297L234.51 170.298L234.509 170.448L234.309 170.447L234.109 170.446L234.11 170.296L234.31 170.297Z" fill="#171925"/>
+<path d="M318.441 94.1407C318.519 94.0622 318.518 93.9356 318.44 93.8579L317.16 92.5916C317.082 92.5139 316.955 92.5146 316.877 92.5931C316.8 92.6716 316.8 92.7982 316.879 92.8759L318.016 94.0015L316.89 95.1386C316.813 95.2171 316.813 95.3438 316.892 95.4215C316.97 95.4992 317.097 95.4985 317.175 95.42L318.441 94.1407ZM269.999 94.2482L269.998 94.0482L269.798 94.0493L269.799 94.2493L269.999 94.2482ZM270.189 170.248L269.245 172.253L271.554 172.241L270.589 170.246L270.189 170.248ZM318.299 94L318.298 93.8L316.285 93.8104L316.286 94.0103L316.287 94.2103L318.3 94.2L318.299 94ZM312.261 94.031L312.26 93.831L308.235 93.8517L308.236 94.0517L308.237 94.2517L312.262 94.231L312.261 94.031ZM304.211 94.0724L304.21 93.8724L300.185 93.8931L300.186 94.0931L300.187 94.2931L304.212 94.2724L304.211 94.0724ZM296.161 94.1138L296.16 93.9138L292.135 93.9345L292.136 94.1345L292.137 94.3345L296.162 94.3138L296.161 94.1138ZM288.111 94.1552L288.11 93.9552L284.085 93.9758L284.086 94.1758L284.087 94.3758L288.112 94.3551L288.111 94.1552ZM280.061 94.1965L280.06 93.9965L276.035 94.0172L276.036 94.2172L276.037 94.4172L280.062 94.3965L280.061 94.1965ZM272.011 94.2379L272.01 94.0379L269.998 94.0482L269.999 94.2482L270 94.4482L272.012 94.4379L272.011 94.2379ZM269.999 94.2482L269.799 94.2493L269.809 96.1992L270.009 96.1982L270.209 96.1972L270.199 94.2472L269.999 94.2482ZM270.029 100.098L269.829 100.099L269.849 103.999L270.049 103.998L270.249 103.997L270.229 100.097L270.029 100.098ZM270.069 107.898L269.869 107.899L269.889 111.799L270.089 111.798L270.289 111.797L270.269 107.897L270.069 107.898ZM270.109 115.698L269.909 115.699L269.929 119.599L270.129 119.598L270.329 119.597L270.309 115.697L270.109 115.698ZM270.149 123.498L269.949 123.499L269.969 127.399L270.169 127.398L270.369 127.397L270.349 123.497L270.149 123.498ZM270.189 131.298L269.989 131.299L270.009 135.199L270.209 135.198L270.409 135.197L270.389 131.297L270.189 131.298ZM270.229 139.098L270.029 139.099L270.049 142.999L270.249 142.998L270.449 142.997L270.429 139.097L270.229 139.098ZM270.269 146.898L270.069 146.899L270.089 150.799L270.289 150.797L270.489 150.796L270.469 146.897L270.269 146.898ZM270.309 154.697L270.109 154.698L270.129 158.598L270.329 158.597L270.529 158.596L270.509 154.696L270.309 154.697ZM270.349 162.497L270.149 162.498L270.169 166.398L270.369 166.397L270.569 166.396L270.549 162.496L270.349 162.497ZM270.39 170.297L270.19 170.298L270.19 170.448L270.39 170.447L270.59 170.446L270.59 170.296L270.39 170.297Z" fill="#171925"/>
+<rect x="202.2" y="118.2" width="99.6" height="99.6" rx="9.8" fill="#71BEFA" stroke="#AAB1BA" stroke-width="0.4"/>
+<path d="M270.751 168C271.901 168 272.844 167.065 272.73 165.921C272.249 161.138 270.13 156.668 266.73 153.27C263.331 149.871 258.861 147.752 254.078 147.273C252.932 147.159 251.999 148.102 251.999 149.252V165.919C251.999 166.471 252.218 167.001 252.609 167.392C252.999 167.783 253.529 168.002 254.082 168.002L270.751 168Z" stroke="white" stroke-width="2.60417" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M271.187 176.105C269.862 179.239 267.789 182.001 265.149 184.149C262.51 186.297 259.384 187.766 256.046 188.427C252.708 189.088 249.259 188.922 246 187.942C242.741 186.962 239.772 185.199 237.352 182.806C234.932 180.414 233.134 177.465 232.117 174.217C231.1 170.97 230.894 167.522 231.517 164.177C232.14 160.831 233.573 157.689 235.691 155.026C237.809 152.362 240.547 150.258 243.666 148.896" stroke="white" stroke-width="2.60417" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                      </g>
+                      <defs>
+                        <clipPath id="cap-clip-da-bi">
+                          <rect width="504" height="400" rx="4" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  )}
+                  {/* CLOUD — Migration */}
+                  {solution.capabilities.cards[0].image === 'cloud-migration' && (
+                    <svg width="100%" height="100%" viewBox="0 0 504 250" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                      <g clip-path="url(#cap-clip-cloud-migration)">
+                        <!-- Background Arcs (Semi-circles concentric around CLOUD node) -->
+                        <circle cx="252" cy="165" r="150" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4" class="cap-ring"/>
+                        <circle cx="252" cy="165" r="100" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4" class="cap-ring"/>
+
+                        <!-- Connections -->
+                        <!-- Left Side connection line and arrowhead -->
+                        <line x1="220" y1="165" x2="200" y2="165" stroke="#AAB1BA" stroke-width="1" stroke-dasharray="4 4" />
+                        <line x1="200" y1="110" x2="200" y2="220" stroke="#AAB1BA" stroke-width="1" stroke-dasharray="4 4" />
+                        <line x1="200" y1="110" x2="130" y2="110" stroke="#AAB1BA" stroke-width="1" stroke-dasharray="4 4" />
+                        <polyline points="134 107 130 110 134 113" stroke="#AAB1BA" stroke-width="1" fill="none" />
+                        <line x1="200" y1="220" x2="186" y2="220" stroke="#AAB1BA" stroke-width="1" stroke-dasharray="4 4" />
+                        <polyline points="190 217 186 220 190 223" stroke="#AAB1BA" stroke-width="1" fill="none" />
+
+                        <!-- Right Side connection line and arrowhead -->
+                        <line x1="284" y1="165" x2="304" y2="165" stroke="#AAB1BA" stroke-width="1" stroke-dasharray="4 4" />
+                        <line x1="304" y1="110" x2="304" y2="220" stroke="#AAB1BA" stroke-width="1" stroke-dasharray="4 4" />
+                        <line x1="304" y1="110" x2="374" y2="110" stroke="#AAB1BA" stroke-width="1" stroke-dasharray="4 4" />
+                        <polyline points="370 107 374 110 370 113" stroke="#AAB1BA" stroke-width="1" fill="none" />
+                        <line x1="304" y1="220" x2="318" y2="220" stroke="#AAB1BA" stroke-width="1" stroke-dasharray="4 4" />
+                        <polyline points="314 217 318 220 314 223" stroke="#AAB1BA" stroke-width="1" fill="none" />
+
+                        <!-- Center Node (Sits near bottom center) -->
+                        <circle cx="252" cy="165" r="45" fill="#DDF0FF" />
+                        <circle cx="252" cy="165" r="32" fill="#BBE2FF" />
+                        <text x="252" y="169" font-family="sans-serif" font-size="11" font-weight="600" fill="#285989" text-anchor="middle">CLOUD</text>
+
+                        <!-- Nodes -->
+                        <!-- Top Left Node (< >) cx=112, cy=110 -->
+                        <circle cx="112" cy="110" r="18" fill="#88C9FB" />
+                        <g transform="translate(112, 110) scale(0.7) translate(-12, -12)" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="16 18 22 12 16 6" />
+                          <polyline points="8 6 2 12 8 18" />
+                        </g>
+
+                        <!-- Top Right Node (Network) cx=392, cy=110 -->
+                        <circle cx="392" cy="110" r="18" fill="#4EAEF9" />
+                        <g transform="translate(392, 110) scale(0.75) translate(-12, -12)" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="15" y="15" width="6" height="6" rx="1"></rect>
+                          <rect x="3" y="15" width="6" height="6" rx="1"></rect>
+                          <rect x="9" y="3" width="6" height="6" rx="1"></rect>
+                          <path d="M6 15v-2a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2"></path>
+                          <path d="M12 12V9"></path>
+                        </g>
+
+                        <!-- Bottom Right Node (Cloud) cx=336, cy=220 -->
+                        <circle cx="336" cy="220" r="18" fill="#4EAEF9" />
+                        <g transform="translate(336, 220) scale(0.75) translate(-12, -12)" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+                        </g>
+
+                        <!-- Bottom Left Node (Globe with lock) cx=168, cy=220 -->
+                        <circle cx="168" cy="220" r="18" fill="#4EAEF9" />
+                        <g transform="translate(168, 220) scale(0.75) translate(-12, -12)" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="9"></circle>
+                          <path d="M3 12h18"></path>
+                          <path d="M12 3a13 13 0 0 1 4 9 13 13 0 0 1-4 9 13 13 0 0 1-4-9 13 13 0 0 1 4-9z"></path>
+                          <rect x="14" y="14" width="7" height="5" rx="1" fill="#4EAEF9" stroke="white"></rect>
+                          <path d="M15.5 14v-1.5a2 2 0 0 1 4 0v1.5" fill="none"></path>
+                        </g>
+
+                        <!-- Animated Particles -->
+                        <circle cx="120" cy="80" r="4" fill="#4EAEF9" class="design-bubble-b"/>
+                        <circle cx="165" cy="50" r="5" fill="#4EAEF9" class="design-bubble-a"/>
+                        <circle cx="300" cy="50" r="3" fill="#64748B" class="design-bubble-c"/>
+                        <circle cx="420" cy="140" r="4" fill="#64748B" class="design-bubble-b"/>
+                        <circle cx="85" cy="150" r="5" fill="#171925" class="design-bubble-a"/>
+                        <circle cx="70" cy="190" r="2" fill="#4EAEF9" class="design-bubble-c"/>
+                        <circle cx="440" cy="180" r="2" fill="#4EAEF9" class="design-bubble-a"/>
+                        <circle cx="460" cy="200" r="4" fill="#4EAEF9" class="design-bubble-b"/>
+                        <circle cx="410" cy="70" r="3" fill="#4EAEF9" class="design-bubble-c"/>
+
+                      </g>
+                      <defs>
+                        <clipPath id="cap-clip-cloud-migration">
+                          <rect width="504" height="250" rx="4" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  )}
+                  {/* SUPPORT — System Monitoring */}
+                  {solution.capabilities.cards[0].image === 'system-monitoring' && (
+                    <svg width="100%" height="100%" viewBox="0 0 504 250" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                      <g clip-path="url(#cap-clip-system-monitoring)">
+                        <!-- Background Arcs (Semi-circles concentric around bottom center) -->
+                        <circle cx="252" cy="250" r="170" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4" class="cap-ring"/>
+                        <circle cx="252" cy="250" r="110" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4" class="cap-ring"/>
+
+                        <!-- Left Panel (Light Blue) -->
+                        <rect x="107" y="30" width="140" height="220" rx="6" fill="#C8E6FD"/>
+
+                        <!-- Right Panel (Medium Blue) -->
+                        <rect x="257" y="30" width="140" height="220" rx="6" fill="#88C9FB"/>
+
+                        <!-- Clockwise Loops (Dashed lines connecting panels) -->
+                        <!-- Top Loop (Right to Left) -->
+                        <path d="M 327 102 L 327 90 L 177 90 L 177 102" stroke="white" stroke-width="1.5" stroke-dasharray="3 3" fill="none"/>
+                        <polyline points="174 98 177 102 180 98" stroke="white" stroke-width="1.5" fill="none"/>
+
+                        <!-- Bottom Loop (Left to Right) -->
+                        <path d="M 177 178 L 177 190 L 327 190 L 327 178" stroke="white" stroke-width="1.5" stroke-dasharray="3 3" fill="none"/>
+                        <polyline points="324 182 327 178 330 182" stroke="white" stroke-width="1.5" fill="none"/>
+
+                        <!-- Left Panel Circle Node -->
+                        <circle cx="177" cy="140" r="38" fill="#AEDAFC" fill-opacity="0.5"/>
+                        <circle cx="177" cy="140" r="28" fill="#4EAEF9"/>
+                        <!-- Left Icon: Code (< >) -->
+                        <g transform="translate(177, 140) scale(0.85) translate(-12, -12)" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="16 18 22 12 16 6" />
+                          <polyline points="8 6 2 12 8 18" />
+                        </g>
+
+                        <!-- Right Panel Circle Node -->
+                        <circle cx="327" cy="140" r="38" fill="#AEDAFC" fill-opacity="0.3"/>
+                        <circle cx="327" cy="140" r="28" fill="#387EC1"/>
+                        <!-- Right Icon: Monitor Settings -->
+                        <g transform="translate(327, 140) scale(0.85) translate(-12, -12)" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="2" y="3" width="20" height="13" rx="2" />
+                          <line x1="12" y1="16" x2="12" y2="20" />
+                          <line x1="8" y1="20" x2="16" y2="20" />
+                          <g transform="translate(18, 14) scale(0.4) translate(-12, -12)">
+                            <circle cx="12" cy="12" r="10" fill="#387EC1" stroke="none" />
+                            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" stroke="white" stroke-width="2.5" fill="none" />
+                            <circle cx="12" cy="12" r="3" stroke="white" stroke-width="2.5" fill="none" />
+                          </g>
+                        </g>
+
+                        <!-- Animated Particles -->
+                        <circle cx="120" cy="100" r="5" fill="#4EAEF9" class="design-bubble-a"/>
+                        <circle cx="80" cy="150" r="4" fill="#64748B" class="design-bubble-b"/>
+                        <circle cx="60" cy="200" r="5" fill="#171925" class="design-bubble-c"/>
+                        <circle cx="90" cy="220" r="3" fill="#4EAEF9" class="design-bubble-a"/>
+                        
+                        <circle cx="360" cy="90" r="5" fill="#4EAEF9" class="design-bubble-b"/>
+                        <circle cx="400" cy="140" r="4" fill="#64748B" class="design-bubble-c"/>
+                        <circle cx="430" cy="210" r="5" fill="#171925" class="design-bubble-a"/>
+                        <circle cx="470" cy="190" r="2" fill="#4EAEF9" class="design-bubble-b"/>
+
+                      </g>
+                      <defs>
+                        <clipPath id="cap-clip-system-monitoring">
+                          <rect width="504" height="250" rx="4" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  )}
+                  {/* QA — Automation Testing */}
+                  {solution.capabilities.cards[0].image === 'automation-testing' && (
+                    <svg width="100%" height="100%" viewBox="0 0 504 250" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                      <g clip-path="url(#cap-clip-automation-testing)">
+                        <!-- Background Arcs (Semi-circles concentric around bottom center) -->
+                        <circle cx="252" cy="250" r="215" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4" class="cap-ring"/>
+                        <circle cx="252" cy="250" r="165" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4" class="cap-ring"/>
+
+                        <!-- Center Blue Semi-circle (Anchored to the bottom) -->
+                        <circle cx="252" cy="250" r="110" fill="#4EAEF9" />
+
+                        <!-- Center Robot Icon -->
+                        <!-- Head -->
+                        <rect x="210" y="180" width="84" height="56" rx="14" stroke="white" stroke-width="6" fill="none"/>
+                        <!-- Antenna -->
+                        <line x1="252" y1="180" x2="252" y2="162" stroke="white" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="242" y1="162" x2="262" y2="162" stroke="white" stroke-width="6" stroke-linecap="round"/>
+                        <!-- Eyes -->
+                        <rect x="232" y="198" width="8" height="20" rx="4" fill="white"/>
+                        <rect x="264" y="198" width="8" height="20" rx="4" fill="white"/>
+
+                        <!-- 5 Symmetrical Outer Nodes -->
+                        <!-- Node 1: Gear settings (left-bottom) cx=97, cy=194 -->
+                        <circle cx="97" cy="194" r="18" fill="#DDF0FF" stroke="#AEDAFC" stroke-width="0.5"/>
+                        <g transform="translate(88, 185) scale(0.75)" stroke="#387EC1" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+                          <circle cx="12" cy="12" r="3"/>
+                        </g>
+
+                        <!-- Node 2: Target/Dashed (left-middle) cx=157, cy=115 -->
+                        <circle cx="157" cy="115" r="18" fill="#DDF0FF" stroke="#AEDAFC" stroke-width="0.5"/>
+                        <g transform="translate(148, 106) scale(0.75)" stroke="#387EC1" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <circle cx="12" cy="12" r="6" stroke-dasharray="3 3"></circle>
+                          <circle cx="12" cy="12" r="2"></circle>
+                        </g>
+
+                        <!-- Node 3: Code (< >) (center-top) cx=252, cy=85 -->
+                        <circle cx="252" cy="85" r="18" fill="#DDF0FF" stroke="#AEDAFC" stroke-width="0.5"/>
+                        <g transform="translate(242, 75) scale(0.85)" stroke="#387EC1" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="8 15 4 10 8 5"></polyline>
+                          <polyline points="12 5 16 10 12 15"></polyline>
+                        </g>
+
+                        <!-- Node 4: Bug (right-middle) cx=347, cy=115 -->
+                        <circle cx="347" cy="115" r="18" fill="#DDF0FF" stroke="#AEDAFC" stroke-width="0.5"/>
+                        <g transform="translate(338, 106) scale(0.75)" stroke="#387EC1" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="6" y="7" width="12" height="12" rx="4"></rect>
+                          <path d="M18 9h3M3 9h3M18 13h3M3 13h3M18 17h3M3 17h3M12 3v4M8 20a4 4 0 0 0 8 0"></path>
+                        </g>
+
+                        <!-- Node 5: Clock (right-bottom) cx=407, cy=194 -->
+                        <circle cx="407" cy="194" r="18" fill="#DDF0FF" stroke="#AEDAFC" stroke-width="0.5"/>
+                        <g transform="translate(398, 185) scale(0.75)" stroke="#387EC1" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <polyline points="12 6 12 12 16 14"></polyline>
+                        </g>
+
+                        <!-- Animated Particles -->
+                        <circle cx="120" cy="80" r="4" fill="#4EAEF9" class="design-bubble-b"/>
+                        <circle cx="165" cy="50" r="5" fill="#4EAEF9" class="design-bubble-a"/>
+                        <circle cx="300" cy="50" r="3" fill="#64748B" class="design-bubble-c"/>
+                        <circle cx="420" cy="140" r="4" fill="#64748B" class="design-bubble-b"/>
+                        <circle cx="85" cy="150" r="5" fill="#171925" class="design-bubble-a"/>
+                        <circle cx="70" cy="190" r="2" fill="#4EAEF9" class="design-bubble-c"/>
+                        <circle cx="440" cy="180" r="2" fill="#4EAEF9" class="design-bubble-a"/>
+                        <circle cx="460" cy="200" r="4" fill="#4EAEF9" class="design-bubble-b"/>
+                        <circle cx="410" cy="70" r="3" fill="#4EAEF9" class="design-bubble-c"/>
+
+                      </g>
+                      <defs>
+                        <clipPath id="cap-clip-automation-testing">
+                          <rect width="504" height="250" rx="4" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  )}
+                </div>
+              )
+            }
+          </div>
+
+          <!-- SMALL -->
+          <div
+            class="group lg:col-span-2 border border-[#D9DDE3] bg-white p-6 min-h-[300px] md:min-h-[420px] flex flex-col cursor-pointer transition-all duration-300 hover:bg-[#171925] hover:-translate-y-1"
+          >
+            <div class="">
+             <ChallengesIcon
+  icon={solution.capabilities.cards[1].icon}
+  className="text-[#387EC1] transition-colors duration-300 group-hover:text-[#E8E8E9]"
+/>
+            </div>
+
+            <span
+              class="label mt-auto mb-4 inline-flex w-fit border border-[#D9DDE3] px-3 py-1 text-body-xs font-normal uppercase tracking-wider text-[#6B7280] transition-all duration-300 group-hover:text-[#E8E8E9] group-hover:border-white/20"
+            >
+              {solution.capabilities?.cards?.[1]?.label}
+            </span>
+
+            <h3
+              class="text-h5 font-normal text-[#111827] transition-colors duration-300 group-hover:text-[#E8E8E9]"
+            >
+              {solution.capabilities?.cards?.[1]?.title}
+            </h3>
+
+            <p
+              class="mt-4 text-[#6B7280] text-body-s font-normal transition-colors duration-300 group-hover:text-[#E8E8E9]"
+            >
+              {solution.capabilities?.cards?.[1]?.description}
+            </p>
+          </div>
+
+          <!-- SMALL -->
+          <div
+            class="group lg:col-span-2 border border-[#D9DDE3] bg-white p-6 min-h-[300px] md:min-h-[420px] flex flex-col cursor-pointer transition-all duration-300 hover:bg-[#171925] hover:-translate-y-1"
+          >
+            <div class="">
+              <ChallengesIcon
+  icon={solution.capabilities.cards[2].icon}
+  className="text-[#387EC1] transition-colors duration-300 group-hover:text-[#E8E8E9]"
+/>
+            </div>
+
+            <span
+              class="mt-auto mb-4 inline-flex w-fit border border-[#D9DDE3] px-3 py-1 text-body-xs font-normal uppercase tracking-wider text-[#6B7280] transition-all duration-300 group-hover:text-[#E8E8E9] group-hover:border-white/20"
+            >
+              {solution.capabilities?.cards?.[2]?.label}
+            </span>
+
+            <h3
+              class="text-h5 font-normal font-medium text-[#111827] transition-colors duration-300 group-hover:text-[#E8E8E9]"
+            >
+              {solution.capabilities?.cards?.[2]?.title}
+            </h3>
+
+            <p
+              class="mt-4 text-[#6B7280] text-body-s font-normal transition-colors duration-300 group-hover:text-[#E8E8E9]"
+            >
+              {solution.capabilities?.cards?.[2]?.description}
+            </p>
+          </div>
+        </div>
+
+        <!-- ROW 2 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-8 gap-4">
+          <!-- SMALL -->
+          <div
+            class="group lg:col-span-2 border border-[#D9DDE3] bg-white p-6 min-h-[300px] md:min-h-[360px] flex flex-col cursor-pointer transition-all duration-300 hover:bg-[#171925] hover:-translate-y-1"
+          >
+            <div class="">
+             <ChallengesIcon
+  icon={solution.capabilities.cards[3].icon}
+  className="text-[#387EC1] transition-colors duration-300 group-hover:text-[#E8E8E9]"
+/>
+            </div>
+
+            <span
+              class="mt-auto mb-4 inline-flex w-fit border border-[#D9DDE3] px-3 py-1 text-body-xs font-normal uppercase tracking-wider text-[#6B7280] transition-all duration-300 group-hover:text-[#E8E8E9] group-hover:border-white/20"
+            >
+              {solution.capabilities?.cards?.[3]?.label}
+            </span>
+
+            <h3
+              class="text-h5 font-normal font-medium text-[#111827] transition-colors duration-300 group-hover:text-[#E8E8E9]"
+            >
+              {solution.capabilities?.cards?.[3]?.title}
+            </h3>
+
+            <p
+              class="mt-4 text-[#6B7280] text-body-s font-normal transition-colors duration-300 group-hover:text-[#E8E8E9]"
+            >
+              {solution.capabilities?.cards?.[3]?.description}
+            </p>
+          </div>
+
+          <!-- SMALL -->
+          <div
+            class="group lg:col-span-2 border border-[#D9DDE3] bg-white p-6 min-h-[300px] md:min-h-[360px] flex flex-col cursor-pointer transition-all duration-300 hover:bg-[#171925] hover:-translate-y-1"
+          >
+            <div class="">
+              <ChallengesIcon
+  icon={solution.capabilities.cards[4].icon}
+  className="text-[#387EC1] transition-colors duration-300 group-hover:text-[#E8E8E9]"
+/>
+            </div>
+
+            <span
+              class="mt-auto mb-4 inline-flex w-fit border border-[#D9DDE3] px-3 py-1 text-body-xs font-normal uppercase tracking-wider text-[#6B7280] transition-all duration-300 group-hover:text-[#E8E8E9] group-hover:border-white/20"
+            >
+              {solution.capabilities?.cards?.[4]?.label}
+            </span>
+
+            <h3
+              class="text-h5 font-normal font-medium text-[#111827] transition-colors duration-300 group-hover:text-[#E8E8E9]"
+            >
+              {solution.capabilities?.cards?.[4]?.title}
+            </h3>
+
+            <p
+              class="mt-4 text-[#6B7280] text-body-s font-normal transition-colors duration-300 group-hover:text-[#E8E8E9]"
+            >
+              {solution.capabilities?.cards?.[4]?.description}
+            </p>
+          </div>
+
+          <!-- BIG -->
+          <div
+            class="group lg:col-span-4 border border-[#D9DDE3] bg-white p-6 md:p-8 min-h-[400px] md:min-h-[480px] flex flex-col cursor-pointer transition-all duration-300 hover:bg-[#171925] overflow-hidden relative"
+          >
+            <div class="relative z-10">
+             <ChallengesIcon
+  icon={solution.capabilities.cards[5].icon}
+  className="text-[#387EC1] transition-colors duration-300 group-hover:text-[#E8E8E9]"
+/>
+            </div>
+
+            <h3
+              class="mt-6 text-h5 font-normal text-[#111827] transition-colors duration-300 group-hover:text-[#E8E8E9] relative z-10"
+            >
+              {solution.capabilities?.cards?.[5]?.title}
+            </h3>
+
+            <p
+              class="mt-4 w-full text-[#6B7280] text-body-s font-normal transition-colors duration-300 group-hover:text-[#E8E8E9] relative z-10"
+            >
+              {solution.capabilities?.cards?.[5]?.description}
+            </p>
+
+            <!-- IMAGE SPACE - Inline SVG with animated bubbles -->
+            {
+              solution.capabilities?.cards?.[5]?.image && (
+                <div
+                  class="mt-auto -mx-6 md:-mx-8 -mb-6 md:-mb-8 overflow-hidden"
+                  style="aspect-ratio: 504 / 250;"
+                >
+                  {/* AI/ML — pyramid cubes */}
+                  {solution.capabilities.cards[5].image.startsWith('/') && (
+                    <svg width="100%" height="100%" viewBox="0 0 504 400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+                      <g clip-path="url(#cap-clip1)">
+                        <circle cx="252" cy="369" r="199.9" stroke="#AAB1BA" stroke-width="0.2" class="cap-ring"/>
+                        <circle cx="252" cy="369" r="149.9" stroke="#AAB1BA" stroke-width="0.2" stroke-dasharray="4 4" class="cap-ring"/>
+                        <circle cx="252" cy="369" r="99.9" stroke="#AAB1BA" stroke-width="0.2" class="cap-ring"/>
+                        <path d="M163.752 322.615V397.384L99 434.77L34.248 397.384V322.615L99 285.229L163.752 322.615Z" fill="#4EAEF9" stroke="#171925" stroke-width="0.4"/>
+                        <line x1="34.6974" y1="322.883" x2="99.0952" y2="357.574" stroke="#171925" stroke-width="0.4"/>
+                        <line x1="98.8" y1="434.25" x2="98.8" y2="357" stroke="#171925" stroke-width="0.4"/>
+                        <line y1="-0.2" x2="73.8093" y2="-0.2" transform="matrix(-0.884035 0.467421 0.467421 0.884035 163.5 323.25)" stroke="#171925" stroke-width="0.4"/>
+                        <path d="M340.248 322.615V397.384L405 434.77L469.752 397.384V322.615L405 285.229L340.248 322.615Z" fill="#479EE3" stroke="#171925" stroke-width="0.4"/>
+                        <line y1="-0.2" x2="73.1478" y2="-0.2" transform="matrix(-0.88038 0.474269 0.474269 0.88038 469.397 323.059)" stroke="#171925" stroke-width="0.4"/>
+                        <line y1="-0.2" x2="77.25" y2="-0.2" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 405 434.25)" stroke="#171925" stroke-width="0.4"/>
+                        <line x1="340.593" y1="323.073" x2="405.844" y2="357.573" stroke="#171925" stroke-width="0.4"/>
+                        <path d="M229.752 279.615V354.384L165 391.77L100.248 354.384V279.615L165 242.229L229.752 279.615Z" fill="#AEDAFC" stroke="#171925" stroke-width="0.4"/>
+                        <line x1="100.697" y1="279.883" x2="165.095" y2="314.574" stroke="#171925" stroke-width="0.4"/>
+                        <line x1="164.8" y1="391.25" x2="164.8" y2="314" stroke="#171925" stroke-width="0.4"/>
+                        <line y1="-0.2" x2="73.8093" y2="-0.2" transform="matrix(-0.884035 0.467421 0.467421 0.884035 229.5 280.25)" stroke="#171925" stroke-width="0.4"/>
+                        <path d="M256.248 279.615V354.384L321 391.77L385.752 354.384V279.615L321 242.229L256.248 279.615Z" fill="#88C9FB" stroke="#171925" stroke-width="0.4"/>
+                        <line y1="-0.2" x2="73.1478" y2="-0.2" transform="matrix(-0.88038 0.474269 0.474269 0.88038 385.397 280.059)" stroke="#171925" stroke-width="0.4"/>
+                        <line y1="-0.2" x2="77.25" y2="-0.2" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 321 391.25)" stroke="#171925" stroke-width="0.4"/>
+                        <line x1="256.593" y1="280.073" x2="321.844" y2="314.573" stroke="#171925" stroke-width="0.4"/>
+                        <path d="M307.752 202.615V277.384L243 314.77L178.248 277.384V202.615L243 165.229L307.752 202.615Z" fill="#EDF7FE" stroke="#171925" stroke-width="0.4"/>
+                        <line x1="178.697" y1="202.883" x2="243.095" y2="237.574" stroke="#171925" stroke-width="0.4"/>
+                        <line x1="242.8" y1="314.25" x2="242.8" y2="237" stroke="#171925" stroke-width="0.4"/>
+                        <line y1="-0.2" x2="73.8093" y2="-0.2" transform="matrix(-0.884035 0.467421 0.467421 0.884035 307.5 203.25)" stroke="#171925" stroke-width="0.4"/>
+                        <circle cx="64.4807" cy="352.909" r="2" class="cap-bubble-blue design-bubble-a"/>
+                        <circle cx="79.009" cy="323.28" r="2" class="cap-bubble-blue design-bubble-b"/>
+                        <circle cx="392.77" cy="188.77" r="2" class="cap-bubble-blue design-bubble-c"/>
+                        <circle cx="157.708" cy="205.111" r="4" class="cap-bubble-blue design-bubble-b"/>
+                        <circle cx="458.351" cy="289.637" r="4" class="cap-bubble-blue design-bubble-a"/>
+                        <circle cx="87.6792" cy="214.162" r="3" class="cap-bubble-gray design-bubble-c"/>
+                        <circle cx="419.901" cy="230.414" r="3" class="cap-bubble-gray design-bubble-a"/>
+                        <circle cx="26.5557" cy="284.741" r="2" class="cap-bubble-blue design-bubble-b"/>
+                        <circle cx="329.828" cy="205.829" r="2" class="cap-bubble-blue design-bubble-c"/>
+                        <circle cx="57.6372" cy="273.655" r="2" class="cap-bubble-blue design-bubble-a"/>
+                        <circle cx="353.267" cy="229.06" r="2" class="cap-bubble-blue design-bubble-b"/>
+                      </g>
+                      <defs>
+                        <clipPath id="cap-clip1">
+                          <rect width="504" height="400" rx="4" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  )}
+                  {/* ECM — Compliance & Records Shield */}
+                  {/* ECM — Compliance: light-blue panel + shield + blue doc card + large arc */}
+                  {solution.capabilities.cards[5].image === 'ecm-compliance' && (
+                    <svg width="100%" height="100%" viewBox="0 0 504 400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+                      <g clip-path="url(#cap-clip1-ecm)">
+                        <g transform="translate(63, 100) scale(0.75)">
+                          <!-- Background arcs offset to the right -->
+                          <circle cx="280" cy="340" r="195" stroke="#AAB1BA" stroke-width="0.3" class="cap-ring"/>
+                          <circle cx="280" cy="340" r="145" stroke="#AAB1BA" stroke-width="0.3" stroke-dasharray="4 4" class="cap-ring"/>
+  
+                          <!-- Blue document card overlapping on the right (rendered first so it's behind) -->
+                          <rect x="240" y="180" width="200" height="230" rx="6" fill="#4EAEF9"/>
+                          
+                          <!-- Row 1 -->
+                          <rect x="260" y="205" width="20" height="20" rx="4" fill="white"/>
+                          <rect x="290" y="208" width="130" height="6" rx="3" fill="white" fill-opacity="1"/>
+                          <rect x="290" y="222" width="90" height="6" rx="3" fill="white" fill-opacity="0.8"/>
+                          <rect x="260" y="240" width="160" height="6" rx="3" fill="white" fill-opacity="0.5"/>
+                          <rect x="260" y="254" width="120" height="6" rx="3" fill="white" fill-opacity="0.3"/>
+                          
+                          <!-- Row 2 -->
+                          <rect x="260" y="290" width="20" height="20" rx="4" fill="white"/>
+                          <rect x="290" y="293" width="130" height="6" rx="3" fill="white" fill-opacity="1"/>
+                          <rect x="290" y="307" width="90" height="6" rx="3" fill="white" fill-opacity="0.8"/>
+                          <rect x="260" y="325" width="160" height="6" rx="3" fill="white" fill-opacity="0.5"/>
+                          <rect x="260" y="339" width="120" height="6" rx="3" fill="white" fill-opacity="0.3"/>
+  
+                          <!-- Light blue square panel (left) -->
+                          <rect x="50" y="120" width="200" height="200" rx="6" fill="#D2E8FF"/>
+                          
+                          <!-- Concentric circle glows behind shield -->
+                          <circle cx="150" cy="220" r="75" fill="#BDE0FF" fill-opacity="0.6"/>
+                          <circle cx="150" cy="220" r="50" fill="#A5D6FF" fill-opacity="0.6"/>
+                          
+                          <!-- Shield outer outline -->
+                          <path d="M 115 185 L 150 175 L 185 185 L 185 220 C 185 245 150 265 150 265 C 150 265 115 245 115 220 Z" fill="#E6F4FF" stroke="#387EC1" stroke-width="2.5" stroke-linejoin="round"/>
+                          
+                          <!-- Checkmark -->
+                          <path d="M 135 220 L 145 230 L 165 205" stroke="#387EC1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+                          <!-- Animated dots -->
+                          <circle cx="64" cy="352" r="2" class="cap-bubble-blue design-bubble-a"/>
+                          <circle cx="79" cy="323" r="2" class="cap-bubble-blue design-bubble-b"/>
+                          <circle cx="392" cy="188" r="2" class="cap-bubble-blue design-bubble-c"/>
+                          <circle cx="157" cy="205" r="4" class="cap-bubble-blue design-bubble-b"/>
+                          <circle cx="458" cy="289" r="4" class="cap-bubble-blue design-bubble-a"/>
+                          <circle cx="87" cy="214" r="3" class="cap-bubble-gray design-bubble-c"/>
+                          <circle cx="419" cy="230" r="3" class="cap-bubble-gray design-bubble-a"/>
+                          <circle cx="26" cy="284" r="2" class="cap-bubble-blue design-bubble-b"/>
+                          <circle cx="329" cy="205" r="2" class="cap-bubble-blue design-bubble-c"/>
+                          <circle cx="57" cy="273" r="2" class="cap-bubble-blue design-bubble-a"/>
+                          <circle cx="353" cy="229" r="2" class="cap-bubble-blue design-bubble-b"/>
+                        </g>
+                      </g>
+                      <defs>
+                        <clipPath id="cap-clip1-ecm">
+                          <rect width="504" height="400" rx="4" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  )}
+                  {/* PD — System Integration / AI Integration */}
+                  {solution.capabilities.cards[5].image === 'pd-integration' && (
+                    <svg width="100%" height="100%" viewBox="0 0 504 400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+                      <g clip-path="url(#cap-clip-pd-integration)">
+                        <g transform="translate(25.2, 40) scale(0.9)">
+                          <!-- Background arcs offset to the right -->
+                          <circle cx="252" cy="340" r="195" stroke="#AAB1BA" stroke-width="0.3" class="cap-ring"/>
+                          <circle cx="252" cy="340" r="145" stroke="#AAB1BA" stroke-width="0.3" stroke-dasharray="4 4" class="cap-ring"/>
+                          
+                          <g transform="translate(38, 60) scale(0.85)">
+                            <!-- Light Blue Document Panel -->
+                            <rect x="152" y="150" width="200" height="250" rx="6" fill="#D2E8FF"/>
+                            
+                            <!-- Concentric Glowing Rings -->
+                            <circle cx="252" cy="250" r="75" fill="#BDE0FF" fill-opacity="0.6"/>
+                            <circle cx="252" cy="250" r="50" fill="#A5D6FF" fill-opacity="0.6"/>
+                            
+                            <!-- Gear Icon (scaled Lucide settings icon) -->
+                            <g transform="translate(252, 250) scale(3.5) translate(-12, -12)">
+                              <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" fill="none" stroke="#387EC1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              <circle cx="12" cy="12" r="3" fill="none" stroke="#387EC1" stroke-width="1.5" />
+                            </g>
+                          </g>
+
+                          <!-- Animated dots -->
+                          <circle cx="64" cy="352" r="2" class="cap-bubble-blue design-bubble-a"/>
+                          <circle cx="79" cy="323" r="2" class="cap-bubble-blue design-bubble-b"/>
+                          <circle cx="392" cy="188" r="2" class="cap-bubble-blue design-bubble-c"/>
+                          <circle cx="157" cy="205" r="4" class="cap-bubble-blue design-bubble-b"/>
+                          <circle cx="458" cy="289" r="4" class="cap-bubble-blue design-bubble-a"/>
+                          <circle cx="87" cy="214" r="3" class="cap-bubble-gray design-bubble-c"/>
+                          <circle cx="419" cy="230" r="3" class="cap-bubble-gray design-bubble-a"/>
+                          <circle cx="26" cy="284" r="2" class="cap-bubble-blue design-bubble-b"/>
+                          <circle cx="329" cy="205" r="2" class="cap-bubble-blue design-bubble-c"/>
+                          <circle cx="57" cy="273" r="2" class="cap-bubble-blue design-bubble-a"/>
+                          <circle cx="353" cy="229" r="2" class="cap-bubble-blue design-bubble-b"/>
+                        </g>
+                      </g>
+                      <defs>
+                        <clipPath id="cap-clip-pd-integration">
+                          <rect width="504" height="400" rx="4" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  )}
+                  {/* DESIGN — Experience Strategy */}
+                  {solution.capabilities.cards[5].image === 'design-strategy' && (
+                    <svg width="100%" height="100%" viewBox="0 0 504 400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+                      <g clip-path="url(#cap-clip-design-strategy)">
+                        <g transform="translate(37.8, 60) scale(0.85)">
+                          <!-- Background rings arching over the card -->
+                          <circle cx="252" cy="340" r="195" stroke="#AAB1BA" stroke-width="0.3" class="cap-ring"/>
+                          <circle cx="252" cy="340" r="145" stroke="#AAB1BA" stroke-width="0.3" stroke-dasharray="4 4" class="cap-ring"/>
+                          
+                          <!-- Right Light Blue Diamond -->
+                          <path d="M 290 200 L 360 270 L 290 340 L 220 270 Z" fill="#D2E8FF" stroke="#AAB1BA" stroke-width="1"/>
+                          
+                          <!-- Left Solid Blue Diamond -->
+                          <path d="M 210 140 L 300 230 L 210 320 L 120 230 Z" fill="#4EAEF9"/>
+
+                          <!-- Connection Curved Arrows -->
+                          <!-- Arrow 1: Top Curve (from Blue to Light Blue) -->
+                          <path d="M 240 190 Q 280 180 310 230" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                          <path d="M 300 220 L 310 230 L 315 215" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          
+                          <!-- Arrow 2: Bottom Curve (from Light Blue to Blue) -->
+                          <path d="M 260 300 Q 220 310 190 270" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                          <path d="M 200 280 L 190 270 L 185 285" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+                          <!-- User Icon inside Left Diamond -->
+                          <g transform="translate(210, 230) scale(1.6) translate(-12, -12)">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="7" r="4" fill="none" stroke="white" stroke-width="1.5"/>
+                          </g>
+
+                          <!-- Building Icon inside Right Diamond -->
+                          <g transform="translate(300, 270) scale(1.4) translate(-12, -12)">
+                            <rect x="4" y="2" width="16" height="20" rx="2" ry="2" fill="none" stroke="#387EC1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 22v-4h6v4" fill="none" stroke="#387EC1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M16 10h.01M8 10h.01M8 14h.01M12 14h.01M16 14h.01" stroke="#387EC1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </g>
+
+                          <!-- Animated dots -->
+                          <circle cx="102" cy="204" r="4" class="cap-bubble-blue design-bubble-a"/>
+                          <circle cx="396" cy="198" r="4" class="cap-bubble-blue design-bubble-b"/>
+                          <circle cx="42" cy="325" r="4" class="cap-bubble-dark design-bubble-b"/>
+                          <circle cx="442" cy="354" r="4" class="cap-bubble-dark design-bubble-c"/>
+                          <circle cx="59" cy="259" r="3" class="cap-bubble-gray design-bubble-c"/>
+                          <circle cx="415" cy="248" r="3" class="cap-bubble-gray design-bubble-a"/>
+                          <circle cx="64" cy="352" r="2" class="cap-bubble-blue design-bubble-a"/>
+                        </g>
+                      </g>
+                      <defs>
+                        <clipPath id="cap-clip-design-strategy">
+                          <rect width="504" height="400" rx="4" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  )}
+                  {/* DATA ANALYTICS — Performance Analytics */}
+                                    {solution.capabilities.cards[5].image === 'da-perf' && (
+                    <svg width="100%" height="100%" viewBox="0 0 504 400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+                      <g clip-path="url(#cap-clip-da-perf)">
+                        <g transform="translate(0, 158)">
+<circle cx="252" cy="211" r="199.9" stroke="#AAB1BA" stroke-width="0.2"/>
+<circle cx="252" cy="211" r="149.9" stroke="#AAB1BA" stroke-width="0.2" stroke-dasharray="4 4"/>
+<circle cx="252" cy="371" r="149.9" stroke="#AAB1BA" stroke-width="0.2" stroke-dasharray="4 4"/>
+<circle cx="252" cy="211" r="99.9" stroke="#AAB1BA" stroke-width="0.2"/>
+<circle cx="64.4807" cy="194.909" r="2" transform="rotate(26.1201 64.4807 194.909)" fill="#4EAEF9" class="design-bubble-c"/>
+<circle cx="79.009" cy="165.28" r="2" transform="rotate(26.1201 79.009 165.28)" fill="#4EAEF9" class="design-bubble-a"/>
+<circle cx="392.77" cy="30.77" r="2" transform="rotate(-56.7039 392.77 30.77)" fill="#4EAEF9" class="design-bubble-b"/>
+<circle cx="157.708" cy="47.1113" r="4" transform="rotate(70.3703 157.708 47.1113)" fill="#4EAEF9" class="design-bubble-c"/>
+<circle cx="458.351" cy="131.637" r="4" transform="rotate(134.743 458.351 131.637)" fill="#4EAEF9" class="design-bubble-a"/>
+<circle cx="87.6792" cy="56.1616" r="3" transform="rotate(70.3703 87.6792 56.1616)" fill="#64656D" class="design-bubble-b"/>
+<circle cx="419.902" cy="72.4136" r="3" transform="rotate(134.743 419.902 72.4136)" fill="#64656D" class="design-bubble-c"/>
+<circle cx="26.5557" cy="126.741" r="2" transform="rotate(70.3703 26.5557 126.741)" fill="#4EAEF9" class="design-bubble-a"/>
+<circle cx="329.828" cy="47.8291" r="2" transform="rotate(134.743 329.828 47.8291)" fill="#4EAEF9" class="design-bubble-b"/>
+<circle cx="57.6367" cy="115.655" r="2" transform="rotate(70.3703 57.6367 115.655)" fill="#4EAEF9" class="design-bubble-c"/>
+<circle cx="353.267" cy="71.0596" r="2" transform="rotate(134.743 353.267 71.0596)" fill="#4EAEF9" class="design-bubble-a"/>
+<rect x="155" y="20" width="195" height="236" rx="4" fill="#C8E6FD"/>
+<circle cx="180" cy="138" r="64.8" fill="#4EAEF9" fill-opacity="0.15" stroke="#171925" stroke-width="0.4" stroke-dasharray="4 4"/>
+<circle cx="325" cy="138" r="64.8" fill="#4EAEF9" fill-opacity="0.15" stroke="#171925" stroke-width="0.4" stroke-dasharray="4 4"/>
+<path d="M177.871 118.097C177.963 117.6 178.227 117.151 178.616 116.828C179.005 116.505 179.495 116.328 180 116.328C180.506 116.328 180.996 116.505 181.385 116.828C181.774 117.151 182.037 117.6 182.13 118.097L184.407 130.139C184.569 130.995 184.985 131.783 185.601 132.399C186.217 133.015 187.005 133.431 187.861 133.593L199.903 135.87C200.4 135.963 200.849 136.227 201.172 136.616C201.495 137.005 201.672 137.494 201.672 138C201.672 138.506 201.495 138.995 201.172 139.384C200.849 139.773 200.4 140.037 199.903 140.13L187.861 142.407C187.005 142.569 186.217 142.985 185.601 143.601C184.985 144.217 184.569 145.004 184.407 145.861L182.13 157.903C182.037 158.4 181.774 158.849 181.385 159.172C180.996 159.495 180.506 159.672 180 159.672C179.495 159.672 179.005 159.495 178.616 159.172C178.227 158.849 177.963 158.4 177.871 157.903L175.593 145.861C175.432 145.004 175.016 144.217 174.4 143.601C173.783 142.985 172.996 142.569 172.14 142.407L160.097 140.13C159.6 140.037 159.152 139.773 158.828 139.384C158.505 138.995 158.329 138.506 158.329 138C158.329 137.494 158.505 137.005 158.828 136.616C159.152 136.227 159.6 135.963 160.097 135.87L172.14 133.593C172.996 133.431 173.783 133.015 174.4 132.399C175.016 131.783 175.432 130.995 175.593 130.139L177.871 118.097Z" stroke="#387EC1" stroke-width="2.70833" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M197.334 116.334V125.001" stroke="#387EC1" stroke-width="2.70833" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M201.667 120.666H193" stroke="#387EC1" stroke-width="2.70833" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M162.667 159.667C165.06 159.667 167 157.727 167 155.333C167 152.94 165.06 151 162.667 151C160.274 151 158.334 152.94 158.334 155.333C158.334 157.727 160.274 159.667 162.667 159.667Z" stroke="#387EC1" stroke-width="2.70833" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M333.539 159.667H338C339.149 159.667 340.252 159.211 341.064 158.398C341.877 157.585 342.333 156.483 342.333 155.334V129.334C342.335 128.648 342.2 127.969 341.937 127.335C341.675 126.702 341.29 126.126 340.804 125.642L333.03 117.868C332.545 117.381 331.97 116.994 331.335 116.731C330.701 116.468 330.02 116.333 329.333 116.334H312C310.851 116.334 309.749 116.791 308.936 117.603C308.123 118.416 307.667 119.518 307.667 120.667V128.277" stroke="#387EC1" stroke-width="2.70833" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M329.333 116.334V127.167C329.333 127.742 329.562 128.293 329.968 128.699C330.374 129.106 330.925 129.334 331.5 129.334H342.333" stroke="#387EC1" stroke-width="2.70833" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M307.703 136.943C306.378 138.119 305.307 139.554 304.557 141.159C303.806 142.764 303.391 144.505 303.338 146.276C303.285 148.047 303.594 149.81 304.247 151.457C304.9 153.104 305.883 154.601 307.135 155.854C308.387 157.108 309.882 158.092 311.529 158.747C313.175 159.401 314.938 159.713 316.709 159.661C318.48 159.61 320.222 159.197 321.828 158.448C323.433 157.699 324.869 156.63 326.046 155.306" stroke="#387EC1" stroke-width="2.70833" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M318.5 146.668C317.925 146.668 317.374 146.439 316.968 146.033C316.562 145.627 316.333 145.076 316.333 144.501V135.834C316.333 134.638 317.308 133.65 318.489 133.847C321.155 134.296 323.614 135.564 325.526 137.475C327.437 139.386 328.705 141.846 329.153 144.512C329.351 145.69 328.363 146.668 327.167 146.668H318.5Z" stroke="#387EC1" stroke-width="2.70833" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                      </g>
+                      <defs>
+                        <clipPath id="cap-clip-da-perf">
+                          <rect width="504" height="400" rx="4" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  )}
+                  {/* CLOUD — Operations */}
+                  {solution.capabilities.cards[5].image === 'cloud-ops' && (
+                    <svg width="100%" height="100%" viewBox="0 0 504 250" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                      <g clip-path="url(#cap-clip-cloud-ops)">
+                        <!-- Background Arcs (faint dashed circles concentric around the bottom node) -->
+                        <circle cx="252" cy="170" r="160" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4" class="cap-ring"/>
+                        <circle cx="252" cy="170" r="110" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4" class="cap-ring"/>
+
+                        <!-- Vertical Box (Centered) -->
+                        <rect x="185" y="30" width="134" height="190" rx="8" fill="#DDF0FF"/>
+
+                        <!-- Arrow pointing UP -->
+                        <line x1="252" y1="140" x2="252" y2="110" stroke="#387EC1" stroke-width="2" stroke-linecap="round" />
+                        <polyline points="248 116 252 110 256 116" stroke="#387EC1" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+
+                        <!-- Top Node -->
+                        <circle cx="252" cy="80" r="30" fill="#BBE2FF" />
+                        <circle cx="252" cy="80" r="23" fill="#4EAEF9" />
+                        <!-- Cloud Upload icon -->
+                        <g transform="translate(252, 80) scale(0.85) translate(-12, -11)" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" stroke-width="1.5"></path>
+                          <path d="M10 12v6" stroke-width="1.5"></path>
+                          <path d="m8 14 2-2 2 2" stroke-width="1.5"></path>
+                        </g>
+
+                        <!-- Bottom Node -->
+                        <circle cx="252" cy="170" r="30" fill="#BBE2FF" />
+                        <circle cx="252" cy="170" r="23" fill="#4EAEF9" />
+                        <!-- Layers icon -->
+                        <g transform="translate(252, 170) scale(0.75) translate(-15, -15)" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <polygon points="15 3 3 9 15 15 27 9 15 3" stroke-width="1.5"></polygon>
+                          <polyline points="3 15 15 21 27 15" stroke-width="1.5"></polyline>
+                          <polyline points="3 21 15 27 27 21" stroke-width="1.5"></polyline>
+                        </g>
+
+                        <!-- Particles -->
+                        <circle cx="120" cy="100" r="5" fill="#4EAEF9" class="design-bubble-a"/>
+                        <circle cx="80" cy="150" r="4" fill="#64748B" class="design-bubble-b"/>
+                        <circle cx="60" cy="200" r="5" fill="#171925" class="design-bubble-c"/>
+                        <circle cx="90" cy="220" r="3" fill="#4EAEF9" class="design-bubble-a"/>
+                        
+                        <circle cx="360" cy="90" r="5" fill="#4EAEF9" class="design-bubble-b"/>
+                        <circle cx="400" cy="140" r="4" fill="#64748B" class="design-bubble-c"/>
+                        <circle cx="430" cy="210" r="5" fill="#171925" class="design-bubble-a"/>
+                        <circle cx="470" cy="190" r="2" fill="#4EAEF9" class="design-bubble-b"/>
+
+                      </g>
+                      <defs>
+                        <clipPath id="cap-clip-cloud-ops">
+                          <rect width="504" height="250" rx="4" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  )}
+                  {/* SUPPORT — Service Management */}
+                  {solution.capabilities.cards[5].image === 'service-management' && (
+                    <svg width="100%" height="100%" viewBox="0 0 504 250" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                      <g clip-path="url(#cap-clip-service-management)">
+                        <!-- Background Arcs (Semi-circles concentric around center) -->
+                        <circle cx="252" cy="250" r="170" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4" class="cap-ring"/>
+                        <circle cx="252" cy="250" r="110" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4" class="cap-ring"/>
+
+                        <!-- Vertical Box (Anchors to the bottom) -->
+                        <rect x="167" y="30" width="170" height="220" rx="6" fill="#DDF0FF"/>
+
+                        <!-- Glowing Rings -->
+                        <circle cx="252" cy="140" r="55" fill="#AEDAFC" fill-opacity="0.3"/>
+                        <circle cx="252" cy="140" r="40" fill="#AEDAFC" fill-opacity="0.5"/>
+
+                        <!-- Center Gear Icon -->
+                        <g transform="translate(218.4, 106.4) scale(2.8)" stroke="#387EC1" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                          <circle cx="12" cy="12" r="3" />
+                        </g>
+
+                        <!-- Animated Particles -->
+                        <circle cx="120" cy="100" r="5" fill="#4EAEF9" class="design-bubble-a"/>
+                        <circle cx="80" cy="150" r="4" fill="#64748B" class="design-bubble-b"/>
+                        <circle cx="60" cy="200" r="5" fill="#171925" class="design-bubble-c"/>
+                        <circle cx="90" cy="220" r="3" fill="#4EAEF9" class="design-bubble-a"/>
+                        
+                        <circle cx="360" cy="90" r="5" fill="#4EAEF9" class="design-bubble-b"/>
+                        <circle cx="400" cy="140" r="4" fill="#64748B" class="design-bubble-c"/>
+                        <circle cx="430" cy="210" r="5" fill="#171925" class="design-bubble-a"/>
+                        <circle cx="470" cy="190" r="2" fill="#4EAEF9" class="design-bubble-b"/>
+
+                      </g>
+                      <defs>
+                        <clipPath id="cap-clip-service-management">
+                          <rect width="504" height="250" rx="4" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  )}
+                  {/* QA — Test Strategy & Planning */}
+                  {solution.capabilities.cards[5].image === 'test-strategy' && (
+                    <svg width="100%" height="100%" viewBox="0 0 504 250" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                      <g clip-path="url(#cap-clip-test-strategy)">
+                        <!-- Background Arcs (Semi-circles concentric around bottom center) -->
+                        <circle cx="252" cy="250" r="170" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4" class="cap-ring"/>
+                        <circle cx="252" cy="250" r="110" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4" class="cap-ring"/>
+
+                        <!-- Vertical Box (Centered) -->
+                        <rect x="185" y="30" width="134" height="190" rx="8" fill="#DDF0FF"/>
+
+                        <!-- Double-headed arrow between nodes -->
+                        <line x1="252" y1="116" x2="252" y2="134" stroke="#387EC1" stroke-width="2" stroke-linecap="round" />
+                        <!-- Top arrowhead (pointing UP) -->
+                        <polyline points="248 122 252 116 256 122" stroke="#387EC1" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                        <!-- Bottom arrowhead (pointing DOWN) -->
+                        <polyline points="248 128 252 134 256 128" stroke="#387EC1" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+
+                        <!-- Top Node: Diamond -->
+                        <circle cx="252" cy="80" r="30" fill="#BBE2FF" />
+                        <circle cx="252" cy="80" r="23" fill="#4EAEF9" />
+                        <!-- Diamond icon -->
+                        <g transform="translate(252, 80) scale(0.85) translate(-12, -12)" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <polygon points="12 3 21 12 12 21 3 12" />
+                        </g>
+
+                        <!-- Bottom Node: Screen with settings/gear -->
+                        <circle cx="252" cy="170" r="30" fill="#BBE2FF" />
+                        <circle cx="252" cy="170" r="23" fill="#4EAEF9" />
+                        <!-- Screen with gear icon -->
+                        <g transform="translate(252, 170) scale(0.85) translate(-12, -12)" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="2" y="3" width="20" height="13" rx="2" />
+                          <line x1="12" y1="16" x2="12" y2="20" />
+                          <line x1="8" y1="20" x2="16" y2="20" />
+                          <g transform="translate(18, 14) scale(0.4) translate(-12, -12)">
+                            <circle cx="12" cy="12" r="10" fill="#4EAEF9" stroke="none" />
+                            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" stroke="white" stroke-width="2.5" fill="none" />
+                            <circle cx="12" cy="12" r="3" stroke="white" stroke-width="2.5" fill="none" />
+                          </g>
+                        </g>
+
+                        <!-- Animated Particles -->
+                        <circle cx="120" cy="100" r="5" fill="#4EAEF9" class="design-bubble-a"/>
+                        <circle cx="80" cy="150" r="4" fill="#64748B" class="design-bubble-b"/>
+                        <circle cx="60" cy="200" r="5" fill="#171925" class="design-bubble-c"/>
+                        <circle cx="90" cy="220" r="3" fill="#4EAEF9" class="design-bubble-a"/>
+                        
+                        <circle cx="360" cy="90" r="5" fill="#4EAEF9" class="design-bubble-b"/>
+                        <circle cx="400" cy="140" r="4" fill="#64748B" class="design-bubble-c"/>
+                        <circle cx="430" cy="210" r="5" fill="#171925" class="design-bubble-a"/>
+                        <circle cx="470" cy="190" r="2" fill="#4EAEF9" class="design-bubble-b"/>
+
+                      </g>
+                      <defs>
+                        <clipPath id="cap-clip-test-strategy">
+                          <rect width="504" height="250" rx="4" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  )}
+                </div>
+              )
+            }
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  /* ===== Bubble float animations ===== */
+  :global(.design-bubble-a) {
+    animation: float-bubble-a 2.2s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  :global(.design-bubble-b) {
+    animation: float-bubble-b 2.7s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  :global(.design-bubble-c) {
+    animation: float-bubble-c 3.1s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  @keyframes float-bubble-a {
+    0%, 100% { transform: translateY(0px) translateX(0px); }
+    50% { transform: translateY(-10px) translateX(6px); }
+  }
+  @keyframes float-bubble-b {
+    0%, 100% { transform: translateY(0px) translateX(0px); }
+    50% { transform: translateY(8px) translateX(-7px); }
+  }
+  @keyframes float-bubble-c {
+    0%, 100% { transform: translateY(0px) translateX(0px); }
+    50% { transform: translateY(-11px) translateX(-5px); }
+  }
+
+  /* ===== Bubble dot colors ===== */
+  :global(.cap-bubble-dark) {
+    fill: #171925;
+    transition: fill 0.3s ease;
+  }
+  :global(.group:hover .cap-bubble-dark) { fill: #ffffff; }
+
+  :global(.cap-bubble-gray) {
+    fill: #64656D;
+    transition: fill 0.3s ease;
+  }
+  :global(.group:hover .cap-bubble-gray) { fill: #ffffff; }
+
+  :global(.cap-bubble-blue) {
+    fill: #4EAEF9;
+    transition: transform 0.3s ease;
+  }
+  :global(.group:hover .cap-bubble-blue) {
+    animation: cap-bubble-pulse 1.5s ease-in-out infinite alternate;
+  }
+  @keyframes cap-bubble-pulse {
+    0%   { transform: scale(1); }
+    100% { transform: scale(1.35); }
+  }
+
+  /* ===== Background ring circles ===== */
+  :global(.cap-ring) {
+    stroke: #AAB1BA;
+    transition: stroke 0.4s ease;
+  }
+  :global(.group:hover .cap-ring) {
+    stroke: rgba(78, 174, 249, 0.3);
+  }
+
+</style>
+

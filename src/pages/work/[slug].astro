@@ -1,0 +1,351 @@
+---
+import {
+  MapPin,
+  Tag,
+  Calendar,
+  User,
+  CheckCircle2,
+  CircleFadingArrowUp,
+} from "lucide-react";
+import MainLayout from "../../layouts/MainLayout.astro";
+import Navbar from "../../components/layout/Navbar.astro";
+import ChevronRight from "../../components/ui/ChevronRight.astro";
+import { projectsData } from "../../data/projects";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  return projectsData.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const hasImpact = [
+  "ecocrew",
+  "jiffl",
+  "manipal-medace",
+  "sell-your-legacy",
+  "keysonrent",
+].includes(project.slug);
+
+// Get 6 random other projects for the "Explore More Projects" section
+const moreProjects = projectsData
+  .filter((p) => p.slug !== project.slug)
+  .sort(() => 0.5 - Math.random())
+  .slice(0, 6);
+
+const getTagIcon = (iconName: string) => {
+  switch (iconName) {
+    case "MapPin":
+      return MapPin;
+    case "Tag":
+      return Tag;
+    case "Calendar":
+      return Calendar;
+    case "User":
+      return User;
+    default:
+      return Tag;
+  }
+};
+
+const getTagIconColor = (iconName: string) => {
+  switch (iconName) {
+    case "MapPin":
+      return "text-red-500";
+    case "Tag":
+      return "text-orange-500";
+    case "Calendar":
+      return "text-indigo-400";
+    case "User":
+      return "text-blue-500";
+    default:
+      return "text-slate-500";
+  }
+};
+---
+
+<MainLayout
+  title={`${project.title} | Mantiqh`}
+  description={project.description ||
+    project.shortDescription ||
+    `Explore our ${project.title} case study - a successful client project showcasing our expertise in enterprise software development and digital transformation.`}
+  canonicalURL={`https://mantiqh.com/work/${project.slug}`}
+>
+  <div class="bg-white">
+    <div
+      class="bg-white flex flex-col flex-grow max-w-[1440px] mx-auto w-full border-x border-slate-200/20 relative"
+    >
+      <Navbar theme="light" />
+
+      {/* Hero Image Container */}
+      <div class="">
+        <div
+          class="w-full overflow-hidden bg-slate-100 flex items-center justify-center"
+        >
+          {
+            project.image ? (
+              <img
+                src={project.image}
+                alt={project.title}
+                class="w-full h-full object-cover"
+              />
+            ) : (
+              <div class="text-slate-400">No Image Available</div>
+            )
+          }
+        </div>
+      </div>
+
+      {/* Content Container */}
+      <div class="px-6 lg:px-10">
+        <div
+          class={`grid gap-12 lg:gap-16 ${
+            hasImpact ? "grid-cols-1 lg:grid-cols-[1fr_320px]" : "grid-cols-1"
+          }`}
+        >
+          {/* Left Column (Main Content) */}
+          <div class="flex flex-col pt-10">
+            {/* Header for No Impact (Title + Buttons Inline) */}
+            {
+              !hasImpact && (
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-6">
+                  <h1 class="text-[#0F172A] text-h3 font-semibold">
+                    {project.title}
+                  </h1>
+                  <div class="flex flex-wrap gap-4">
+                    {project.buttons.map((btn) => {
+                      const isOutline = btn.label === "Visit App";
+                      return (
+                        <a
+                          href={btn.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class={`px-6 py-2.5 rounded-[6px] text-sm font-medium transition-colors flex items-center ${
+                            isOutline
+                              ? "bg-white text-[#387EC1] border border-[#387EC1] hover:bg-blue-50"
+                              : "bg-[#387EC1] text-white hover:bg-deep-blue-600 transition-all duration-300 group"
+                          }`}
+                        >
+                          {btn.label}
+                          {!isOutline && (
+                            <span class="ml-2 flex items-center">
+                              <ChevronRight />
+                            </span>
+                          )}
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+              )
+            }
+
+            {/* Header for Impact (Title Only) */}
+            {
+              hasImpact && (
+                <div class="pb-6">
+                  <h1 class="text-[#0F172A] text-3xl md:text-5xl font-semibold">
+                    {project.title}
+                  </h1>
+                </div>
+              )
+            }
+
+            {/* Description */}
+            <div class="">
+              <p
+                class="text-[#475569] text-base md:text-[15px] leading-relaxed max-w-5xl"
+              >
+                {project.description}
+              </p>
+            </div>
+
+            {/* Optional Highlight block */}
+            {
+              project.highlight && (
+                <div class="mt-8 bg-green-50/60 border border-[#188C43] rounded-[10px] p-4 flex items-center gap-3 w-full justify-center text-green-700 text-body-m font-medium">
+                  <CircleFadingArrowUp className="w-5 h-5 text-green-500" />
+                  {project.highlight}
+                </div>
+              )
+            }
+
+            {/* Tags row */}
+            <div
+              class="flex flex-wrap items-center gap-6 md:gap-10 py-8 border-b border-slate-200/60"
+            >
+              {
+                project.tags.map((tag) => {
+                  const Icon = getTagIcon(tag.icon);
+                  return (
+                    <div class="flex items-center gap-2 text-[#0F172A] font-medium text-[13px] md:text-[14px]">
+                      <Icon
+                        className={`w-4 h-4 md:w-5 md:h-5 ${getTagIconColor(tag.icon)}`}
+                      />
+                      <span>{tag.label}</span>
+                    </div>
+                  );
+                })
+              }
+            </div>
+
+            {/* Text Sections */}
+            <div class="mt-10 space-y-10 md:space-y-12">
+              {/* Challenge */}
+              <div>
+                <h3
+                  class="text-[#0F172A] text-xl md:text-2xl font-semibold mb-4 md:mb-6"
+                >
+                  Challenge
+                </h3>
+                <div
+                  class="text-[#475569] text-[15px] leading-relaxed space-y-4 md:space-y-5"
+                >
+                  {project.challenge.split("\n\n").map((p) => <p>{p}</p>)}
+                </div>
+              </div>
+
+              {/* Solution */}
+              <div>
+                <h3
+                  class="text-[#0F172A] text-xl md:text-2xl font-semibold mb-4 md:mb-6"
+                >
+                  Solution
+                </h3>
+                <div
+                  class="text-[#475569] text-[15px] leading-relaxed space-y-4 md:space-y-5"
+                >
+                  {project.solution.split("\n\n").map((p) => <p>{p}</p>)}
+                </div>
+              </div>
+
+              {/* Results */}
+              <div class={hasImpact ? "lg:pb-10" : ""}>
+                <h3
+                  class="text-[#0F172A] text-xl md:text-2xl font-semibold mb-4 md:mb-6"
+                >
+                  Results
+                </h3>
+                <div
+                  class="text-[#475569] text-[15px] leading-relaxed space-y-4 md:space-y-5"
+                >
+                  {project.results.split("\n\n").map((p) => <p>{p}</p>)}
+                </div>
+              </div>
+
+              {/* Centered CTA if no impact section */}
+              {
+                !hasImpact && (
+                  <div class=" pb-10 flex flex-col items-center gap-6">
+                    <h3 class="text-body-l font-medium text-[#0F172A]">
+                      Ready to get started ?
+                    </h3>
+                    <a
+                      href="/get-in-touch"
+                      class="group bg-[#387EC1] hover:bg-[#3270AD] text-white px-8 py-3 rounded-[6px] text-base font-medium flex items-center gap-2 transition-colors"
+                    >
+                      Contact Us
+                      <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </a>
+                  </div>
+                )
+              }
+            </div>
+          </div>
+
+          {/* Right Column (Impact + Buttons + CTA) */}
+          {
+            hasImpact && (
+              <div class="space-y-8 lg:border-l border-slate-200/60 lg:pt-20 lg:sticky lg:top-24 self-start h-fit">
+                <div class="flex flex-col gap-4 mb-10 lg:pl-3">
+                  <div class="flex flex-wrap gap-4">
+                    {project.buttons.map((btn) => {
+                      const isOutline = btn.label === "Visit App";
+                      return (
+                        <a
+                          href={btn.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class={`px-6 py-2.5 rounded-[6px] text-[13px] md:text-sm font-medium transition-colors flex items-center ${
+                            isOutline
+                              ? "bg-white text-[#387EC1] border border-[#387EC1] hover:bg-blue-50"
+                              : "bg-[#387EC1] text-white hover:bg-[#3270AD]"
+                          }`}
+                        >
+                          {btn.label}
+                          {!isOutline && (
+                            <span class="ml-2 flex items-center">
+                              <ChevronRight />
+                            </span>
+                          )}
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Impact Stats */}
+                {project.impact!.map((item) => (
+                  <div>
+                    <h4 class="text-[#0F172A] border-l pl-3 border-black border-l-2 text-[15px] md:text-base font-medium mb-2">
+                      {item.title}
+                    </h4>
+                    <p class="text-[#475569] text-[13px] pl-3 md:text-[14px] leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+
+                <div class="pl-3 pb-6">
+                  <h3 class="text-[#0F172A] text-[15px] md:text-base font-medium mb-4">
+                    Ready to get started ?
+                  </h3>
+
+                  <a
+                    href="/get-in-touch"
+                    class="group bg-[#387EC1] hover:bg-[#3270AD] text-white px-6 py-2.5 rounded-[6px] text-sm font-medium w-fit flex items-center gap-2"
+                  >
+                    Contact Us
+                    <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </a>
+                </div>
+              </div>
+            )
+          }
+        </div>
+      </div>
+
+      {/* Explore More Projects */}
+      <div class="px-6 lg:px-10 py-8 lg:py-16 border-t border-slate-200/60">
+        <h2 class="text-[#0F172A] text-3xl md:text-4xl font-semibold mb-10">
+          Explore More Projects
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {
+            moreProjects.map((proj) => (
+              <a
+                href={`/work/${proj.slug}`}
+                class="group relative rounded-[8px] h-[120px] lg:h-[180px] overflow-hidden block bg-slate-100"
+              >
+                {proj.image ? (
+                  <img
+                    src={proj.outerImages}
+                    alt={proj.title}
+                    class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center text-slate-400 font-medium">
+                    {proj.title}
+                  </div>
+                )}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>

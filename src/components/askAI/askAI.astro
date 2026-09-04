@@ -1,0 +1,112 @@
+---
+import { SquareArrowUpRight } from "lucide-react";
+import Navbar from "../layout/Navbar.astro";
+import ShootingStarsAndStarsBackgroundDemo from "../ui/shooting-stars-and-stars-background-demo.tsx";
+---
+
+<div
+  class="relative min-h-screen"
+  style="background: linear-gradient(180.62deg, #171925 40.82%, #262835 99.46%);"
+>
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <ShootingStarsAndStarsBackgroundDemo client:idle />
+  </div>
+
+  <div
+    class="relative z-10 flex flex-col min-h-screen max-w-[1440px] mx-auto w-full"
+  >
+    <Navbar hideBorder={true} />
+
+    <section
+      class="relative z-10 w-full flex flex-col items-center mt-20 lg:mt-30"
+    >
+      <div class="relative z-10 w-full flex flex-col items-center">
+        <img
+          src="/askAI/mantiqh-logo.png"
+          alt="Mantiqh"
+          class="w-16 md:w-20 lg:w-24 h-auto"
+          
+          
+        />
+
+        <h1
+          class="mt-8 text-center text-white font-medium leading-tight text-h2 px-3 lg:px-0"
+        >
+          Welcome to Mantiqh,
+          <br class="hidden md:block" />
+          A New Intelligent Experience
+        </h1>
+
+        <div class="w-full max-w-3xl mt-10 px-4 sm:px-0">
+          <div
+            class="flex items-center h-14 md:h-16 rounded-full border border-white/20 bg-[#0A0F1F] w-full overflow-hidden"
+          >
+            <span class="px-4 md:px-5 text-white text-2xl shrink-0">+</span>
+
+            <input
+              type="text"
+              placeholder="Ask Anything"
+              class="flex-1 min-w-0 bg-transparent outline-none text-white placeholder:text-white/50 pr-4 text-h6 font-normal"
+            />
+          </div>
+        </div>
+
+        <div class="w-full max-w-3xl mt-8 px-[26px]">
+          <p class="text-left text-white text-body-s font-medium mb-4">
+            Try out our prompts:
+          </p>
+
+          <div class="flex flex-wrap gap-3 justify-start">
+            <button
+              class="px-4 py-2 rounded-[4px] border border-white/20 text-white text-body-s font-normal transition-all duration-300 hover:bg-white/10 cursor-pointer bg-black flex items-center gap-2"
+            >
+              <span>What services does Mantiqh offer?</span>
+
+              <SquareArrowUpRight
+                size={22}
+                strokeWidth={1}
+                className="text-white"
+              />
+            </button>
+
+            <button
+              class="px-4 py-2 rounded-[4px] border border-white/20 text-white text-body-s font-normal transition-all duration-300 hover:bg-white/10 cursor-pointer bg-black flex items-center gap-2"
+            >
+              <span>How can AI improve my business operations?</span>
+
+              <SquareArrowUpRight
+                size={22}
+                strokeWidth={1}
+                className="text-white"
+              />
+            </button>
+
+            <button
+              class="px-4 py-2 rounded-[4px] border border-white/20 text-white text-body-s font-normal transition-all duration-300 hover:bg-white/10 cursor-pointer bg-black flex items-center gap-2"
+            >
+              <span>How long does product development take?</span>
+
+              <SquareArrowUpRight
+                size={22}
+                strokeWidth={1}
+                className="text-white"
+              />
+            </button>
+
+            <button
+              class="px-4 py-2 rounded-[4px] border border-white/20 text-white text-body-s font-normal transition-all duration-300 hover:bg-white/10 cursor-pointer bg-black flex items-center gap-2"
+            >
+              <span>What solutions fit my business?</span>
+
+              <SquareArrowUpRight
+                size={22}
+                strokeWidth={1}
+                className="text-white"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

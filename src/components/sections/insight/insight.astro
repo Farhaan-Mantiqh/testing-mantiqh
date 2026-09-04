@@ -1,0 +1,62 @@
+---
+import GradientBlinds from "../../ui/GradientBlinds";
+import Star from "../../ui/Star.astro";
+---
+
+<div id="insight-section" class="mx-auto w-full bg-white">
+  <div
+    class="max-w-[1440px] mx-auto relative min-h-fit flex items-center justify-center overflow-hidden py-10 px-6"
+  >
+    <!-- Background Shader -->
+    <div class="absolute inset-0 z-0">
+      <GradientBlinds
+        client:visible
+        gradientColors={["#3877C420", "#0E52C920"]}
+        angle={0}
+        noise={0.3}
+        blindCount={25}
+        blindMinWidth={25}
+        spotlightRadius={0.6}
+        spotlightSoftness={1}
+        spotlightOpacity={0.5}
+        mouseDampening={0.08}
+        distortAmount={0}
+        shineDirection="left"
+        mixBlendMode="lighten"
+      />
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <h2 class="text-h3 font-medium text-white mb-6 leading-[120%]">
+        AI Driven Insights and Decision Support
+      </h2>
+      <p class="text-h5 text-white/80 mb-10 leading-[130%]">
+        Leverage AI to analyze, generate, and evaluate solutions
+        <br class="hidden md:block" />
+        aligned with your business objectives
+      </p>
+      <!-- 
+      <a href="/askAI">
+        <button
+          id="ask-anything-button"
+          class="bg-white text-black px-6 py-2.5 rounded-[8px] cursor-pointer font-medium flex items-center gap-2 mx-auto hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-[0_0_30px_rgba(255,255,255,0.15)] group"
+        >
+          <Star
+            width={18}
+            height={18}
+            className="group-hover:rotate-12 transition-transform"
+          />
+          <span class="pr-1">Ask Anything</span>
+        </button>
+      </a>
+      -->
+    </div>
+  </div>
+</div>
+
+<style>
+  section {
+    background-color: #171925;
+  }
+</style>

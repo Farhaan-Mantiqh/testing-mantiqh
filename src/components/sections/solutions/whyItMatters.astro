@@ -1,0 +1,34 @@
+---
+import ScrollReveal from "../../ui/ScrollReveal.tsx";
+
+const { solution } = Astro.props;
+---
+
+<section
+  class="flex flex-col grow max-w-[1440px] mx-auto w-full border-x border-slate-200/20 relative"
+>
+  <div class="py-10 px-6 lg:px-10">
+    <span
+      class="text-[#479EE3] text-body-xs font-medium tracking-wider uppercase"
+    >
+      {solution.whyItMatters.badge}
+    </span>
+
+    <div
+      data-lenis-prevent
+      class="scroll-reveal-container overflow-y-auto max-h-[140px] md:max-h-[240px] mt-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+    >
+      <ScrollReveal
+        client:visible
+        baseY={30}
+        baseOpacity={0.1}
+        enableBlur={true}
+        blurStrength={5}
+        revealInitialWords={18}
+        containerClassName="w-full"
+        textClassName="text-h5 md:text-h4 lg:text-h3 font-normal leading-tight text-white whitespace-pre-line"
+        text={solution.whyItMatters.content.trim()}
+      />
+    </div>
+  </div>
+</section>

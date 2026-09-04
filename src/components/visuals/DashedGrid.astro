@@ -1,0 +1,50 @@
+---
+---
+
+<div class="absolute inset-0 overflow-hidden pointer-events-none z-0 flex justify-center">
+  <svg class="w-[1440px] h-full flex-shrink-0" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="diagonals-pattern" width="360" height="360" patternUnits="userSpaceOnUse" patternTransform="translate(0, -120)">
+        <g stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" stroke-dasharray="4 4">
+          <!-- Vertical line passing through the nodes -->
+          <line x1="0" y1="0" x2="0" y2="360" />
+          
+          <!-- Diamond shape diagonals forming continuous intersecting lines -->
+          <line x1="0" y1="180" x2="180" y2="0" />
+          <line x1="180" y1="0" x2="360" y2="180" />
+          <line x1="360" y1="180" x2="180" y2="360" />
+          <line x1="180" y1="360" x2="0" y2="180" />
+        </g>
+      </pattern>
+
+      <pattern id="dots-pattern" width="360" height="4000" patternUnits="userSpaceOnUse" patternTransform="translate(0, -120)">
+        <g stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" stroke-dasharray="4 4">
+          <!-- Horizontal line through the middle vertices (only draws once vertically) -->
+          <line x1="0" y1="180" x2="360" y2="180" />
+        </g>
+        <g fill="#ffffff">
+            <!-- Bright white dots at the intersection nodes -->
+            <circle cx="0" cy="180" r="4.5" />
+            <circle cx="360" cy="180" r="4.5" />
+        </g>
+      </pattern>
+      
+      <!-- Radial fading mask perfectly isolates the grid to the top center -->
+      <!-- Hides the grid on the sides, hides the grid at the bottom, and keeps the 3 center dots visible -->
+      <radialGradient id="fade-radial" cx="50%" cy="60" r="500" gradientUnits="userSpaceOnUse">
+        <stop offset="30%" stop-color="white" stop-opacity="1" />
+        <stop offset="100%" stop-color="white" stop-opacity="0" />
+      </radialGradient>
+
+      <mask id="mask-radial">
+        <rect width="100%" height="100%" fill="url(#fade-radial)" />
+      </mask>
+    </defs>
+
+    <!-- Apply radial mask -->
+    <g mask="url(#mask-radial)">
+      <rect width="100%" height="100%" fill="url(#diagonals-pattern)" />
+      <rect width="100%" height="100%" fill="url(#dots-pattern)" />
+    </g>
+  </svg>
+</div>
